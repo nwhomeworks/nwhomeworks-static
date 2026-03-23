@@ -23,10 +23,43 @@
   {"@context":"https://schema.org","@graph":[{"@type":"Place","@id":"https://www.nwhomeworks.com/#place","address":{"@type":"PostalAddress","addressRegion":"Washington","postalCode":"98405","addressCountry":"United States","addressLocality":"Tacoma"}},{"@type":["GeneralContractor","Organization"],"@id":"https://www.nwhomeworks.com/#organization","name":"NW Homeworks","url":"https://www.nwhomeworks.com","email":"query@nwhomeworks.com","address":{"@type":"PostalAddress","addressRegion":"Washington","postalCode":"98405","addressCountry":"United States","addressLocality":"Tacoma"},"logo":{"@type":"ImageObject","@id":"https://www.nwhomeworks.com/#logo","url":"https://www.nwhomeworks.com/images/Main-Logo-Alt.svg","caption":"NW Homeworks","inLanguage":"en-US"},"openingHours":["Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-17:00"],"description":"NW Homeworks is a full-service remodeling company serving Seattle, Tacoma, and the greater Puget Sound area since 2011. We specialize in kitchen remodeling, bathroom renovation, and IKEA cabinet installation.","location":{"@id":"https://www.nwhomeworks.com/#place"},"telephone":"12534489462"},{"@type":"WebSite","@id":"https://www.nwhomeworks.com/#website","url":"https://www.nwhomeworks.com","name":"NW Homeworks","alternateName":"Northwest Homeworks","publisher":{"@id":"https://www.nwhomeworks.com/#organization"},"inLanguage":"en-US"},{"@type":"AboutPage","@id":"https://www.nwhomeworks.com/#webpage","url":"https://www.nwhomeworks.com/","name":"Seattle Kitchen & Bath Remodeling | NW Homeworks","about":{"@id":"https://www.nwhomeworks.com/#organization"},"isPartOf":{"@id":"https://www.nwhomeworks.com/#website"},"inLanguage":"en-US"}]}
   </script>
 
-  <!-- Fonts -->
+  <!-- Preconnect to critical origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Preload hero image — highest priority -->
+  <link rel="preload" as="image" href="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp" fetchpriority="high">
+
+  <!-- Preload critical font weights -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap">
+
+  <!-- Critical inline CSS — above the fold -->
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{font-family:'Figtree',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;opacity:0;transition:opacity .3s ease}
+    body.loaded{opacity:1}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+    .site-header{position:fixed;top:0;left:0;width:100%;z-index:9999;padding:20px 0;transition:background .3s ease,padding .3s ease}
+    .site-header.scrolled{background:rgba(26,26,26,.95);backdrop-filter:blur(10px);padding:10px 0}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;padding:0 40px}
+    .header-logo img{height:50px;width:auto;transition:height .3s ease}
+    .site-header.scrolled .header-logo img{height:36px}
+    .header-nav{display:flex;align-items:center;gap:8px}
+    .header-nav-left,.header-nav-right{display:flex;align-items:center;gap:32px}
+    .header-nav a{color:#FFF;font-family:'Urbanist',sans-serif;font-weight:500;font-size:15px;display:inline-block;transition:color .3s ease,transform .3s ease}
+    .hero-scroll-wrapper-desktop{overflow:visible;position:relative}
+    .hero-slide-desktop{position:relative;width:100%;height:100vh;overflow:hidden}
+    .menu-toggle{display:none}
+    .mobile-nav{display:none}
+    @media(max-width:768px){.header-nav-left,.header-nav-right{display:none}.menu-toggle{display:flex}}
+  </style>
+
+  <!-- Fonts — non-render-blocking -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -34,18 +67,16 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Preload hero image -->
-  <link rel="preload" as="image" href="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp" fetchpriority="high">
+  <!-- GSAP — deferred to not block rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <!-- Styles — loaded async -->
+  <link rel="stylesheet" href="/css/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/css/styles.css"></noscript>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/css/styles.css">
-
-  <!-- Google Analytics -->
+  <!-- Google Analytics — already async -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVJ4CWM5DR"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KVJ4CWM5DR');</script>
 </head>
