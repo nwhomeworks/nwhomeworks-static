@@ -20,23 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
      ══════════════════════════════════════════════ */
   var slideImages = [
     [
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp"
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp"
     ],
     [
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer.webp",
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/normandy-park-walnut-cabinets-farnhouse-sink-tile-backsplash.webp",
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/modern-craftsman-farmhouse-kitchen-shaker-cabinets-butcher-block-island-subway-tile-2500.webp"
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer.webp",
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/normandy-park-walnut-cabinets-farnhouse-sink-tile-backsplash.webp",
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/modern-craftsman-farmhouse-kitchen-shaker-cabinets-butcher-block-island-subway-tile-2500.webp"
     ],
     [
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/gig-harbor-master-bath-remodel-wall-mount-faucets-vessel-sinks.webp",
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/master-bath-remodel-green-tile-shower-surround-brass-hardware-1.webp",
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp",
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/kids-bathroom-remodel-seattle-light-blue-tile-brass-hardware-walnut-vanity.webp"
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/gig-harbor-master-bath-remodel-wall-mount-faucets-vessel-sinks.webp",
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/master-bath-remodel-green-tile-shower-surround-brass-hardware-1.webp",
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp",
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/kids-bathroom-remodel-seattle-light-blue-tile-brass-hardware-walnut-vanity.webp"
     ],
     [
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/ikea-kitchen-remodel-seattle-white-kitchen-island-with-open-shelves-and-wine-rack-1.webp",
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/mid-century-modern-kitchen-teak-cabinets-copper-pendant-lights-design-ideas-2500-2.webp",
-      "https://www.nwhomeworks.com/wp-content/uploads/2026/03/seattle-contemporary-kitchen-custom-ikea-cabinet-installation-grey-and-white-design-2500.webp"
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/ikea-kitchen-remodel-seattle-white-kitchen-island-with-open-shelves-and-wine-rack-1.webp",
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/mid-century-modern-kitchen-teak-cabinets-copper-pendant-lights-design-ideas-2500-2.webp",
+      "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/seattle-contemporary-kitchen-custom-ikea-cabinet-installation-grey-and-white-design-2500.webp"
     ]
   ];
 

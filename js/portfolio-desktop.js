@@ -15,31 +15,31 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       name: "Queen Anne Fireplace Feature Wall",
       url: "/portfolio/queen-anne-fireplace",
-      image: "https://www.nwhomeworks.com/wp-content/uploads/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp",
+      image: "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp",
       orientation: "portrait"
     },
     {
       name: "Redmond Kitchen",
       url: "/portfolio/redmond-kitchen",
-      image: "https://www.nwhomeworks.com/wp-content/uploads/2026/03/redmond-kitchen-remodel-white-shaker-cabinets-blue-star-professional-range.webp",
+      image: "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/redmond-kitchen-remodel-white-shaker-cabinets-blue-star-professional-range.webp",
       orientation: "landscape"
     },
     {
       name: "Normandy Park Kitchen",
       url: "/portfolio/normandy-park-kitchen",
-      image: "https://www.nwhomeworks.com/wp-content/uploads/2026/03/normandy-park-walnut-cabinets-farnhouse-sink-tile-backsplash.webp",
+      image: "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/normandy-park-walnut-cabinets-farnhouse-sink-tile-backsplash.webp",
       orientation: "landscape"
     },
     {
       name: "Gig Harbor Master Bath",
       url: "/portfolio/gig-harbor-master-bath",
-      image: "https://www.nwhomeworks.com/wp-content/uploads/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas.webp",
+      image: "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas.webp",
       orientation: "portrait"
     },
     {
       name: "Maple Leaf Master Suite",
       url: "/portfolio/maple-leaf-master-bath",
-      image: "https://www.nwhomeworks.com/wp-content/uploads/2026/03/master-bath-remodel-green-tile-shower-surround-brass-hardware.webp",
+      image: "https://legacy.nwhomeworks.com/wp-content/uploads/2026/03/master-bath-remodel-green-tile-shower-surround-brass-hardware.webp",
       orientation: "landscape"
     }
   ];
