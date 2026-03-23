@@ -1,0 +1,42 @@
+# Old WordPress date-based blog URLs → new blog URLs
+/2016/07/23/an-ikea-kitchen-in-capitol-hill-seattle/ /blog/an-ikea-kitchen-in-capitol-hill-seattle/ 301
+/2015/11/24/kids-bathroom-makeover/ /blog/kids-bathroom-makeover/ 301
+/2015/11/16/more-ikea-built-ins-and-a-tile-fireplace-surround/ /blog/more-ikea-built-ins-and-a-tile-fireplace-surround/ 301
+/2015/06/02/an-ikea-kitchen-that-doesnt-look-like-ikea/ /blog/an-ikea-kitchen-that-doesnt-look-like-ikea/ 301
+/2015/03/19/master-bath-remodel-give-me-space/ /blog/master-bath-remodel-give-me-space/ 301
+/2015/02/22/custom-built-ins-media-center-using-ikea-cabinets/ /blog/custom-built-ins-media-center-using-ikea-cabinets/ 301
+/2015/01/02/ikea-hacks/ /blog/ikea-hacks/ 301
+/2014/11/29/custom-ikea-kitchen-bainbridge-island/ /blog/custom-ikea-kitchen-bainbridge-island/ 301
+/2014/10/18/custom-doors-ikea-cabinets/ /blog/custom-doors-ikea-cabinets/ 301
+/2014/09/05/ikea-in-the-laundry-room/ /blog/ikea-in-the-laundry-room/ 301
+/2014/09/05/i-cant-believe-its-ikea/ /blog/i-cant-believe-its-ikea/ 301
+/2014/07/19/mid-century-modern-ikea-kitchen/ /blog/mid-century-modern-ikea-kitchen/ 301
+/2014/07/05/working-with-ikeas-pax-wardrobe-units/ /blog/working-with-ikeas-pax-wardrobe-units/ 301
+/2014/03/09/craftsman-style-kitchen/ /blog/craftsman-style-kitchen/ 301
+/2013/12/03/vashon-island-kitchen-part-2/ /blog/vashon-island-kitchen-part-2/ 301
+/2013/12/01/ikea-hacks-and-other-fun-stuff/ /blog/ikea-hacks-and-other-fun-stuff/ 301
+/2013/10/27/apartment-kitchen-makeover/ /blog/apartment-kitchen-makeover/ 301
+/2013/09/08/an-ikea-kitchen-that-pops/ /blog/an-ikea-kitchen-that-pops/ 301
+/2013/08/04/vashon-island-kitchen-part-1-vaulted-ceiling/ /blog/vashon-island-kitchen-part-1-vaulted-ceiling/ 301
+/2013/05/30/sometimes-its-the-finishing-touches/ /blog/small-bathroom-with-big-style/ 301
+/2013/01/19/small-kitchen-with-big-style/ /blog/small-kitchen-with-big-style/ 301
+/2013/02/11/a-beautiful-tile-mural/ /blog/a-beautiful-tile-mural/ 301
+/2015/03/19/master-bath-remodel-give-me-space/feed/ /blog/master-bath-remodel-give-me-space/ 301
+/2013/12/01/ikea-hacks-and-other-fun-stuff/pop-up-electrical-outlet-2/ /blog/ikea-hacks-and-other-fun-stuff/ 301
+
+# Old WordPress structural redirects
+/works/ /portfolio/ 301
+/author/* /blog/ 301
+/blog/page/* /blog/ 301
+
+# WordPress category/tag pages → blog
+/blog/category/* /blog/ 301
+/blog/tag/* /blog/ 301
+
+# WordPress system URLs → homepage
+/wp-admin/* / 301
+/wp-login.php / 301
+/xmlrpc.php / 301
+/wp-json/* / 301
+/feed/ / 301
+/comments/feed/ / 301
