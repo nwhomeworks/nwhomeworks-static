@@ -101,9 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
       ScrollTrigger.create({
         trigger: slide,
         start: "top top",
-        end: "+=50%",
+        end: "max",
         pin: true,
-        pinSpacing: true,
+        pinSpacing: false,
       });
     }
 

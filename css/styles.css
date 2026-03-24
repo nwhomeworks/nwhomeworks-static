@@ -901,6 +901,12 @@ body.light-page .site-header.scrolled .menu-toggle span {
   pointer-events: none;
 }
 
+@media (max-width: 1024px) {
+  .about-reveal-section {
+    background: #F5F3F0;
+  }
+}
+
 .about-wrapper {
   visibility: hidden !important;
 }
