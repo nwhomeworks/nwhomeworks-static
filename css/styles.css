@@ -649,6 +649,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
 .hero-scroll-wrapper {
   overflow: visible;
   position: relative;
+  z-index: 1;
 }
 
 .hero-slide {
