@@ -1419,23 +1419,31 @@ body.light-page .site-header.scrolled .menu-toggle span {
   }
 
   .testimonial-attribution {
-    font-size: 14px;
-    margin-bottom: 32px;
+    font-size: 13px;
+    margin-bottom: 24px;
   }
 
   .testimonial-divider {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .cta-heading {
-    font-size: 22px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 16px;
   }
 
   .cta-button {
-    padding: 14px 40px;
-    font-size: 15px;
-    margin-bottom: 24px;
+    padding: 12px 36px;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .cta-or {
+    margin-bottom: 12px;
+  }
+
+  .cta-contact {
+    gap: 10px;
   }
 
   .cta-contact {
