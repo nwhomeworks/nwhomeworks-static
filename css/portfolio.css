@@ -113,6 +113,10 @@ html.portfolio-active body {
 
 .portfolio-idle-hint.visible { opacity: 1; }
 
+@media (max-width: 1024px) {
+  .portfolio-idle-hint { display: none !important; }
+}
+
 .portfolio-carousel {
   position: absolute;
   top: 50%; left: 50%;

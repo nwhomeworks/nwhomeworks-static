@@ -904,6 +904,138 @@ body.light-page .site-header.scrolled .menu-toggle span {
 @media (max-width: 1024px) {
   .about-reveal-section {
     background: #F5F3F0;
+    height: auto;
+    pointer-events: auto;
+  }
+
+  .about-wrapper {
+    visibility: visible !important;
+  }
+
+  .about-wrapper * {
+    visibility: visible !important;
+  }
+
+  .wipe-grid {
+    display: none;
+  }
+
+  .about-content-frame {
+    position: relative !important;
+    visibility: visible !important;
+    height: auto !important;
+    background: #F5F3F0;
+    display: block;
+  }
+
+  .about-grid-canvas {
+    display: none;
+  }
+
+  .content-set-a {
+    position: relative;
+    height: auto;
+    padding: 48px 24px;
+  }
+
+  .content-a-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .heading-a-line1 {
+    position: relative;
+    top: auto;
+    left: auto;
+    font-size: 32px;
+    clip-path: none;
+  }
+
+  .about-headshot {
+    width: 100%;
+    clip-path: none;
+  }
+
+  .about-text-a {
+    width: 100%;
+    padding-top: 0;
+    clip-path: none;
+  }
+
+  .heading-a-line2 {
+    font-size: 24px;
+    clip-path: none;
+  }
+
+  .about-bio {
+    margin-top: 16px;
+  }
+
+  .about-stats {
+    margin-top: 24px;
+    gap: 24px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+
+  .content-set-b {
+    position: relative;
+    height: auto;
+    padding: 48px 24px;
+    opacity: 1;
+  }
+
+  .content-b-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .content-b-tagline {
+    position: relative;
+    top: auto;
+    left: auto;
+    font-size: 28px;
+    clip-path: none;
+  }
+
+  .heading-b-line1 {
+    position: relative;
+    top: auto;
+    left: auto;
+    font-size: 32px;
+    white-space: normal;
+    clip-path: none;
+  }
+
+  .about-action-photo {
+    width: 100%;
+    clip-path: none;
+  }
+
+  .about-text-b {
+    width: 100%;
+    margin-bottom: 0;
+    clip-path: none;
+  }
+
+  .heading-b-line2 {
+    font-size: 24px;
+    clip-path: none;
+  }
+
+  .about-body-b {
+    margin-top: 16px;
+  }
+
+  .content-b-cta {
+    margin-top: 24px;
+  }
+
+  /* Portfolio preview — hide on mobile */
+  .portfolio-section {
+    display: none;
   }
 }
 

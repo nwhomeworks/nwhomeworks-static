@@ -3,10 +3,12 @@
    ══════════════════════════════════════════════ */
 
 document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth <= 1024) return;
+
   var portfolioSection = document.querySelector(".portfolio-section");
   if (!portfolioSection) return;
 
-  var isMobile = window.innerWidth <= 1024;
+  var isMobile = false;
 
   /* ══════════════════════════════════════════════
      PROJECT DATA

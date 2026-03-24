@@ -3,6 +3,8 @@
    ══════════════════════════════════════════════ */
 
 document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth <= 1024) return;
+
   var aboutSection = document.querySelector(".about-reveal-section");
   if (!aboutSection) return;
 
