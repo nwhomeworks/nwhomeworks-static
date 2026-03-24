@@ -1,9 +1,9 @@
 /* ══════════════════════════════════════════════
-   ABOUT SECTION — Desktop Grid Wipe + Content Reveals
+   ABOUT SECTION — Mobile Grid Wipe + Content Reveals
    ══════════════════════════════════════════════ */
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.innerWidth <= 1024) return; /* Mobile handled by about-mobile.js */
+  if (window.innerWidth > 1024) return;
 
   var aboutSection = document.querySelector(".about-reveal-section");
   if (!aboutSection) return;
@@ -26,11 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* ══════════════════════════════════════════════
-     BUILD CELL MAP WITH ALTERNATING ROW DIRECTIONS
+     BUILD 2x3 CELL MAP — Only first 6 cells
      ══════════════════════════════════════════════ */
-  var cols = 4;
-  var rows = 3;
-  var cellArray = Array.from(wipeCells);
+  var cols = 2;
+  var cellArray = Array.from(wipeCells).slice(0, 6);
   var cellMap = [];
 
   cellArray.forEach(function (cell, index) {
@@ -39,8 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     cellMap.push({ el: cell, row: row, col: col });
   });
 
+  var lastHeroSlides = document.querySelectorAll(".hero-slide");
+  var lastSlide = lastHeroSlides.length > 0 ? lastHeroSlides[lastHeroSlides.length - 1] : null;
+  if (!lastSlide) return;
+
   /* ══════════════════════════════════════════════
-     PHASE 1: WIPE
+     PHASE 1: WIPE — 2x3 alternating rows
      ══════════════════════════════════════════════ */
   var wipeTL = gsap.timeline({
     scrollTrigger: {
@@ -55,12 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   cellMap.forEach(function (item) {
     var rowDelay = (2 - item.row) * 0.3;
-
     var colPosition;
     if (item.row === 2 || item.row === 0) {
-      colPosition = (3 - item.col) * 0.15;
+      colPosition = (1 - item.col) * 0.2;
     } else {
-      colPosition = item.col * 0.15;
+      colPosition = item.col * 0.2;
     }
 
     wipeTL.to(item.el, {
@@ -89,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* ── Content A reveals ── */
-
   masterTL.to(".heading-a-line1", {
     clipPath: "inset(0 0 0% 0)",
     duration: config.contentRevealDuration,
@@ -97,27 +98,26 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   masterTL.to(".about-headshot", {
-    clipPath: "inset(0% 0 0 0)",
+    clipPath: "inset(0 0 0 0%)",
     duration: config.contentRevealDuration,
     ease: "power2.inOut",
-  }, "-=0.4");
+  }, "-=0.3");
 
   masterTL.to(".heading-a-line2", {
     clipPath: "inset(0 0 0 0%)",
     duration: config.contentRevealDuration,
     ease: "power2.inOut",
-  }, "-=0.5");
+  }, "-=0.3");
 
   masterTL.to(".about-text-a", {
     clipPath: "inset(0 0% 0 0)",
     duration: config.contentRevealDuration,
     ease: "power2.inOut",
-  }, "-=0.3");
+  }, "-=0.5");
 
   masterTL.to({}, { duration: 0.2 });
 
-  /* ── Content A exits, Content B enters ── */
-
+  /* ── Content A exits ── */
   masterTL.to(".heading-a-line1", {
     clipPath: "inset(100% 0 0 0)",
     duration: 0.6,
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   masterTL.to(".about-headshot", {
-    clipPath: "inset(0 0 100% 0)",
+    clipPath: "inset(0 0 0 100%)",
     duration: 0.6,
     ease: "power2.in",
   }, "-=0.4");
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clipPath: "inset(0 0 0 100%)",
     duration: 0.6,
     ease: "power2.in",
-  }, "-=0.5");
+  }, "-=0.4");
 
   masterTL.to(".about-text-a", {
     clipPath: "inset(0 100% 0 0)",
@@ -142,39 +142,40 @@ document.addEventListener("DOMContentLoaded", function () {
     ease: "power2.in",
   }, "-=0.4");
 
-  masterTL.to(contentSetA, { opacity: 0, duration: 0 });
+  masterTL.to(contentSetA, { opacity: 0, duration: 0.3 });
   masterTL.set(contentSetB, { opacity: 1 });
-  masterTL.to({}, { duration: 0 });
+  masterTL.to({}, { duration: 0.05 });
+
+  /* ── Content B reveals ── */
+  masterTL.to(".content-b-tagline", {
+    clipPath: "inset(0 0% 0 0)",
+    duration: config.contentRevealDuration,
+    ease: "power2.inOut",
+  });
 
   masterTL.to(".heading-b-line1", {
     clipPath: "inset(0% 0 0 0)",
     duration: config.contentRevealDuration,
     ease: "power2.inOut",
-  });
+  }, "-=0.5");
 
   masterTL.to(".about-action-photo", {
     clipPath: "inset(0 0 0 0%)",
     duration: config.contentRevealDuration,
     ease: "power2.inOut",
-  }, "-=0.05");
+  }, "-=0.3");
 
   masterTL.to(".heading-b-line2", {
     clipPath: "inset(0% 0 0 0)",
     duration: config.contentRevealDuration,
     ease: "power2.inOut",
-  }, "-=0.5");
+  }, "-=0.3");
 
   masterTL.to(".about-text-b", {
     clipPath: "inset(0 0 0% 0)",
     duration: config.contentRevealDuration,
     ease: "power2.inOut",
-  }, "-=0.3");
-
-  masterTL.to(".content-b-tagline", {
-    clipPath: "inset(0 0% 0 0)",
-    duration: config.contentRevealDuration,
-    ease: "power2.inOut",
-  }, "-=0.6");
+  }, "-=0.5");
 
   masterTL.to({}, { duration: 0.2 });
 
@@ -193,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
       contentFrame.style.visibility = "visible";
     },
     onRefresh: function (self) {
-      /* On resize/refresh, check if we're past the about section */
       if (self.progress >= 1) {
         contentFrame.style.visibility = "hidden";
         wipeGrid.style.visibility = "hidden";
