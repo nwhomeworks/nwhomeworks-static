@@ -3,10 +3,10 @@
    ══════════════════════════════════════════════ */
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.innerWidth <= 1024) return;
-
   var portfolioSection = document.querySelector(".portfolio-section");
   if (!portfolioSection) return;
+
+  var isMobile = window.innerWidth <= 1024;
 
   /* ══════════════════════════════════════════════
      PROJECT DATA
@@ -47,7 +47,13 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ══════════════════════════════════════════════
      SCATTERED POSITIONS
      ══════════════════════════════════════════════ */
-  var scatteredStates = [
+  var scatteredStates = isMobile ? [
+    { x: "5vw",  y: "10vh", w: "38vw", h: "50vw", opacity: 1,    blur: 0, scale: 1,    zIndex: 5 },
+    { x: "55vw", y: "5vh",  w: "40vw", h: "28vw", opacity: 0.6,  blur: 2, scale: 0.85, zIndex: 2 },
+    { x: "22vw", y: "52vh", w: "44vw", h: "30vw", opacity: 0.85, blur: 0, scale: 0.95, zIndex: 4 },
+    { x: "58vw", y: "35vh", w: "32vw", h: "42vw", opacity: 1,    blur: 0, scale: 1,    zIndex: 5 },
+    { x: "2vw",  y: "56vh", w: "34vw", h: "24vw", opacity: 0.5,  blur: 3, scale: 0.75, zIndex: 1 }
+  ] : [
     { x: "8vw",  y: "10vh", w: "18vw", h: "26vw",  opacity: 1,    blur: 0, scale: 1,    zIndex: 5 },
     { x: "55vw", y: "5vh",  w: "22vw", h: "15vw",  opacity: 0.55, blur: 2, scale: 0.85, zIndex: 2 },
     { x: "32vw", y: "55vh", w: "26vw", h: "18vw",  opacity: 0.85, blur: 0, scale: 0.95, zIndex: 4 },
@@ -58,30 +64,43 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ══════════════════════════════════════════════
      SETTLED POSITIONS
      ══════════════════════════════════════════════ */
-  var settledSizes = projects.map(function (proj) {
-    if (proj.orientation === "portrait") {
-      return { w: 14, h: 21 };
-    } else {
-      return { w: 19, h: 13 };
-    }
-  });
+  var settledStates;
 
-  var settledGap = 2;
-  var totalRowW = 0;
-  settledSizes.forEach(function (s) { totalRowW += s.w; });
-  totalRowW += settledGap * (projects.length - 1);
-  var startX = (100 - totalRowW) / 2;
-
-  var settledStates = [];
-  var currentX = startX;
-  settledSizes.forEach(function (s) {
-    settledStates.push({
-      x: currentX + "vw",
-      w: s.w + "vw",
-      h: s.h + "vw"
+  if (isMobile) {
+    /* Mobile: 2-column grid with 5th card centered */
+    settledStates = [
+      { x: "6vw",  y: "24vh", w: "40vw", h: "34vw" },
+      { x: "54vw", y: "28vh", w: "40vw", h: "28vw" },
+      { x: "6vw",  y: "52vh", w: "40vw", h: "28vw" },
+      { x: "54vw", y: "48vh", w: "40vw", h: "34vw" },
+      { x: "30vw", y: "74vh", w: "40vw", h: "28vw" }
+    ];
+  } else {
+    var settledSizes = projects.map(function (proj) {
+      if (proj.orientation === "portrait") {
+        return { w: 14, h: 21 };
+      } else {
+        return { w: 19, h: 13 };
+      }
     });
-    currentX += s.w + settledGap;
-  });
+
+    var settledGap = 2;
+    var totalRowW = 0;
+    settledSizes.forEach(function (s) { totalRowW += s.w; });
+    totalRowW += settledGap * (projects.length - 1);
+    var startX = (100 - totalRowW) / 2;
+
+    settledStates = [];
+    var currentX = startX;
+    settledSizes.forEach(function (s) {
+      settledStates.push({
+        x: currentX + "vw",
+        w: s.w + "vw",
+        h: s.h + "vw"
+      });
+      currentX += s.w + settledGap;
+    });
+  }
 
   /* ══════════════════════════════════════════════
      CREATE DOM ELEMENTS
@@ -150,8 +169,8 @@ document.addEventListener("DOMContentLoaded", function () {
     floatingActive = true;
 
     items.forEach(function (item) {
-      var randomX = (Math.random() - 0.5) * 50;
-      var randomY = (Math.random() - 0.5) * 40;
+      var randomX = (Math.random() - 0.5) * (isMobile ? 25 : 50);
+      var randomY = (Math.random() - 0.5) * (isMobile ? 20 : 40);
       var duration = 3 + Math.random() * 3;
 
       var tween = gsap.to(item, {
@@ -254,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
           left: "50%",
           xPercent: -50,
           yPercent: -50,
-          fontSize: "72px",
+          fontSize: isMobile ? "42px" : "72px",
         });
         gsap.set(subtext, { opacity: 0 });
         startFloating();
@@ -263,8 +282,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   settleTL.to(heading, {
-    top: "25vh",
-    fontSize: "64px",
+    top: isMobile ? "8vh" : "25vh",
+    fontSize: isMobile ? "36px" : "64px",
     duration: 1,
     ease: "power2.inOut",
   });
@@ -272,10 +291,8 @@ document.addEventListener("DOMContentLoaded", function () {
   items.forEach(function (item, i) {
     var s = settledStates[i];
 
-    settleTL.to(item, {
+    var settledProps = {
       left: s.x,
-      top: "52%",
-      yPercent: -50,
       width: s.w,
       height: s.h,
       opacity: 1,
@@ -284,7 +301,17 @@ document.addEventListener("DOMContentLoaded", function () {
       zIndex: 10,
       duration: 1.2,
       ease: "power2.inOut",
-    }, i === 0 ? "-=1.0" : "-=1.0");
+    };
+
+    if (isMobile) {
+      settledProps.top = s.y;
+      settledProps.yPercent = 0;
+    } else {
+      settledProps.top = "52%";
+      settledProps.yPercent = -50;
+    }
+
+    settleTL.to(item, settledProps, i === 0 ? "-=1.0" : "-=1.0");
   });
 
   settleTL.to(subtext, { opacity: 1, duration: 0.4 }, "-=0.2");

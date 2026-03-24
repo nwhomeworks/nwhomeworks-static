@@ -1560,4 +1560,22 @@ body.light-page .site-header.scrolled .menu-toggle span {
   .content-b-cta {
     margin-top: 20px;
   }
+
+  /* ── Portfolio preview ── */
+  .portfolio-section {
+    height: 200vh;
+  }
+
+  .portfolio-heading {
+    font-size: 42px;
+  }
+
+  .portfolio-subtext {
+    top: 18vh;
+  }
+
+  .portfolio-item-label {
+    font-size: 11px;
+    bottom: -22px;
+  }
 }
