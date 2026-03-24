@@ -225,9 +225,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     },
     onLeaveBack: function () {
-      isSettled = false;
-      page.style.touchAction = "";
-      document.body.style.overflow = "";
+      /* Don't reset to scatter if carousel is active */
+      if (isSettled) return;
+
       document.documentElement.classList.remove("portfolio-active");
       header.style.pointerEvents = "none";
       gsap.set(header, { opacity: 0 });
@@ -272,10 +272,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isSettled) e.preventDefault();
   }, { passive: false });
 
-  /* Stop/restart floating on scroll */
+  /* Prevent scroll from resetting to scatter once settled */
   var scrollTimeout;
   window.addEventListener("scroll", function () {
-    if (floatingActive && !isSettled) {
+    /* Don't reset if we've already settled */
+    if (isSettled) return;
+
+    if (floatingActive) {
       stopFloating();
     }
     clearTimeout(scrollTimeout);
