@@ -263,6 +263,11 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
+  /* Lock page scroll when carousel is active (prevents mobile scroll-back flash) */
+  document.addEventListener("touchmove", function (e) {
+    if (isSettled) e.preventDefault();
+  }, { passive: false });
+
   /* Stop/restart floating on scroll */
   var scrollTimeout;
   window.addEventListener("scroll", function () {
