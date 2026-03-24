@@ -180,14 +180,13 @@ document.addEventListener("DOMContentLoaded", function () {
   masterTL.to({}, { duration: 0.2 });
 
   /* ══════════════════════════════════════════════
-     HIDE CONTENT FRAME WHEN SCROLLING PAST
+     KEEP CONTENT B VISIBLE — portfolio frame covers it
      ══════════════════════════════════════════════ */
   ScrollTrigger.create({
     trigger: aboutSection,
     start: "top top",
     end: "bottom bottom",
     onLeave: function () {
-      contentFrame.style.visibility = "hidden";
       wipeGrid.style.visibility = "hidden";
     },
     onEnterBack: function () {
@@ -195,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onRefresh: function (self) {
       if (self.progress >= 1) {
-        contentFrame.style.visibility = "hidden";
         wipeGrid.style.visibility = "hidden";
       }
     }
