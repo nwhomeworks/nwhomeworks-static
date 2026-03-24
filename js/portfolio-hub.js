@@ -332,6 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   page.addEventListener("touchmove", function (e) {
     if (!isSettled || isAnimating) return;
+    e.preventDefault();
     var deltaY = touchStartY - e.touches[0].clientY;
     touchStartY = e.touches[0].clientY;
 
@@ -341,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollAccumulator = 0;
       rotateCarousel(direction);
     }
-  }, { passive: true });
+  }, { passive: false });
 
   document.addEventListener("keydown", function (e) {
     if (!isSettled || isAnimating) return;
