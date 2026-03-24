@@ -11,10 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
      HEADER SCROLL EFFECT
      ══════════════════════════════════════════════ */
   var header = document.querySelector(".site-header");
+  var headerLogo = document.querySelector(".header-logo img");
+  var logoDark = headerLogo ? headerLogo.src : "";
+  var logoLight = "/images/2026/03/Main-Logo-Light.svg";
+
   if (header) {
     window.addEventListener("scroll", function () {
       var scrolled = window.scrollY > 50;
       header.classList.toggle("scrolled", scrolled);
+
+      /* Swap logo on scroll */
+      if (headerLogo) {
+        headerLogo.src = scrolled ? logoLight : logoDark;
+      }
     }, { passive: true });
   }
 
