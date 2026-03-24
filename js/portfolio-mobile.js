@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  settleTL.to(heading, { top: "4vh", fontSize: "38px", duration: 1, ease: "power2.inOut" });
+  settleTL.to(heading, { top: "3vh", fontSize: "32px", zIndex: 30, duration: 1, ease: "power2.inOut" });
 
   items.forEach(function (item, i) {
     var s = settledStates[i];
