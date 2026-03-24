@@ -1305,7 +1305,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
 
 .testimonial-cta-section {
   position: relative;
-  z-index: 10;
+  z-index: 9990;
   width: 100%;
   min-height: 100vh;
   background: #1A1A1A;
