@@ -1409,7 +1409,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
 @media (max-width: 1024px) {
   .testimonial-cta-section {
     padding: 48px 24px 32px;
-    min-height: auto;
+    min-height: 100vh;
   }
 
   .testimonial-quote {
@@ -1419,31 +1419,23 @@ body.light-page .site-header.scrolled .menu-toggle span {
   }
 
   .testimonial-attribution {
-    font-size: 13px;
-    margin-bottom: 24px;
+    font-size: 14px;
+    margin-bottom: 48px;
   }
 
   .testimonial-divider {
-    margin-bottom: 24px;
+    margin-bottom: 40px;
   }
 
   .cta-heading {
-    font-size: 20px;
-    margin-bottom: 16px;
+    font-size: 22px;
+    margin-bottom: 24px;
   }
 
   .cta-button {
-    padding: 12px 36px;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  .cta-or {
-    margin-bottom: 12px;
-  }
-
-  .cta-contact {
-    gap: 10px;
+    padding: 14px 40px;
+    font-size: 15px;
+    margin-bottom: 28px;
   }
 
   .cta-contact {
