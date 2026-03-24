@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   /* Settled positions — vertical cascade */
-  var imgW = 52;
-  var imgH_landscape = 30;
-  var imgH_portrait = 36;
-  var overlapAmount = 14;
+  var imgW = 54;
+  var imgH_landscape = 34;
+  var imgH_portrait = 40;
+  var overlapAmount = 13;
   var leftOffset = 8;
   var rightOffset = 40;
 
