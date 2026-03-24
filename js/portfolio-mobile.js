@@ -25,15 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   /* Settled positions — vertical cascade */
-  var imgW = 55;
-  var imgH_landscape = 34;
-  var imgH_portrait = 40;
+  var imgW = 52;
+  var imgH_landscape = 30;
+  var imgH_portrait = 36;
   var overlapAmount = 14;
   var leftOffset = 8;
-  var rightOffset = 37;
+  var rightOffset = 40;
 
   var settledStates = [];
-  var currentTop = 30;
+  var currentTop = 42;
 
   projects.forEach(function (proj, i) {
     var isPortrait = proj.orientation === "portrait";
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  settleTL.to(heading, { top: "4vh", fontSize: "36px", zIndex: 30, duration: 1, ease: "power2.inOut" });
+  settleTL.to(heading, { top: "10vh", fontSize: "36px", zIndex: 30, duration: 1, ease: "power2.inOut" });
 
   items.forEach(function (item, i) {
     var s = settledStates[i];
