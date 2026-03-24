@@ -226,6 +226,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeaveBack: function () {
       isSettled = false;
+      page.style.touchAction = "";
+      document.body.style.overflow = "";
       document.documentElement.classList.remove("portfolio-active");
       header.style.pointerEvents = "none";
       gsap.set(header, { opacity: 0 });
@@ -239,6 +241,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeave: function () {
       isSettled = true;
+      page.style.touchAction = "none";
+      document.body.style.overflow = "hidden";
       document.documentElement.classList.add("portfolio-active");
 
       /* Snap to exact arc positions */
