@@ -3,8 +3,6 @@
    ══════════════════════════════════════════════ */
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.innerWidth <= 1024) return;
-
   var aboutSection = document.querySelector(".about-reveal-section");
   if (!aboutSection) return;
 
@@ -38,10 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var col = index % cols;
     cellMap.push({ el: cell, row: row, col: col });
   });
-
-  var lastHeroSlides = document.querySelectorAll(".hero-slide-desktop");
-  var lastSlide = lastHeroSlides.length > 0 ? lastHeroSlides[lastHeroSlides.length - 1] : null;
-  if (!lastSlide) return;
 
   /* ══════════════════════════════════════════════
      PHASE 1: WIPE
