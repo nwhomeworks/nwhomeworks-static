@@ -1307,7 +1307,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
   position: relative;
   z-index: 9990;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   background: #1A1A1A;
   display: flex;
   align-items: center;
@@ -1409,7 +1409,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
 @media (max-width: 1024px) {
   .testimonial-cta-section {
     padding: 48px 24px 32px;
-    min-height: 100vh;
+    min-height: calc(100vh - 130px);
   }
 
   .testimonial-quote {
