@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var rightOffset = 40;
 
   var settledStates = [];
-  var currentTop = 42;
+  var currentTop = 36;
 
   projects.forEach(function (proj, i) {
     var isPortrait = proj.orientation === "portrait";

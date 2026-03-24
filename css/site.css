@@ -1408,7 +1408,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
 
 @media (max-width: 1024px) {
   .testimonial-cta-section {
-    padding: 40px 24px 24px;
+    padding: 48px 24px 32px;
     min-height: auto;
   }
 
