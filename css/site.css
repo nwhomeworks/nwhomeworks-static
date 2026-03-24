@@ -1494,23 +1494,23 @@ body.light-page .site-header.scrolled .menu-toggle span {
 
   .heading-a-line1 {
     position: absolute;
-    top: 3vh;
+    top: 8vh;
     left: 5%;
     right: auto;
-    font-size: 24px;
+    font-size: 26px;
     white-space: normal;
-    max-width: 60%;
+    max-width: 55%;
     text-align: left;
     line-height: 1.2;
   }
 
   .about-headshot {
     position: absolute;
-    top: 16vh;
+    top: 20vh;
     right: 0;
     left: auto;
     width: 55%;
-    height: 32vh;
+    height: 28vh;
     overflow: hidden;
     border-radius: 0;
     flex-shrink: unset;
@@ -1526,7 +1526,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
 
   .about-text-a {
     position: absolute;
-    bottom: 3vh;
+    bottom: 8vh;
     left: 0;
     width: 65%;
     padding: 0 5%;
@@ -1535,14 +1535,14 @@ body.light-page .site-header.scrolled .menu-toggle span {
   }
 
   .heading-a-line2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 6px;
     clip-path: none;
   }
 
   .about-bio {
-    font-size: 11px;
-    line-height: 1.4;
+    font-size: 13px;
+    line-height: 1.5;
     margin-top: 8px;
     max-width: none;
   }
@@ -1568,23 +1568,23 @@ body.light-page .site-header.scrolled .menu-toggle span {
 
   .heading-b-line1 {
     position: absolute;
-    top: 3vh;
+    top: 8vh;
     right: 5%;
     left: auto;
-    font-size: 24px;
+    font-size: 26px;
     white-space: normal;
-    max-width: 60%;
+    max-width: 55%;
     text-align: right;
     line-height: 1.2;
   }
 
   .about-action-photo {
     position: absolute;
-    top: 16vh;
+    top: 20vh;
     left: 0;
     right: auto;
     width: 55%;
-    height: 32vh;
+    height: 28vh;
     overflow: hidden;
     border-radius: 0;
     flex-shrink: unset;
@@ -1600,7 +1600,7 @@ body.light-page .site-header.scrolled .menu-toggle span {
 
   .about-text-b {
     position: absolute;
-    bottom: 3vh;
+    bottom: 8vh;
     right: 0;
     left: auto;
     width: 65%;
@@ -1612,20 +1612,20 @@ body.light-page .site-header.scrolled .menu-toggle span {
   }
 
   .heading-b-line2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 6px;
     clip-path: none;
   }
 
   .about-body-b {
-    font-size: 11px;
-    line-height: 1.4;
+    font-size: 13px;
+    line-height: 1.5;
     margin-top: 8px;
     max-width: none;
   }
 
   .content-b-cta {
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 12px;
   }
 
