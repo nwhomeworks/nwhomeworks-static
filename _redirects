@@ -24,6 +24,16 @@
 /2015/03/19/master-bath-remodel-give-me-space/feed/ /blog/master-bath-remodel-give-me-space/ 301
 /2013/12/01/ikea-hacks-and-other-fun-stuff/pop-up-electrical-outlet-2/ /blog/ikea-hacks-and-other-fun-stuff/ 301
 
+# Broken backlink fixes - old WordPress content with external links pointing to them
+/2012/10/01/contemporary-ikea-kitchen/ /blog/ 301
+/wp-content/uploads/2015/01/Toekick.Drawer.IKEA_.Hack_.jpg /blog/ikea-hacks/ 301
+/wp-content/uploads/2014/07/IKEA.PAX_.Wardrobe.4.jpg /blog/working-with-ikeas-pax-wardrobe-units/ 301
+/wp-content/uploads/2016/07/IKEA.PAX_.Wardrobe.jpg /blog/working-with-ikeas-pax-wardrobe-units/ 301
+/wp-content/uploads/2015/02/Custom_Doors_For_IKEA_Cabinets.pdf /blog/custom-doors-ikea-cabinets/ 301
+
+# Catch-all for any other old WordPress media URLs
+/wp-content/uploads/* /blog/ 301
+
 # Old WordPress structural redirects
 /works/ /portfolio/ 301
 /author/* /blog/ 301
