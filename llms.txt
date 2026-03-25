@@ -1,0 +1,25 @@
+# NW Homeworks
+
+> NW Homeworks is a full-service home remodeling company based in Tacoma, Washington, serving the greater Puget Sound area since 2011. We specialize in kitchen remodeling, bathroom renovation, and IKEA cabinet installation.
+
+## Services
+
+- [Kitchen Remodeling](https://www.nwhomeworks.com/services/kitchens/): Open concept layouts, custom tile, countertops, plumbing, electrical, and flooring.
+- [Bathroom Remodeling](https://www.nwhomeworks.com/services/bathrooms/): Custom tile work, heated floors, frameless glass, and luxury fixtures.
+- [IKEA Kitchen Installation](https://www.nwhomeworks.com/services/ikea/): Expert IKEA cabinet assembly, custom doors, IKEA hacks, and design services.
+- [Custom Home Projects](https://www.nwhomeworks.com/services/beyond/): Fireplace surrounds, built-ins, media walls, closet systems, laundry rooms, and mudrooms.
+- [Our Process](https://www.nwhomeworks.com/services/our-process/): From first call to final walkthrough.
+
+## Portfolio
+
+- [Portfolio](https://www.nwhomeworks.com/portfolio/): View our completed kitchen, bathroom, and custom remodeling projects.
+
+## Blog
+
+- [Blog](https://www.nwhomeworks.com/blog/): Remodeling tips, project showcases, and IKEA kitchen installation guides.
+
+## Contact
+
+- Phone: (253) 448-9462
+- Website: https://www.nwhomeworks.com/contact/
+- Service Area: Seattle, Tacoma, Bellevue, and the greater Puget Sound region
