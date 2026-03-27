@@ -1,0 +1,122 @@
+name: Update Sitemap
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.github/**'
+      - '.claude/**'
+      - 'sitemap.xml'
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate sitemap
+        run: |
+          DOMAIN="https://www.nwhomeworks.com"
+
+          # Start XML
+          cat > sitemap.xml << 'XMLHEADER'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          XMLHEADER
+
+          # Find all index.html files, exclude hidden dirs
+          find . -name "index.html" \
+            -not -path "./.claude/*" \
+            -not -path "./.github/*" \
+            -not -path "./node_modules/*" \
+            | sort \
+            | while read -r file; do
+
+            # Convert file path to URL path
+            url_path=$(echo "$file" | sed 's|^\./||' | sed 's|index\.html$||')
+
+            # Root path
+            if [ "$url_path" = "" ]; then
+              url_path=""
+            fi
+
+            full_url="${DOMAIN}/${url_path}"
+
+            # Assign priority and changefreq based on section
+            case "$url_path" in
+              "")
+                priority="1.0"
+                changefreq="weekly"
+                ;;
+              services/)
+                priority="0.9"
+                changefreq="monthly"
+                ;;
+              services/our-process/)
+                priority="0.7"
+                changefreq="monthly"
+                ;;
+              services/*/)
+                priority="0.8"
+                changefreq="monthly"
+                ;;
+              portfolio/)
+                priority="0.9"
+                changefreq="monthly"
+                ;;
+              portfolio/*/)
+                priority="0.7"
+                changefreq="yearly"
+                ;;
+              contact/)
+                priority="0.8"
+                changefreq="monthly"
+                ;;
+              blog/)
+                priority="0.8"
+                changefreq="weekly"
+                ;;
+              blog/*/)
+                priority="0.6"
+                changefreq="yearly"
+                ;;
+              tools/*/)
+                priority="0.8"
+                changefreq="monthly"
+                ;;
+              privacy-policy/)
+                priority="0.3"
+                changefreq="yearly"
+                ;;
+              *)
+                priority="0.5"
+                changefreq="monthly"
+                ;;
+            esac
+
+            echo "  <url><loc>${full_url}</loc><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>" >> sitemap.xml
+          done
+
+          # Close XML
+          echo "</urlset>" >> sitemap.xml
+
+          # Clean up leading whitespace from heredoc
+          sed -i 's/^          //' sitemap.xml
+
+      - name: Check for changes
+        id: check
+        run: |
+          if git diff --quiet sitemap.xml; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push updated sitemap
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Auto-update sitemap.xml"
+          git push
