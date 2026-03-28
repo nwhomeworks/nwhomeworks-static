@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.nwhomeworks.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.nwhomeworks.com/services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.nwhomeworks.com/services/kitchens/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nwhomeworks.com/services/bathrooms/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nwhomeworks.com/services/ikea/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nwhomeworks.com/services/beyond/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nwhomeworks.com/services/our-process/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/ravenna-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/bainbridge-island-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/maple-leaf-master-bath/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/queen-anne-fireplace/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/gig-harbor-master-bath/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/normandy-park-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/sammamish-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/vashon-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/redmond-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nwhomeworks.com/portfolio/view-ridge-kids-bath/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.nwhomeworks.com/areas/normandy-park/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nwhomeworks.com/contact/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/a-beautiful-tile-mural/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/an-ikea-kitchen-in-capitol-hill-seattle/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/an-ikea-kitchen-that-doesnt-look-like-ikea/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/an-ikea-kitchen-that-pops/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/apartment-kitchen-makeover/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.nwhomeworks.com/blog/bedroom-addition-bothell/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/craftsman-style-kitchen/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/custom-built-ins-media-center-using-ikea-cabinets/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/custom-doors-ikea-cabinets/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/custom-ikea-kitchen-bainbridge-island/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.nwhomeworks.com/blog/does-ikea-do-kitchen-installation/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/i-cant-believe-its-ikea/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/ikea-hacks-and-other-fun-stuff/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/ikea-hacks/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/ikea-in-the-laundry-room/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/kids-bathroom-makeover/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/master-bath-remodel-give-me-space/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/mid-century-modern-ikea-kitchen/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/more-ikea-built-ins-and-a-tile-fireplace-surround/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/small-bathroom-with-big-style/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/small-kitchen-with-big-style/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/vashon-island-kitchen-part-1-vaulted-ceiling/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nwhomeworks.com/blog/vashon-island-kitchen-part-2/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.nwhomeworks.com/blog/view-ridge-remodel-part-one-fireplace-feature-wall/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.nwhomeworks.com/blog/were-back-nw-homeworks-blog-returns-in-2026/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/an-ikea-kitchen-in-capitol-hill-seattle/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/kids-bathroom-makeover/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/more-ikea-built-ins-and-a-tile-fireplace-surround/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/an-ikea-kitchen-that-doesnt-look-like-ikea/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/master-bath-remodel-give-me-space/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/custom-built-ins-media-center-using-ikea-cabinets/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/ikea-hacks/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/custom-ikea-kitchen-bainbridge-island/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/custom-doors-ikea-cabinets/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/i-cant-believe-its-ikea/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/ikea-in-the-laundry-room/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/mid-century-modern-ikea-kitchen/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.nwhomeworks.com/blog/working-with-ikeas-pax-wardrobe-units/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/craftsman-style-kitchen/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/ikea-hacks-and-other-fun-stuff/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/vashon-island-kitchen-part-2/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/apartment-kitchen-makeover/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/an-ikea-kitchen-that-pops/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/vashon-island-kitchen-part-1-vaulted-ceiling/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/small-bathroom-with-big-style/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/a-beautiful-tile-mural/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/blog/small-kitchen-with-big-style/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/contact/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/bainbridge-island-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/gig-harbor-master-bath/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/maple-leaf-master-bath/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/normandy-park-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/queen-anne-fireplace/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/ravenna-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/redmond-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/sammamish-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/vashon-kitchen/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/portfolio/view-ridge-kids-bath/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.nwhomeworks.com/privacy-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/bathrooms/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/beyond/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/ikea/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/kitchens/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/our-process/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
