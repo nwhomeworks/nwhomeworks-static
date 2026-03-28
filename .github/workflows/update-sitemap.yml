@@ -11,6 +11,8 @@ on:
 jobs:
   update-sitemap:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -57,6 +59,10 @@ jobs:
                 changefreq="monthly"
                 ;;
               services/*/)
+                priority="0.8"
+                changefreq="monthly"
+                ;;
+              areas/*/)
                 priority="0.8"
                 changefreq="monthly"
                 ;;
