@@ -1,203 +1,162 @@
 /**
- * NW Homeworks — Remodel Budget Estimator
- * Cost Data Model, Regional Multipliers, and Zip-to-Metro Mapping
+ * NW Homeworks — Kitchen Remodel Cost Estimator V2
+ * Cost Data Model, Layout Conversions, Regional Multipliers
  */
 
-// ─── Cost Matrix ────────────────────────────────────────────────
-// Structure: COST_DATA[roomType][category][finishLevel] → { low, high } per sq ft
-// For fixed-cost trades (plumbing, electrical, demo, drywall), values include
-// a base component so small rooms don't get unrealistically low estimates.
-// The calculate() function in estimator.js applies: base + (perSqft × sqft)
+// ─── Kitchen Layout Conversion Table ────────────────────────────────
+// At 120 SF reference kitchen. All values scale proportionally with kitchen SF.
+// cabinetFaceSF = total face area of base + upper cabinets
+// counterSF = counter surface area (counterLF × 2ft depth)
+// backsplashSF = wall counter LF × 1.5ft height (island excluded)
 
-const COST_DATA = {
-  kitchen: {
-    cabinets: {
-      label: 'Cabinets',
-      icon: 'cabinets',
-      budget:   { base: 800,  perSqft: 45,  low: 0.75, high: 1.3 },
-      midRange: { base: 1500, perSqft: 90,  low: 0.8,  high: 1.25 },
-      highEnd:  { base: 3000, perSqft: 180, low: 0.8,  high: 1.3 },
-      ikea:     { base: 1000, perSqft: 35,  low: 0.8,  high: 1.3 }
-    },
-    countertops: {
-      label: 'Countertops',
-      icon: 'countertops',
-      budget:   { base: 400,  perSqft: 18, low: 0.8, high: 1.3 },
-      midRange: { base: 800,  perSqft: 35, low: 0.8, high: 1.3 },
-      highEnd:  { base: 1500, perSqft: 70, low: 0.75, high: 1.35 },
-      ikea:     { base: 600,  perSqft: 22, low: 0.8, high: 1.3 }
-    },
-    flooring: {
-      label: 'Flooring',
-      icon: 'flooring',
-      budget:   { base: 300,  perSqft: 8,  low: 0.8, high: 1.25 },
-      midRange: { base: 500,  perSqft: 15, low: 0.8, high: 1.25 },
-      highEnd:  { base: 800,  perSqft: 30, low: 0.8, high: 1.3 },
-      ikea:     { base: 300,  perSqft: 10, low: 0.8, high: 1.25 }
-    },
-    plumbing: {
-      label: 'Plumbing',
-      icon: 'plumbing',
-      budget:   { base: 600,  perSqft: 3,  low: 0.8, high: 1.2 },
-      midRange: { base: 1000, perSqft: 5,  low: 0.8, high: 1.25 },
-      highEnd:  { base: 1800, perSqft: 10, low: 0.75, high: 1.3 },
-      ikea:     { base: 800,  perSqft: 3,  low: 0.8, high: 1.2 }
-    },
-    electrical: {
-      label: 'Electrical',
-      icon: 'electrical',
-      budget:   { base: 500,  perSqft: 5,  low: 0.8, high: 1.25 },
-      midRange: { base: 1200, perSqft: 8,  low: 0.8, high: 1.3 },
-      highEnd:  { base: 2000, perSqft: 15, low: 0.75, high: 1.35 },
-      ikea:     { base: 800,  perSqft: 6,  low: 0.8, high: 1.25 }
-    },
-    backsplash: {
-      label: 'Backsplash',
-      icon: 'backsplash',
-      budget:   { base: 300,  perSqft: 5,  low: 0.8, high: 1.2 },
-      midRange: { base: 600,  perSqft: 10, low: 0.8, high: 1.3 },
-      highEnd:  { base: 1200, perSqft: 20, low: 0.75, high: 1.35 },
-      ikea:     { base: 400,  perSqft: 6,  low: 0.8, high: 1.25 }
-    },
-    demolition: {
-      label: 'Demolition',
-      icon: 'demolition',
-      budget:   { base: 500,  perSqft: 2, low: 0.85, high: 1.2 },
-      midRange: { base: 800,  perSqft: 3, low: 0.85, high: 1.2 },
-      highEnd:  { base: 1200, perSqft: 5, low: 0.8,  high: 1.25 },
-      ikea:     { base: 500,  perSqft: 2, low: 0.85, high: 1.2 }
-    },
-    drywall: {
-      label: 'Drywall & Framing',
-      icon: 'drywall',
-      budget:   { base: 300,  perSqft: 3,  low: 0.8, high: 1.2 },
-      midRange: { base: 600,  perSqft: 5,  low: 0.8, high: 1.25 },
-      highEnd:  { base: 1000, perSqft: 10, low: 0.8, high: 1.3 },
-      ikea:     { base: 400,  perSqft: 3,  low: 0.8, high: 1.2 }
-    }
-  },
+const LAYOUT_REFERENCE_SF = 120;
 
-  bathroom: {
-    vanity: {
-      label: 'Vanity & Cabinets',
-      icon: 'cabinets',
-      budget:   { base: 400,  perSqft: 15, low: 0.75, high: 1.3 },
-      midRange: { base: 1000, perSqft: 30, low: 0.8,  high: 1.25 },
-      highEnd:  { base: 2500, perSqft: 60, low: 0.8,  high: 1.3 },
-      ikea:     { base: 500,  perSqft: 18, low: 0.8,  high: 1.3 }
-    },
-    countertops: {
-      label: 'Countertops',
-      icon: 'countertops',
-      budget:   { base: 200,  perSqft: 8,  low: 0.8, high: 1.3 },
-      midRange: { base: 500,  perSqft: 18, low: 0.8, high: 1.3 },
-      highEnd:  { base: 1000, perSqft: 40, low: 0.75, high: 1.35 },
-      ikea:     { base: 300,  perSqft: 10, low: 0.8, high: 1.3 }
-    },
-    flooring: {
-      label: 'Flooring',
-      icon: 'flooring',
-      budget:   { base: 200,  perSqft: 8,  low: 0.8, high: 1.25 },
-      midRange: { base: 400,  perSqft: 15, low: 0.8, high: 1.25 },
-      highEnd:  { base: 700,  perSqft: 30, low: 0.8, high: 1.3 },
-      ikea:     { base: 250,  perSqft: 10, low: 0.8, high: 1.25 }
-    },
-    plumbing: {
-      label: 'Plumbing',
-      icon: 'plumbing',
-      budget:   { base: 800,  perSqft: 5,  low: 0.8, high: 1.2 },
-      midRange: { base: 1500, perSqft: 10, low: 0.8, high: 1.25 },
-      highEnd:  { base: 3000, perSqft: 20, low: 0.75, high: 1.3 },
-      ikea:     { base: 800,  perSqft: 5,  low: 0.8, high: 1.2 }
-    },
-    electrical: {
-      label: 'Electrical',
-      icon: 'electrical',
-      budget:   { base: 400,  perSqft: 4, low: 0.8, high: 1.25 },
-      midRange: { base: 800,  perSqft: 8, low: 0.8, high: 1.3 },
-      highEnd:  { base: 1500, perSqft: 15, low: 0.75, high: 1.35 },
-      ikea:     { base: 500,  perSqft: 5,  low: 0.8, high: 1.25 }
-    },
-    tilework: {
-      label: 'Tile & Surround',
-      icon: 'backsplash',
-      budget:   { base: 400,  perSqft: 10, low: 0.8, high: 1.25 },
-      midRange: { base: 800,  perSqft: 20, low: 0.8, high: 1.3 },
-      highEnd:  { base: 1500, perSqft: 40, low: 0.75, high: 1.35 },
-      ikea:     { base: 500,  perSqft: 12, low: 0.8, high: 1.25 }
-    },
-    shower_tub: {
-      label: 'Shower / Tub',
-      icon: 'shower',
-      budget:   { base: 800,  perSqft: 8,  low: 0.8, high: 1.25 },
-      midRange: { base: 2000, perSqft: 15, low: 0.8, high: 1.3 },
-      highEnd:  { base: 4000, perSqft: 35, low: 0.75, high: 1.35 },
-      ikea:     { base: 1000, perSqft: 10, low: 0.8, high: 1.25 }
-    },
-    demolition: {
-      label: 'Demolition',
-      icon: 'demolition',
-      budget:   { base: 400,  perSqft: 3, low: 0.85, high: 1.2 },
-      midRange: { base: 600,  perSqft: 5, low: 0.85, high: 1.2 },
-      highEnd:  { base: 1000, perSqft: 8, low: 0.8,  high: 1.25 },
-      ikea:     { base: 400,  perSqft: 3, low: 0.85, high: 1.2 }
-    },
-    drywall: {
-      label: 'Drywall & Framing',
-      icon: 'drywall',
-      budget:   { base: 250,  perSqft: 3,  low: 0.8, high: 1.2 },
-      midRange: { base: 500,  perSqft: 5,  low: 0.8, high: 1.25 },
-      highEnd:  { base: 800,  perSqft: 10, low: 0.8, high: 1.3 },
-      ikea:     { base: 300,  perSqft: 3,  low: 0.8, high: 1.2 }
-    }
-  }
+const KITCHEN_LAYOUTS = {
+  galley:  { label: 'Galley',      counterLF: 16, counterSF: 32, backsplashSF: 24, cabinetFaceSF: 80 },
+  lshape:  { label: 'L-Shape',     counterLF: 20, counterSF: 40, backsplashSF: 30, cabinetFaceSF: 100 },
+  ushape:  { label: 'U-Shape',     counterLF: 24, counterSF: 48, backsplashSF: 36, cabinetFaceSF: 120 },
+  lisland: { label: 'L + Island',  counterLF: 26, counterSF: 52, backsplashSF: 30, cabinetFaceSF: 115 },
+  uisland: { label: 'U + Island',  counterLF: 30, counterSF: 60, backsplashSF: 36, cabinetFaceSF: 135 }
 };
 
-// ─── Room Size Presets ──────────────────────────────────────────
+function getDerivedAreas(kitchenSF, layout) {
+  const ref = KITCHEN_LAYOUTS[layout];
+  if (!ref) return { counterSF: 0, backsplashSF: 0, cabinetFaceSF: 0, kitchenSF: kitchenSF };
+  const scale = kitchenSF / LAYOUT_REFERENCE_SF;
+  return {
+    counterSF:     Math.round(ref.counterSF * scale),
+    backsplashSF:  Math.round(ref.backsplashSF * scale),
+    cabinetFaceSF: Math.round(ref.cabinetFaceSF * scale),
+    kitchenSF:     kitchenSF
+  };
+}
 
-const ROOM_PRESETS = {
-  kitchen: [
-    { label: "Small Galley (6' × 10')",   sqft: 60,  id: 'k-sm-galley' },
-    { label: "Small (8' × 10')",           sqft: 80,  id: 'k-sm' },
-    { label: "Medium (10' × 12')",         sqft: 120, id: 'k-md' },
-    { label: "Large (12' × 16')",          sqft: 192, id: 'k-lg' },
-    { label: "Extra Large (14' × 20')",    sqft: 280, id: 'k-xl' }
-  ],
-  bathroom: [
-    { label: "Half Bath (3' × 6')",        sqft: 18,  id: 'b-half' },
-    { label: "Small (5' × 8')",            sqft: 40,  id: 'b-sm' },
-    { label: "Medium (8' × 10')",          sqft: 80,  id: 'b-md' },
-    { label: "Large Primary (10' × 14')",  sqft: 140, id: 'b-lg' },
-    { label: "Luxury Primary (12' × 16')", sqft: 192, id: 'b-xl' }
-  ]
+// ─── Kitchen Size Presets ───────────────────────────────────────────
+
+const KITCHEN_PRESETS = [
+  { label: "Small Galley (6' \u00d7 10')",  sqft: 60,  id: 'k-sm-galley' },
+  { label: "Small (8' \u00d7 10')",          sqft: 80,  id: 'k-sm' },
+  { label: "Medium (10' \u00d7 12')",        sqft: 120, id: 'k-md' },
+  { label: "Large (12' \u00d7 16')",         sqft: 192, id: 'k-lg' },
+  { label: "Extra Large (14' \u00d7 20')",   sqft: 280, id: 'k-xl' }
+];
+
+// ─── Cabinet Tiers ──────────────────────────────────────────────────
+// Rate = total installed $/SF of cabinet face area (material + install)
+// low/high = range multiplier for estimate spread
+
+const CABINET_TIERS = {
+  budget:   { label: 'Budget / Stock',          rate: 82,  low: 0.85, high: 1.15, desc: 'Stock cabinets, basic styles',          brands: 'IKEA, Hampton Bay' },
+  midRange: { label: 'Mid-Range',               rate: 103, low: 0.85, high: 1.15, desc: 'Semi-custom, quality hardware',         brands: 'KraftMaid, Thomasville' },
+  upperMid: { label: 'Upper-Mid / Semi-Custom', rate: 160, low: 0.85, high: 1.15, desc: 'Semi-custom with premium options',      brands: 'Canyon Creek, Dura Supreme' },
+  highEnd:  { label: 'High-End / Custom',       rate: 271, low: 0.85, high: 1.15, desc: 'Fully custom, premium materials',       brands: 'Wood-Mode, Brookhaven' },
+  luxury:   { label: 'Luxury',                  rate: 388, low: 0.85, high: 1.15, desc: 'European luxury, exotic materials',     brands: 'Poggenpohl, Bulthaup' }
 };
 
-// ─── Finish Level Metadata ──────────────────────────────────────
+// ─── Countertop Materials ───────────────────────────────────────────
+// Rate = total installed $/SF of counter surface area
 
-const FINISH_LEVELS = {
-  budget: {
-    label: 'Budget',
-    icon: '$',
-    description: 'Stock materials, basic fixtures, cosmetic updates'
-  },
-  midRange: {
-    label: 'Mid-Range',
-    icon: '$$',
-    description: 'Semi-custom cabinets, quartz counters, quality fixtures'
-  },
-  highEnd: {
-    label: 'High-End',
-    icon: '$$$',
-    description: 'Custom cabinets, natural stone, premium appliances'
-  },
-  ikea: {
-    label: 'IKEA Kitchen',
-    icon: 'IKEA',
-    description: 'SEKTION cabinets with professional full-service installation'
-  }
+const COUNTERTOP_MATERIALS = {
+  laminate:      { label: 'Laminate',           rate: 42,  low: 0.85, high: 1.15, desc: 'Affordable, wide variety of looks' },
+  butcherBlock:  { label: 'Butcher Block',      rate: 48,  low: 0.85, high: 1.15, desc: 'Warm natural wood, maple to walnut' },
+  quartz:        { label: 'Engineered Quartz',  rate: 113, low: 0.85, high: 1.15, desc: 'Durable, low-maintenance, popular choice' },
+  naturalStone:  { label: 'Natural Stone',      rate: 118, low: 0.85, high: 1.15, desc: 'Granite or marble, unique patterns' }
 };
 
-// ─── Regional Cost Multipliers ──────────────────────────────────
+// ─── Backsplash Options ─────────────────────────────────────────────
+// Rate = total installed $/SF of backsplash area
+// slab: uses countertop material rate (disabled if countertops = keeping)
+
+const BACKSPLASH_OPTIONS = {
+  budgetTile: { label: 'Budget Tile',        rate: 31,   low: 0.85, high: 1.15, desc: 'Basic subway tile' },
+  midTile:    { label: 'Mid-Range Tile',     rate: 34,   low: 0.85, high: 1.15, desc: 'Glass, patterned ceramic, standard mosaic' },
+  upperTile:  { label: 'Upper-Mid Tile',     rate: 46,   low: 0.85, high: 1.15, desc: 'Natural stone, premium mosaic, large format' },
+  highTile:   { label: 'High-End Tile',      rate: 73,   low: 0.85, high: 1.15, desc: 'Handmade/artisan tile, designer patterns' },
+  slab:       { label: 'Slab',              rate: null,  low: 0.85, high: 1.15, desc: 'Matches countertop material' }
+};
+
+const BACKSPLASH_MIN_CHARGE = 750; // Minimum for jobs under ~25sf
+
+// ─── Flooring Materials ─────────────────────────────────────────────
+// Uses explicit low/high rates per SF of kitchen floor area
+
+const FLOORING_MATERIALS = {
+  lvp:         { label: 'LVP / Composite',                    rateLow: 6,     rateHigh: 8,     desc: 'Waterproof rigid core, kitchen-grade' },
+  prefinished: { label: 'Prefinished / Engineered Hardwood',  rateLow: 10.29, rateHigh: 16.29, desc: 'Factory-finished, domestic species' },
+  unfinished:  { label: 'Unfinished Hardwood (Site-Finished)',rateLow: 15,    rateHigh: 17,    desc: 'Sanded, stained & finished in place' },
+  tile:        { label: 'Tile (Ceramic / Porcelain)',         rateLow: 24,    rateHigh: 29,    desc: 'Includes thinset, grout & sealer' }
+};
+
+// ─── Appliance Tiers ────────────────────────────────────────────────
+// Purchase prices — NOT adjusted by regional multiplier
+
+const APPLIANCE_TIERS = {
+  budget: { label: 'Budget',    rangeLow: 2000,  rangeHigh: 4000,  brands: 'Frigidaire, GE, Whirlpool' },
+  mid:    { label: 'Mid-Range', rangeLow: 5000,  rangeHigh: 10000, brands: 'KitchenAid, Bosch, Samsung, LG' },
+  high:   { label: 'High-End',  rangeLow: 15000, rangeHigh: 45000, brands: 'Sub-Zero, Wolf, Thermador, Viking, Miele' }
+};
+
+// ─── Appliance Install Fees ─────────────────────────────────────────
+// Per-item flat rates — adjusted by regional multiplier
+
+const APPLIANCE_INSTALLS = {
+  fridge:     { label: 'Refrigerator',                              fee: 225 },
+  range:      { label: 'Range',                                     fee: 225 },
+  cooktop:    { label: 'Cooktop',                                   fee: 225 },
+  wallOven:   { label: 'Built-in Wall Oven',                        fee: 225 },
+  dishwasher: { label: 'Dishwasher',                                fee: 225 },
+  microhood:  { label: 'Micro-hood / Under Cabinet Hood',           fee: 200 },
+  wallHood:   { label: 'Wall Mount Hood',                           fee: 200 },
+  canopyHood: { label: 'Canopy Hood (Island)',                      fee: 240 }
+};
+
+// ─── Plumbing Package Tiers ─────────────────────────────────────────
+// Sink + faucet + disposal — material + labor, adjusted by regional multiplier
+
+const PLUMBING_TIERS = {
+  budget: { label: 'Budget',    cost: 835,  desc: 'Drop-in sink, basic faucet & disposal' },
+  mid:    { label: 'Mid-Range', cost: 1325, desc: 'Undermount stainless/composite, quality faucet' },
+  high:   { label: 'High-End',  cost: 2500, desc: 'Farmhouse/fireclay sink, premium faucet' }
+};
+
+// ─── Electrical & Lighting ──────────────────────────────────────────
+// Per SF of kitchen floor area, adjusted by regional multiplier
+
+const LIGHTING_OPTIONS = {
+  recessed: { label: 'Recessed Can Lights',    rate: 12,   desc: 'LED cans with dimmer, includes wiring & permit' },
+  underCab: { label: 'Under Cabinet Lights',   rate: 6,    desc: 'Hardwired LED, materials & permit included' },
+  pendants: { label: 'Pendant / Island Lights', rate: 7.50, desc: '3 pendants typical, fixtures & install included' }
+};
+
+const LAYOUT_CHANGE_ELECTRICAL = {
+  base: 1260,
+  perSF: 2,
+  label: 'Layout Change Electrical',
+  desc: 'Outlet relocation, appliance circuits & permit'
+};
+
+// ─── Drywall Repair Tiers ───────────────────────────────────────────
+// Tiered by highest electrical scope. Base + perSF × kitchenSF.
+// Priority: layoutChange > recessed > pendants > demoOnly
+
+const DRYWALL_TIERS = {
+  demoOnly:     { base: 360,  perSF: 2, label: 'Drywall Repair (demo)' },
+  pendants:     { base: 760,  perSF: 2, label: 'Drywall Repair (lighting)' },
+  recessed:     { base: 1360, perSF: 2, label: 'Drywall Repair (recessed cans)' },
+  layoutChange: { base: 2160, perSF: 2, label: 'Drywall Repair (layout change)' }
+};
+
+// ─── Demo & Finishing ───────────────────────────────────────────────
+// Per SF of kitchen floor area, adjusted by regional multiplier
+
+const FINISHING_COSTS = {
+  kitchenDemo:     { rate: 14,   label: 'Kitchen Demolition' },
+  flooringRemoval: { rate: 7.50, label: 'Flooring Removal' },
+  trim:            { rate: 5,    label: 'Trim (Material & Install)' },
+  paint:           { rate: 11,   label: 'Paint (Walls, Ceiling & Trim)' }
+};
+
+// ─── Regional Cost Multipliers ──────────────────────────────────────
 // 1.0 = national average. Derived from BLS OEWS construction wage data
 // and cross-referenced with Zonda/JLC Cost vs. Value regional factors.
 
@@ -268,9 +227,7 @@ const REGIONAL_MULTIPLIERS = {
   "_default": 1.0
 };
 
-// ─── Zip Code Prefix → Metro Area Mapping ───────────────────────
-// First 3 digits of US zip code → metro name key in REGIONAL_MULTIPLIERS
-// Covers major metros representing ~75% of US population
+// ─── Zip Code Prefix \u2192 Metro Area Mapping ───────────────────────────
 
 const ZIP_PREFIX_TO_METRO = {
   // Washington State
@@ -283,19 +240,15 @@ const ZIP_PREFIX_TO_METRO = {
   "990": "Spokane-Spokane Valley, WA",
   "991": "Spokane-Spokane Valley, WA",
   "992": "Spokane-Spokane Valley, WA",
-  "982": "Seattle-Tacoma-Bellevue, WA",
   "986": "Portland-Vancouver-Hillsboro, OR-WA",
   "988": "Bellingham, WA",
-  "983": "Seattle-Tacoma-Bellevue, WA",
   "987": "Bremerton-Silverdale-Port Orchard, WA",
-
   // Oregon
   "970": "Portland-Vancouver-Hillsboro, OR-WA",
   "971": "Portland-Vancouver-Hillsboro, OR-WA",
   "972": "Portland-Vancouver-Hillsboro, OR-WA",
   "973": "Portland-Vancouver-Hillsboro, OR-WA",
   "974": "Portland-Vancouver-Hillsboro, OR-WA",
-
   // California
   "900": "Los Angeles-Long Beach-Anaheim, CA",
   "901": "Los Angeles-Long Beach-Anaheim, CA",
@@ -337,7 +290,6 @@ const ZIP_PREFIX_TO_METRO = {
   "956": "Sacramento-Roseville-Folsom, CA",
   "957": "Sacramento-Roseville-Folsom, CA",
   "958": "Sacramento-Roseville-Folsom, CA",
-
   // New York
   "100": "New York-Newark-Jersey City, NY-NJ",
   "101": "New York-Newark-Jersey City, NY-NJ",
@@ -356,7 +308,6 @@ const ZIP_PREFIX_TO_METRO = {
   "114": "New York-Newark-Jersey City, NY-NJ",
   "115": "New York-Newark-Jersey City, NY-NJ",
   "116": "New York-Newark-Jersey City, NY-NJ",
-
   // New Jersey
   "070": "New York-Newark-Jersey City, NY-NJ",
   "071": "New York-Newark-Jersey City, NY-NJ",
@@ -368,7 +319,6 @@ const ZIP_PREFIX_TO_METRO = {
   "077": "New York-Newark-Jersey City, NY-NJ",
   "078": "New York-Newark-Jersey City, NY-NJ",
   "079": "New York-Newark-Jersey City, NY-NJ",
-
   // Massachusetts / New England
   "021": "Boston-Cambridge-Newton, MA-NH",
   "022": "Boston-Cambridge-Newton, MA-NH",
@@ -380,7 +330,6 @@ const ZIP_PREFIX_TO_METRO = {
   "029": "Providence-Warwick, RI-MA",
   "060": "Hartford-East Hartford-Middletown, CT",
   "061": "Hartford-East Hartford-Middletown, CT",
-
   // DC / Maryland / Virginia
   "200": "Washington-Arlington-Alexandria, DC-VA-MD",
   "201": "Washington-Arlington-Alexandria, DC-VA-MD",
@@ -404,7 +353,6 @@ const ZIP_PREFIX_TO_METRO = {
   "232": "Virginia Beach-Norfolk-Newport News, VA-NC",
   "233": "Virginia Beach-Norfolk-Newport News, VA-NC",
   "234": "Virginia Beach-Norfolk-Newport News, VA-NC",
-
   // Pennsylvania
   "150": "Pittsburgh, PA",
   "151": "Pittsburgh, PA",
@@ -414,7 +362,6 @@ const ZIP_PREFIX_TO_METRO = {
   "192": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
   "193": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
   "194": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
-
   // Illinois
   "600": "Chicago-Naperville-Elgin, IL-IN-WI",
   "601": "Chicago-Naperville-Elgin, IL-IN-WI",
@@ -423,14 +370,12 @@ const ZIP_PREFIX_TO_METRO = {
   "604": "Chicago-Naperville-Elgin, IL-IN-WI",
   "605": "Chicago-Naperville-Elgin, IL-IN-WI",
   "606": "Chicago-Naperville-Elgin, IL-IN-WI",
-
   // Michigan
   "480": "Detroit-Warren-Dearborn, MI",
   "481": "Detroit-Warren-Dearborn, MI",
   "482": "Detroit-Warren-Dearborn, MI",
   "483": "Detroit-Warren-Dearborn, MI",
   "484": "Detroit-Warren-Dearborn, MI",
-
   // Ohio
   "441": "Cleveland-Elyria, OH",
   "440": "Cleveland-Elyria, OH",
@@ -440,19 +385,16 @@ const ZIP_PREFIX_TO_METRO = {
   "450": "Cincinnati, OH-KY-IN",
   "451": "Cincinnati, OH-KY-IN",
   "452": "Cincinnati, OH-KY-IN",
-
   // Minnesota
   "550": "Minneapolis-St. Paul-Bloomington, MN-WI",
   "551": "Minneapolis-St. Paul-Bloomington, MN-WI",
   "553": "Minneapolis-St. Paul-Bloomington, MN-WI",
   "554": "Minneapolis-St. Paul-Bloomington, MN-WI",
   "555": "Minneapolis-St. Paul-Bloomington, MN-WI",
-
   // Wisconsin
   "530": "Milwaukee-Waukesha, WI",
   "531": "Milwaukee-Waukesha, WI",
   "532": "Milwaukee-Waukesha, WI",
-
   // Missouri
   "630": "St. Louis, MO-IL",
   "631": "St. Louis, MO-IL",
@@ -461,30 +403,25 @@ const ZIP_PREFIX_TO_METRO = {
   "660": "Kansas City, MO-KS",
   "661": "Kansas City, MO-KS",
   "662": "Kansas City, MO-KS",
-
   // Indiana
   "460": "Indianapolis-Carmel-Anderson, IN",
   "461": "Indianapolis-Carmel-Anderson, IN",
   "462": "Indianapolis-Carmel-Anderson, IN",
-
   // Kentucky
   "400": "Louisville/Jefferson County, KY-IN",
   "401": "Louisville/Jefferson County, KY-IN",
   "402": "Louisville/Jefferson County, KY-IN",
-
   // Tennessee
   "370": "Nashville-Davidson-Murfreesboro, TN",
   "371": "Nashville-Davidson-Murfreesboro, TN",
   "372": "Nashville-Davidson-Murfreesboro, TN",
   "380": "Memphis, TN-MS-AR",
   "381": "Memphis, TN-MS-AR",
-
   // Georgia
   "300": "Atlanta-Sandy Springs-Alpharetta, GA",
   "301": "Atlanta-Sandy Springs-Alpharetta, GA",
   "302": "Atlanta-Sandy Springs-Alpharetta, GA",
   "303": "Atlanta-Sandy Springs-Alpharetta, GA",
-
   // North Carolina
   "270": "Raleigh-Cary, NC",
   "271": "Raleigh-Cary, NC",
@@ -493,21 +430,17 @@ const ZIP_PREFIX_TO_METRO = {
   "280": "Charlotte-Concord-Gastonia, NC-SC",
   "281": "Charlotte-Concord-Gastonia, NC-SC",
   "282": "Charlotte-Concord-Gastonia, NC-SC",
-
   // South Carolina
   "290": "Charlotte-Concord-Gastonia, NC-SC",
   "294": "Charleston-North Charleston, SC",
   "295": "Charleston-North Charleston, SC",
-
   // Alabama
   "350": "Birmingham-Hoover, AL",
   "351": "Birmingham-Hoover, AL",
   "352": "Birmingham-Hoover, AL",
-
   // Louisiana
   "700": "New Orleans-Metairie, LA",
   "701": "New Orleans-Metairie, LA",
-
   // Florida
   "330": "Miami-Fort Lauderdale-Pompano Beach, FL",
   "331": "Miami-Fort Lauderdale-Pompano Beach, FL",
@@ -522,7 +455,6 @@ const ZIP_PREFIX_TO_METRO = {
   "347": "Orlando-Kissimmee-Sanford, FL",
   "322": "Jacksonville, FL",
   "321": "Jacksonville, FL",
-
   // Texas
   "750": "Dallas-Fort Worth-Arlington, TX",
   "751": "Dallas-Fort Worth-Arlington, TX",
@@ -542,19 +474,16 @@ const ZIP_PREFIX_TO_METRO = {
   "786": "Austin-Round Rock-Georgetown, TX",
   "787": "Austin-Round Rock-Georgetown, TX",
   "788": "Austin-Round Rock-Georgetown, TX",
-
   // Arizona
   "850": "Phoenix-Mesa-Chandler, AZ",
   "851": "Phoenix-Mesa-Chandler, AZ",
   "852": "Phoenix-Mesa-Chandler, AZ",
   "853": "Phoenix-Mesa-Chandler, AZ",
   "857": "Tucson, AZ",
-
   // Nevada
   "889": "Las Vegas-Henderson-Paradise, NV",
   "890": "Las Vegas-Henderson-Paradise, NV",
   "891": "Las Vegas-Henderson-Paradise, NV",
-
   // Colorado
   "800": "Denver-Aurora-Lakewood, CO",
   "801": "Denver-Aurora-Lakewood, CO",
@@ -562,82 +491,41 @@ const ZIP_PREFIX_TO_METRO = {
   "803": "Denver-Aurora-Lakewood, CO",
   "804": "Denver-Aurora-Lakewood, CO",
   "805": "Denver-Aurora-Lakewood, CO",
-
   // Utah
   "840": "Salt Lake City, UT",
   "841": "Salt Lake City, UT",
-
   // Idaho
   "836": "Boise City, ID",
   "837": "Boise City, ID",
-
   // New Mexico
   "870": "Albuquerque, NM",
   "871": "Albuquerque, NM",
-
   // Oklahoma
   "730": "Oklahoma City, OK",
   "731": "Oklahoma City, OK",
-
   // Nebraska
   "680": "Omaha-Council Bluffs, NE-IA",
   "681": "Omaha-Council Bluffs, NE-IA",
-
   // Iowa
   "503": "Des Moines-West Des Moines, IA",
   "500": "Des Moines-West Des Moines, IA",
-
   // Arkansas
   "720": "Little Rock-North Little Rock-Conway, AR",
   "721": "Little Rock-North Little Rock-Conway, AR",
   "722": "Little Rock-North Little Rock-Conway, AR",
-
   // Hawaii
   "967": "Honolulu, HI",
   "968": "Honolulu, HI",
-
   // Alaska
   "995": "Anchorage, AK",
   "996": "Anchorage, AK"
 };
 
-// ─── Contextual Tips ────────────────────────────────────────────
-
-const TIPS = {
-  ikea: [
-    "IKEA cabinets typically save 40–60% compared to custom cabinets of similar quality.",
-    "Budget 3–5× the cost of IKEA cabinets alone for the complete kitchen project.",
-    "IKEA's SEKTION system uses the same quality European-style hinges and drawer slides found in high-end custom kitchens.",
-    "A certified IKEA kitchen installer coordinates all trades — plumbing, electrical, countertops — so you don't have to."
-  ],
-  budget: [
-    "Stock cabinets and laminate countertops offer the best value for a budget remodel.",
-    "Keeping the existing layout avoids costly plumbing and electrical relocation.",
-    "Refinishing existing cabinets instead of replacing them can save 50% or more on cabinet costs."
-  ],
-  midRange: [
-    "Semi-custom cabinets paired with quartz countertops hit the mid-range sweet spot.",
-    "Mid-range remodels offer the best return on investment for home resale — typically recouping 75–80% of costs.",
-    "Consider soft-close hinges and undermount drawer slides — they add minimal cost but significant daily comfort."
-  ],
-  highEnd: [
-    "Custom cabinets and natural stone countertops define a high-end remodel.",
-    "Expect longer lead times for custom materials — plan 3–6 months ahead for ordering.",
-    "Invest in quality appliances and fixtures — they're used daily and make the biggest impact on how the space feels."
-  ],
-  general: [
-    "Always add 10–15% contingency to your remodel budget for unexpected costs.",
-    "Getting 3+ contractor bids helps ensure fair pricing for your project.",
-    "Permits typically cost $200–$1,500 depending on scope and location."
-  ]
-};
-
-// ─── Helper Functions ───────────────────────────────────────────
+// ─── Helper Functions ───────────────────────────────────────────────
 
 function getMetroFromZip(zip) {
   if (!zip || zip.length < 3) return null;
-  const prefix = zip.substring(0, 3);
-  return ZIP_PREFIX_TO_METRO[prefix] || null;
+  return ZIP_PREFIX_TO_METRO[zip.substring(0, 3)] || null;
 }
 
 function getRegionalMultiplier(zip) {
@@ -649,7 +537,6 @@ function getRegionalMultiplier(zip) {
 function getMetroDisplayName(zip) {
   const metro = getMetroFromZip(zip);
   if (!metro) return null;
-  // Shorten for display: "Seattle-Tacoma-Bellevue, WA" → "Seattle-Tacoma area"
   const parts = metro.split(',')[0].split('-');
   if (parts.length >= 2) return parts[0] + '-' + parts[1] + ' area';
   return parts[0] + ' area';
@@ -657,8 +544,8 @@ function getMetroDisplayName(zip) {
 
 function getMultiplierDescription(multiplier) {
   const pct = Math.round((multiplier - 1) * 100);
-  if (pct > 0) return `${pct}% above national average`;
-  if (pct < 0) return `${Math.abs(pct)}% below national average`;
+  if (pct > 0) return pct + '% above national average';
+  if (pct < 0) return Math.abs(pct) + '% below national average';
   return 'at national average';
 }
 
@@ -670,15 +557,238 @@ function formatCurrency(amount) {
   }).format(amount);
 }
 
-function selectTips(finishLevel, roomType) {
+function getDrywallTier(state) {
+  if (state.layoutChange) return DRYWALL_TIERS.layoutChange;
+  if (state.lightingRecessed) return DRYWALL_TIERS.recessed;
+  if (state.lightingPendants) return DRYWALL_TIERS.pendants;
+  const hasDemoWork = state.cabinetsReplacing || state.flooringReplacing;
+  if (hasDemoWork) return DRYWALL_TIERS.demoOnly;
+  return null;
+}
+
+// ─── Quick Mode Cost Data (V1-based) ──────────────────────────────────
+// Structure: QUICK_COST_DATA[category][finishLevel] → { base, perSqft, low, high }
+// Formula: cost = (base + perSqft × sqft) × low/high × regionalMultiplier
+
+const QUICK_COST_DATA = {
+  cabinets: {
+    label: 'Cabinets',
+    budget:   { base: 800,  perSqft: 45,  low: 0.75, high: 1.3 },
+    midRange: { base: 1500, perSqft: 90,  low: 0.8,  high: 1.25 },
+    highEnd:  { base: 3000, perSqft: 180, low: 0.8,  high: 1.3 },
+    ikea:     { base: 1000, perSqft: 35,  low: 0.8,  high: 1.3 }
+  },
+  countertops: {
+    label: 'Countertops',
+    budget:   { base: 400,  perSqft: 18, low: 0.8, high: 1.3 },
+    midRange: { base: 800,  perSqft: 35, low: 0.8, high: 1.3 },
+    highEnd:  { base: 1500, perSqft: 70, low: 0.75, high: 1.35 },
+    ikea:     { base: 600,  perSqft: 22, low: 0.8, high: 1.3 }
+  },
+  backsplash: {
+    label: 'Backsplash',
+    budget:   { base: 300,  perSqft: 5,  low: 0.8, high: 1.2 },
+    midRange: { base: 600,  perSqft: 10, low: 0.8, high: 1.3 },
+    highEnd:  { base: 1200, perSqft: 20, low: 0.75, high: 1.35 },
+    ikea:     { base: 400,  perSqft: 6,  low: 0.8, high: 1.25 }
+  },
+  flooring: {
+    label: 'Flooring',
+    budget:   { base: 300,  perSqft: 8,  low: 0.8, high: 1.25 },
+    midRange: { base: 500,  perSqft: 15, low: 0.8, high: 1.25 },
+    highEnd:  { base: 800,  perSqft: 30, low: 0.8, high: 1.3 },
+    ikea:     { base: 300,  perSqft: 10, low: 0.8, high: 1.25 }
+  },
+  plumbing: {
+    label: 'Plumbing',
+    budget:   { base: 600,  perSqft: 3,  low: 0.8, high: 1.2 },
+    midRange: { base: 1000, perSqft: 5,  low: 0.8, high: 1.25 },
+    highEnd:  { base: 1800, perSqft: 10, low: 0.75, high: 1.3 },
+    ikea:     { base: 800,  perSqft: 3,  low: 0.8, high: 1.2 }
+  },
+  electrical: {
+    label: 'Electrical',
+    budget:   { base: 500,  perSqft: 5,  low: 0.8, high: 1.25 },
+    midRange: { base: 1200, perSqft: 8,  low: 0.8, high: 1.3 },
+    highEnd:  { base: 2000, perSqft: 15, low: 0.75, high: 1.35 },
+    ikea:     { base: 800,  perSqft: 6,  low: 0.8, high: 1.25 }
+  },
+  demolition: {
+    label: 'Demolition',
+    budget:   { base: 500,  perSqft: 2, low: 0.85, high: 1.2 },
+    midRange: { base: 800,  perSqft: 3, low: 0.85, high: 1.2 },
+    highEnd:  { base: 1200, perSqft: 5, low: 0.8,  high: 1.25 },
+    ikea:     { base: 500,  perSqft: 2, low: 0.85, high: 1.2 }
+  },
+  drywall: {
+    label: 'Drywall & Framing',
+    budget:   { base: 300,  perSqft: 3,  low: 0.8, high: 1.2 },
+    midRange: { base: 600,  perSqft: 5,  low: 0.8, high: 1.25 },
+    highEnd:  { base: 1000, perSqft: 10, low: 0.8, high: 1.3 },
+    ikea:     { base: 400,  perSqft: 3,  low: 0.8, high: 1.2 }
+  }
+};
+
+// Quick mode grouped toggle → underlying cost data category mapping
+const QUICK_TOGGLE_MAP = {
+  cabinets:              ['cabinets'],
+  countertopsBacksplash: ['countertops', 'backsplash'],
+  flooring:              ['flooring'],
+  plumbingElectrical:    ['plumbing', 'electrical'],
+  demoPrep:              ['demolition', 'drywall']
+};
+
+const QUICK_TOGGLE_META = {
+  cabinets:              { label: 'Cabinets',                desc: 'New cabinets, doors, hardware & installation' },
+  countertopsBacksplash: { label: 'Countertops & Backsplash', desc: 'Counter surfaces, backsplash tile & installation' },
+  flooring:              { label: 'Flooring',                desc: 'New flooring material & installation' },
+  plumbingElectrical:    { label: 'Plumbing & Electrical',   desc: 'Sink, faucet, outlets, switches & lighting' },
+  demoPrep:              { label: 'Demo, Drywall & Prep',    desc: 'Demolition, drywall repair & hauling' }
+};
+
+const QUICK_FINISH_LEVELS = {
+  budget:   { label: 'Budget',      icon: '$',    description: 'Stock materials, basic fixtures, cosmetic updates' },
+  midRange: { label: 'Mid-Range',   icon: '$$',   description: 'Semi-custom cabinets, quartz counters, quality fixtures' },
+  highEnd:  { label: 'High-End',    icon: '$$$',  description: 'Custom cabinets, natural stone, premium appliances' },
+  ikea:     { label: 'IKEA Kitchen', icon: 'IKEA', description: 'SEKTION cabinets with professional full-service installation' }
+};
+
+// ─── Contextual Tips ──────────────────────────────────────────────────
+
+const TIPS = {
+  ikea: [
+    "IKEA cabinets typically save 40\u201360% compared to custom cabinets of similar quality.",
+    "Budget 3\u20135\u00d7 the cost of IKEA cabinets alone for the complete kitchen project.",
+    "IKEA's SEKTION system uses the same quality European-style hinges and drawer slides found in high-end custom kitchens.",
+    "A certified IKEA kitchen installer coordinates all trades \u2014 plumbing, electrical, countertops \u2014 so you don't have to."
+  ],
+  budget: [
+    "Stock cabinets and laminate countertops offer the best value for a budget remodel.",
+    "Keeping the existing layout avoids costly plumbing and electrical relocation.",
+    "Refinishing existing cabinets instead of replacing them can save 50% or more on cabinet costs."
+  ],
+  midRange: [
+    "Semi-custom cabinets paired with quartz countertops hit the mid-range sweet spot.",
+    "Mid-range remodels offer the best return on investment for home resale \u2014 typically recouping 75\u201380% of costs.",
+    "Consider soft-close hinges and undermount drawer slides \u2014 they add minimal cost but significant daily comfort."
+  ],
+  highEnd: [
+    "Custom cabinets and natural stone countertops define a high-end remodel.",
+    "Expect longer lead times for custom materials \u2014 plan 3\u20136 months ahead for ordering.",
+    "Invest in quality appliances and fixtures \u2014 they're used daily and make the biggest impact on how the space feels."
+  ],
+  general: [
+    "Always add 10\u201315% contingency to your remodel budget for unexpected costs.",
+    "Getting 3+ contractor bids helps ensure fair pricing for your project.",
+    "Permits typically cost $200\u2013$1,500 depending on scope and location."
+  ],
+  // Detailed mode tips — keyed by selection context
+  detailed: {
+    replacingCabinets:   "Replacing cabinets is the single biggest cost driver \u2014 typically 25\u201340% of your total budget.",
+    keepingLayout:       "Keeping your current layout saves thousands by avoiding plumbing and electrical relocation.",
+    budgetCabinets:      "Stock/IKEA cabinets with quality hardware can look and feel like semi-custom at a fraction of the cost.",
+    highEndCountertops:  "Natural stone countertops require fabrication lead times of 2\u20134 weeks \u2014 plan accordingly.",
+    quartzCountertops:   "Engineered quartz is the most popular countertop choice \u2014 durable, low-maintenance, and no sealing required.",
+    replacingFlooring:   "LVP flooring is waterproof and significantly cheaper than hardwood \u2014 ideal for kitchens.",
+    fullRenovation:      "A full kitchen renovation typically takes 8\u201312 weeks \u2014 plan for temporary cooking arrangements."
+  }
+};
+
+function selectTips(finishLevel) {
   const levelTips = TIPS[finishLevel] || TIPS.midRange;
   const generalTips = TIPS.general;
-  // Pick 2 level-specific + 1 general
-  const picked = [];
+  var picked = [];
   picked.push(levelTips[Math.floor(Math.random() * levelTips.length)]);
-  let second;
+  var second;
   do { second = levelTips[Math.floor(Math.random() * levelTips.length)]; } while (second === picked[0] && levelTips.length > 1);
   picked.push(second);
   picked.push(generalTips[Math.floor(Math.random() * generalTips.length)]);
   return picked;
+}
+
+function selectDetailedTips(state) {
+  var tips = [];
+  if (state.cabinetsReplacing) {
+    tips.push(TIPS.detailed.replacingCabinets);
+  }
+  if (!state.layoutChange) {
+    tips.push(TIPS.detailed.keepingLayout);
+  }
+  if (state.cabinetsReplacing && (state.cabinetTier === 'budget')) {
+    tips.push(TIPS.detailed.budgetCabinets);
+  }
+  if (state.countertopsReplacing && state.countertopMaterial === 'naturalStone') {
+    tips.push(TIPS.detailed.highEndCountertops);
+  } else if (state.countertopsReplacing && state.countertopMaterial === 'quartz') {
+    tips.push(TIPS.detailed.quartzCountertops);
+  }
+  if (state.flooringReplacing) {
+    tips.push(TIPS.detailed.replacingFlooring);
+  }
+  var activeCount = [state.cabinetsReplacing, state.countertopsReplacing, state.flooringReplacing, state.plumbingReplacing].filter(Boolean).length;
+  if (activeCount >= 3) {
+    tips.push(TIPS.detailed.fullRenovation);
+  }
+  // Always add one general tip
+  tips.push(TIPS.general[Math.floor(Math.random() * TIPS.general.length)]);
+  // Return max 3
+  return tips.slice(0, 3);
+}
+
+// ─── ROI Data ───────────────────────────────────────���─────────────────
+// Source: Remodeling Magazine Cost vs. Value Report
+
+const ROI_TIERS = [
+  { id: 'minor',      roi: 81, label: 'Minor / Cosmetic remodel' },
+  { id: 'midRange',   roi: 75, label: 'Mid-range remodel' },
+  { id: 'majorMid',   roi: 56, label: 'Major mid-range remodel' },
+  { id: 'upscale',    roi: 38, label: 'Upscale remodel' }
+];
+
+function getROITier(mode, state) {
+  if (mode === 'quick') {
+    var level = state.quickFinishLevel;
+    var activeCount = Object.keys(state.quickCategories).filter(function(k) { return state.quickCategories[k]; }).length;
+    if (level === 'highEnd' && activeCount >= 4) return ROI_TIERS[3]; // upscale
+    if (level === 'highEnd') return ROI_TIERS[2]; // major mid-range
+    if ((level === 'midRange' || level === 'ikea') && activeCount >= 4) return ROI_TIERS[2]; // major mid
+    if (!state.quickCategories.cabinets || activeCount <= 2) return ROI_TIERS[0]; // minor
+    return ROI_TIERS[1]; // mid-range
+  }
+  // Detailed mode
+  var replacingCount = [state.cabinetsReplacing, state.countertopsReplacing, state.flooringReplacing, state.plumbingReplacing].filter(Boolean).length;
+  if (!state.cabinetsReplacing && replacingCount <= 2) return ROI_TIERS[0]; // minor
+  var isHighEnd = state.cabinetTier === 'highEnd' || state.cabinetTier === 'luxury';
+  if (isHighEnd && replacingCount >= 3) return ROI_TIERS[3]; // upscale
+  if (replacingCount >= 3) return ROI_TIERS[2]; // major mid
+  return ROI_TIERS[1]; // mid-range
+}
+
+// ─── Timeline Estimates ───────────────────────────────────────────────
+
+const TIMELINE_TIERS = [
+  { maxCategories: 2, noCabinets: true, label: '1\u20133 weeks' },
+  { maxCategories: 4, noCabinets: false, label: '4\u20138 weeks' },
+  { maxCategories: 5, noCabinets: false, label: '8\u201312 weeks' },
+  { maxCategories: 99, noCabinets: false, label: '10\u201316 weeks' }
+];
+
+function getTimeline(mode, state) {
+  if (mode === 'quick') {
+    var activeCount = Object.keys(state.quickCategories).filter(function(k) { return state.quickCategories[k]; }).length;
+    var hasCabinets = state.quickCategories.cabinets;
+    var isHighEnd = state.quickFinishLevel === 'highEnd';
+    if (!hasCabinets && activeCount <= 2) return '1\u20133 weeks';
+    if (isHighEnd && activeCount >= 4) return '10\u201316 weeks';
+    if (activeCount >= 4) return '8\u201312 weeks';
+    return '4\u20138 weeks';
+  }
+  // Detailed mode
+  var replacingCount = [state.cabinetsReplacing, state.countertopsReplacing, state.flooringReplacing, state.plumbingReplacing, state.backsplashReplacing].filter(Boolean).length;
+  var hasCabs = state.cabinetsReplacing;
+  var highEnd = state.cabinetTier === 'highEnd' || state.cabinetTier === 'luxury';
+  if (!hasCabs && replacingCount <= 2) return '1\u20133 weeks';
+  if (highEnd && replacingCount >= 3) return '10\u201316 weeks';
+  if (replacingCount >= 3) return '8\u201312 weeks';
+  return '4\u20138 weeks';
 }

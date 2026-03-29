@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kitchen Remodel Cost Estimator (2026) | Free Calculator by Zip Code</title>
-  <meta name="description" content="Free kitchen and bathroom remodel cost estimator with itemized breakdown by zip code. Budget, mid-range, high-end, and IKEA pricing. No signup required.">
+  <title>Kitchen Remodel Cost Estimator (2026) | Detailed Calculator by Zip Code</title>
+  <meta name="description" content="Free detailed kitchen remodel cost estimator. Choose cabinets, countertops, flooring, appliances, lighting and more. Itemized breakdown by zip code.">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/">
 
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Kitchen &amp; Bathroom Remodel Cost Estimator (2026)">
-  <meta property="og:description" content="Free remodel cost calculator with itemized breakdown by zip code. Includes exclusive IKEA kitchen pricing from Seattle experts.">
+  <meta property="og:title" content="Kitchen Remodel Cost Estimator (2026) — Free Calculator">
+  <meta property="og:description" content="Free kitchen remodel cost calculator. Quick ballpark or detailed itemized estimate adjusted for your zip code. No signup required.">
   <meta property="og:url" content="https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/">
   <meta property="og:site_name" content="NW Homeworks">
   <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Kitchen Remodel Cost Estimator","description":"Free kitchen remodel cost calculator with quick and detailed modes. Itemized breakdown adjusted for your zip code with IKEA pricing option.","url":"https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/","applicationCategory":"UtilityApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"LocalBusiness","name":"NW Homeworks","url":"https://www.nwhomeworks.com","telephone":"+12534489462","address":{"@type":"PostalAddress","addressLocality":"Tacoma","addressRegion":"WA","addressCountry":"US"}}}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@600;700&family=Syne:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/estimator.css">
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Kitchen & Bathroom Remodel Cost Estimator","description":"Free remodel cost calculator with itemized breakdown adjusted for your zip code. Budget, mid-range, high-end, and IKEA pricing.","url":"https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/","applicationCategory":"UtilityApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"LocalBusiness","name":"NW Homeworks","url":"https://www.nwhomeworks.com","telephone":"+12534489462","address":{"@type":"PostalAddress","addressLocality":"Tacoma","addressRegion":"WA","addressCountry":"US"}}}
-  </script>
 </head>
 <body>
 
@@ -41,85 +41,290 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
-      <h1>Kitchen &amp; Bathroom<br>Remodel Cost Estimator <span class="year-badge">2026</span></h1>
-      <p class="hero-subtitle">Get an instant, itemized cost estimate adjusted for your location.<br>No signup required. Free forever.</p>
+      <h1>Kitchen Remodel<br>Cost Estimator <span class="year-badge">2026</span></h1>
+      <p class="hero-subtitle" id="hero-subtitle">Get a quick ballpark estimate in 30 seconds.<br>No signup required.</p>
     </div>
   </section>
 
+  <!-- Mode Toggle -->
+  <div class="mode-toggle-wrapper">
+    <div class="mode-toggle" id="mode-toggle">
+      <button class="mode-toggle__btn active" data-mode="quick">Quick Estimate</button>
+      <button class="mode-toggle__btn" data-mode="detailed">Detailed Estimate</button>
+    </div>
+  </div>
+
   <!-- Calculator -->
-  <section class="calculator" id="calculator">
+  <section class="calculator mode-quick" id="calculator">
     <div class="calculator-inner">
 
-      <!-- Form Side -->
+      <!-- Form -->
       <div class="calculator__form">
 
-        <!-- Room Type -->
-        <div class="form-group">
-          <label class="form-label">What are you remodeling?</label>
-          <div class="tab-group" role="tablist">
-            <button class="tab active" role="tab" data-room="kitchen" aria-selected="true">Kitchen</button>
-            <button class="tab" role="tab" data-room="bathroom" aria-selected="false">Bathroom</button>
+        <!-- Shared Inputs (both modes) -->
+        <div class="shared-inputs" id="shared-inputs">
+          <div class="form-group">
+            <label class="form-label" for="zip-code">Your Zip Code</label>
+            <input type="text" id="zip-code" class="form-input form-input--zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 98103" autocomplete="postal-code">
+            <span class="form-hint" id="metro-hint"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kitchen Size</label>
+            <div class="size-toggle">
+              <button class="size-toggle__btn active" data-mode="preset">Choose a Size</button>
+              <button class="size-toggle__btn" data-mode="custom">Enter Sq Ft</button>
+            </div>
+            <div class="size-presets" id="size-presets"></div>
+            <div class="hidden" id="size-custom">
+              <input type="number" id="sqft-input" class="form-input" min="40" max="500" step="1" placeholder="Square feet">
+            </div>
           </div>
         </div>
 
-        <!-- Zip Code -->
-        <div class="form-group">
-          <label class="form-label" for="zip-code">Your Zip Code</label>
-          <input type="text" id="zip-code" class="form-input form-input--zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 98103" autocomplete="postal-code">
-          <span class="form-hint" id="metro-hint"></span>
-        </div>
-
-        <!-- Room Size -->
-        <div class="form-group">
-          <label class="form-label">Room Size</label>
-          <div class="size-toggle">
-            <button class="size-toggle__btn active" data-mode="preset">Choose a Size</button>
-            <button class="size-toggle__btn" data-mode="custom">Enter Sq Ft</button>
+        <!-- Quick Mode Form -->
+        <div class="quick-form" id="quick-form">
+          <div class="form-group">
+            <label class="form-label">Finish Level</label>
+            <div class="finish-cards" id="finish-cards"></div>
           </div>
-          <div class="size-presets" id="size-presets"></div>
-          <div class="size-custom hidden" id="size-custom">
-            <input type="number" id="sqft-input" class="form-input" min="15" max="500" step="1" placeholder="Square feet">
+          <div class="form-group">
+            <label class="form-label">What's Included</label>
+            <div class="quick-toggles" id="quick-toggles"></div>
           </div>
         </div>
 
-        <!-- Finish Level -->
-        <div class="form-group">
-          <label class="form-label">Finish Level</label>
-          <div class="finish-cards" id="finish-cards"></div>
-        </div>
+        <!-- Detailed Mode Form (V2 Accordion) -->
+        <div class="detailed-form" id="detailed-form">
+          <div class="accordion" id="accordion">
 
-        <!-- Scope Toggles -->
-        <div class="form-group">
-          <label class="form-label">What's included in your project?</label>
-          <div class="scope-toggles" id="scope-toggles"></div>
-        </div>
+            <!-- Section 0: Kitchen Layout (detailed only) -->
+            <div class="accordion-section active" data-section="0">
+              <button class="accordion-header" aria-expanded="true" aria-controls="section-0-content">
+                <span class="accordion-header__number">1</span>
+                <span class="accordion-header__title">Kitchen Layout</span>
+                <span class="accordion-header__summary" id="summary-0"></span>
+                <span class="accordion-header__chevron"></span>
+              </button>
+              <div class="accordion-content" id="section-0-content" role="region">
+                <div class="accordion-content__inner">
+                  <div class="form-group">
+                    <label class="form-label">Kitchen Layout</label>
+                    <div class="layout-cards" id="layout-cards"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+          <!-- Section 1: Cabinets -->
+          <div class="accordion-section" data-section="1">
+            <button class="accordion-header" aria-expanded="false" aria-controls="section-1-content">
+              <span class="accordion-header__number">2</span>
+              <span class="accordion-header__title">Cabinets</span>
+              <span class="accordion-header__summary" id="summary-1"></span>
+              <span class="accordion-header__chevron"></span>
+            </button>
+            <div class="accordion-content" id="section-1-content" role="region">
+              <div class="accordion-content__inner">
+                <div class="replacing-toggle" id="cabinets-toggle">
+                  <button class="replacing-toggle__btn replacing-toggle__btn--replacing active" data-value="true">Replacing</button>
+                  <button class="replacing-toggle__btn" data-value="false">Keeping Current</button>
+                </div>
+                <div class="section-options" id="cabinets-options">
+                  <div class="option-cards option-cards--5" id="cabinet-cards"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Countertops -->
+          <div class="accordion-section" data-section="2">
+            <button class="accordion-header" aria-expanded="false" aria-controls="section-2-content">
+              <span class="accordion-header__number">3</span>
+              <span class="accordion-header__title">Countertops</span>
+              <span class="accordion-header__summary" id="summary-2"></span>
+              <span class="accordion-header__chevron"></span>
+            </button>
+            <div class="accordion-content" id="section-2-content" role="region">
+              <div class="accordion-content__inner">
+                <div class="replacing-toggle" id="countertops-toggle">
+                  <button class="replacing-toggle__btn replacing-toggle__btn--replacing active" data-value="true">Replacing</button>
+                  <button class="replacing-toggle__btn" data-value="false">Keeping Current</button>
+                </div>
+                <span class="forced-note hidden" id="countertops-forced">Required when replacing cabinets</span>
+                <div class="section-options" id="countertops-options">
+                  <div class="option-cards option-cards--4" id="countertop-cards"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Backsplash -->
+          <div class="accordion-section" data-section="3">
+            <button class="accordion-header" aria-expanded="false" aria-controls="section-3-content">
+              <span class="accordion-header__number">4</span>
+              <span class="accordion-header__title">Backsplash</span>
+              <span class="accordion-header__summary" id="summary-3"></span>
+              <span class="accordion-header__chevron"></span>
+            </button>
+            <div class="accordion-content" id="section-3-content" role="region">
+              <div class="accordion-content__inner">
+                <div class="replacing-toggle" id="backsplash-toggle">
+                  <button class="replacing-toggle__btn replacing-toggle__btn--replacing active" data-value="true">Replacing</button>
+                  <button class="replacing-toggle__btn" data-value="false">Keeping Current</button>
+                </div>
+                <span class="forced-note hidden" id="backsplash-forced">Required when replacing countertops</span>
+                <div class="section-options" id="backsplash-options">
+                  <div class="option-cards option-cards--5" id="backsplash-cards"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Flooring -->
+          <div class="accordion-section" data-section="4">
+            <button class="accordion-header" aria-expanded="false" aria-controls="section-4-content">
+              <span class="accordion-header__number">5</span>
+              <span class="accordion-header__title">Flooring</span>
+              <span class="accordion-header__summary" id="summary-4"></span>
+              <span class="accordion-header__chevron"></span>
+            </button>
+            <div class="accordion-content" id="section-4-content" role="region">
+              <div class="accordion-content__inner">
+                <div class="replacing-toggle" id="flooring-toggle">
+                  <button class="replacing-toggle__btn replacing-toggle__btn--replacing active" data-value="true">Replacing</button>
+                  <button class="replacing-toggle__btn" data-value="false">Keeping Current</button>
+                </div>
+                <div class="section-options" id="flooring-options">
+                  <div class="option-cards option-cards--4" id="flooring-cards"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Appliances & Plumbing -->
+          <div class="accordion-section" data-section="5">
+            <button class="accordion-header" aria-expanded="false" aria-controls="section-5-content">
+              <span class="accordion-header__number">6</span>
+              <span class="accordion-header__title">Appliances &amp; Plumbing</span>
+              <span class="accordion-header__summary" id="summary-5"></span>
+              <span class="accordion-header__chevron"></span>
+            </button>
+            <div class="accordion-content" id="section-5-content" role="region">
+              <div class="accordion-content__inner">
+                <!-- Appliances sub-section -->
+                <div class="form-group">
+                  <label class="form-label">Appliances</label>
+                  <div class="replacing-toggle" id="appliances-toggle">
+                    <button class="replacing-toggle__btn replacing-toggle__btn--replacing active" data-value="true">Buying New</button>
+                    <button class="replacing-toggle__btn" data-value="false">Keeping Current</button>
+                  </div>
+                  <div class="section-options" id="appliances-tier-options">
+                    <div class="option-cards option-cards--3" id="appliance-tier-cards"></div>
+                  </div>
+                </div>
+                <!-- Appliance Install Toggles -->
+                <div class="form-group">
+                  <label class="form-label">Appliance Installation</label>
+                  <p class="form-sublabel">Which appliances need professional installation?</p>
+                  <div class="scope-toggles" id="appliance-install-toggles"></div>
+                </div>
+                <!-- Plumbing sub-section -->
+                <div class="form-group">
+                  <label class="form-label">Plumbing Fixtures</label>
+                  <p class="form-sublabel">Sink, faucet &amp; disposal package</p>
+                  <div class="replacing-toggle" id="plumbing-toggle">
+                    <button class="replacing-toggle__btn replacing-toggle__btn--replacing active" data-value="true">Replacing</button>
+                    <button class="replacing-toggle__btn" data-value="false">Keeping Current</button>
+                  </div>
+                  <div class="section-options" id="plumbing-options">
+                    <div class="option-cards option-cards--3" id="plumbing-cards"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 6: Electrical & Lighting -->
+          <div class="accordion-section" data-section="6">
+            <button class="accordion-header" aria-expanded="false" aria-controls="section-6-content">
+              <span class="accordion-header__number">7</span>
+              <span class="accordion-header__title">Electrical &amp; Lighting</span>
+              <span class="accordion-header__summary" id="summary-6"></span>
+              <span class="accordion-header__chevron"></span>
+            </button>
+            <div class="accordion-content" id="section-6-content" role="region">
+              <div class="accordion-content__inner">
+                <div class="form-group">
+                  <label class="form-label">Lighting Upgrades</label>
+                  <div class="scope-toggles" id="lighting-toggles"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Layout Changes</label>
+                  <p class="form-sublabel">Are you changing the cabinet layout or moving appliances?</p>
+                  <div class="scope-toggles" id="layout-change-toggle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 7: Finishing -->
+          <div class="accordion-section" data-section="7">
+            <button class="accordion-header" aria-expanded="false" aria-controls="section-7-content">
+              <span class="accordion-header__number">8</span>
+              <span class="accordion-header__title">Finishing</span>
+              <span class="accordion-header__summary" id="summary-7"></span>
+              <span class="accordion-header__chevron"></span>
+            </button>
+            <div class="accordion-content" id="section-7-content" role="region">
+              <div class="accordion-content__inner">
+                <p class="form-sublabel">Auto-calculated based on your selections. Toggle off items you'll handle yourself.</p>
+                <div class="scope-toggles" id="finishing-toggles"></div>
+                <div id="finishing-auto-items"></div>
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div>
       </div>
 
-      <!-- Results Side -->
+      <!-- Results Panel -->
       <div class="calculator__results" id="results">
         <div class="results-placeholder" id="results-placeholder">
           <div class="results-placeholder__icon">&#8942;&#8942;&#8942;</div>
-          <p>Select your options to see an instant cost estimate</p>
+          <p>Select your options to see a cost estimate</p>
         </div>
         <div class="results-content hidden" id="results-content">
           <div class="results-header">
             <h2 class="results-title">Your Estimated Cost</h2>
             <div class="results-total" id="results-total"></div>
             <div class="results-regional" id="results-regional"></div>
+            <div class="results-timeline hidden" id="results-timeline"></div>
+            <div class="results-quote-hint hidden" id="results-quote-hint"></div>
           </div>
           <div class="results-breakdown" id="results-breakdown"></div>
           <div class="results-chart">
             <canvas id="cost-chart" aria-label="Cost distribution chart" role="img"></canvas>
           </div>
-          <div class="results-tips" id="results-tips"></div>
+          <div class="results-tips hidden" id="results-tips"></div>
+          <div class="results-roi hidden" id="results-roi">
+            <div class="results-roi__header">Return on Investment</div>
+            <div class="results-roi__bar">
+              <div class="results-roi__bar-fill" id="roi-bar-fill"></div>
+            </div>
+            <div class="results-roi__detail">
+              <span class="results-roi__pct" id="roi-pct"></span>
+              <span class="results-roi__label" id="roi-label"></span>
+            </div>
+            <div class="results-roi__source">Source: Remodeling Magazine Cost vs. Value Report</div>
+          </div>
           <div class="results-disclaimer">
             These estimates are for planning purposes only. Actual costs vary based on materials, labor availability, structural conditions, and contractor pricing.
           </div>
           <div class="results-cta">
             <p>Want a more precise estimate for your specific project?</p>
-            <a href="https://www.nwhomeworks.com/contact" class="btn-cta" target="_blank" rel="noopener" data-event="cta-click">
-              Get a Free Quote from NW Homeworks
+            <a href="https://www.nwhomeworks.com/contact" class="btn-cta" target="_blank" rel="noopener">
+              Schedule a Free Consultation &amp; Quote
             </a>
             <span class="results-cta__phone">or call <a href="tel:+12534489462">(253) 448-9462</a></span>
           </div>
@@ -132,7 +337,7 @@
   <!-- FAQ Section -->
   <section class="faq" id="faq">
     <div class="faq-inner">
-      <h2>Kitchen &amp; Bathroom Remodel Cost FAQ</h2>
+      <h2>Kitchen Remodel Cost FAQ</h2>
       <div class="faq-list">
 
         <details class="faq-item">
@@ -148,16 +353,6 @@
         <details class="faq-item">
           <summary>How much does an IKEA kitchen remodel cost?</summary>
           <div class="faq-answer"><p>A complete IKEA kitchen remodel, including professional installation of SEKTION cabinets plus all trade work (plumbing, electrical, countertops, backsplash, and flooring), typically runs $10,000–$35,000 in the Seattle area. IKEA cabinets alone average about $5,500, with installation around $2,500 for a typical 10-cabinet kitchen. The remaining cost covers countertop fabrication, plumbing, electrical, demolition, and finishing work. A good rule of thumb: budget 3–5 times the cost of the IKEA cabinets for the complete project.</p></div>
-        </details>
-
-        <details class="faq-item">
-          <summary>How much does a bathroom remodel cost?</summary>
-          <div class="faq-answer"><p>Bathroom remodels range from $3,000 for a basic half-bath refresh to $75,000+ for a luxury primary bathroom. The national average for a mid-range bathroom remodel is $18,000–$35,000. Key cost drivers include plumbing changes, shower/tub replacement, tile work, and vanity selection. Keeping the existing plumbing layout saves significantly on costs.</p></div>
-        </details>
-
-        <details class="faq-item">
-          <summary>How much does it cost to remodel a small bathroom?</summary>
-          <div class="faq-answer"><p>A small bathroom (35–50 square feet) remodel typically costs $5,000–$18,000. A budget update with new paint, fixtures, and a vanity swap runs $5,000–$8,000. A full gut renovation with new tile, vanity, and plumbing fixtures costs $12,000–$18,000. The per-square-foot cost is higher for small bathrooms because fixture costs remain similar regardless of room size.</p></div>
         </details>
 
         <details class="faq-item">
@@ -182,7 +377,27 @@
 
         <details class="faq-item">
           <summary>How can I reduce kitchen remodel costs?</summary>
-          <div class="faq-answer"><p>The most effective ways to reduce kitchen remodel costs: (1) Keep the existing layout to avoid moving plumbing and electrical. (2) Consider IKEA or stock cabinets instead of custom. (3) Choose quartz or laminate over natural stone for countertops. (4) Refinish existing cabinets instead of replacing them. (5) Do demolition yourself if you're handy. (6) Get multiple contractor bids. (7) Plan thoroughly to avoid costly mid-project changes.</p></div>
+          <div class="faq-answer"><p>The most effective ways to reduce kitchen remodel costs: (1) Keep the existing layout to avoid moving plumbing and electrical. (2) Consider IKEA or stock cabinets instead of custom. (3) Choose butcher block or laminate instead of engineered quartz or natural stone for countertops. (4) Refinish existing cabinets instead of replacing them. (5) Do demolition yourself if you're handy. (6) Get multiple contractor bids. (7) Plan thoroughly to avoid costly mid-project changes.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How much does a 12x12 kitchen remodel cost?</summary>
+          <div class="faq-answer"><p>A 12x12 (144 square foot) kitchen is one of the most common sizes in American homes. A mid-range remodel typically costs $22,000&ndash;$55,000, while a budget refresh runs $14,000&ndash;$22,000. High-end renovations can reach $65,000&ndash;$85,000. Costs vary significantly by region &mdash; use our estimator above to get a personalized estimate for your area.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How much does a small kitchen remodel cost?</summary>
+          <div class="faq-answer"><p>A small kitchen (60&ndash;80 square feet) remodel typically costs $8,000&ndash;$35,000 depending on scope and finish level. A cosmetic refresh with new countertops, backsplash, and paint runs $8,000&ndash;$15,000. Replacing cabinets and countertops brings the cost to $18,000&ndash;$35,000. Small kitchens save on materials but still require the same base labor costs for plumbing, electrical, and installation.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How much does kitchen demolition cost?</summary>
+          <div class="faq-answer"><p>Kitchen demolition typically costs $1,000&ndash;$4,000 depending on kitchen size and scope. A standard gut demo of a 120-square-foot kitchen runs about $1,500&ndash;$2,500 in most markets. This includes removing cabinets, countertops, backsplash, flooring, and hauling debris. Partial demos (countertops only, for example) cost less. Our estimator includes demolition automatically when you select items to replace.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does a kitchen remodel cost per square foot?</summary>
+          <div class="faq-answer"><p>Kitchen remodel costs per square foot range from $100&ndash;$250 for budget remodels, $200&ndash;$450 for mid-range, and $400&ndash;$800+ for high-end. These per-square-foot figures include all labor and materials &mdash; cabinets, countertops, flooring, plumbing, electrical, and finishing. Keep in mind that smaller kitchens often have a higher per-square-foot cost because fixed costs (plumbing, electrical, demolition) are spread over fewer square feet.</p></div>
         </details>
 
       </div>
@@ -199,18 +414,26 @@
         <li><strong>Finish level:</strong> The gap between budget and high-end has widened. Stock cabinets start around $60–$100 per linear foot, while custom cabinetry can exceed $500 per linear foot.</li>
         <li><strong>Location:</strong> Labor costs vary dramatically by metro area. A kitchen remodel in San Francisco costs 45% more than the same project in Houston.</li>
         <li><strong>Scope:</strong> A cosmetic refresh (new countertops, paint, hardware) costs a fraction of a full gut renovation that includes structural changes, new plumbing, and electrical upgrades.</li>
-        <li><strong>Material choices:</strong> Countertop costs alone range from $15/sq ft (laminate) to $150+/sq ft (exotic natural stone).</li>
+        <li><strong>Material choices:</strong> Countertop costs alone range from $15/sq ft (laminate) to $150+/sq ft (engineered quartz or natural stone).</li>
       </ul>
 
       <h3>IKEA Kitchen Remodel: A Cost-Effective Alternative</h3>
       <p>IKEA's SEKTION kitchen system has become one of the most popular choices for homeowners seeking quality at a reasonable price. The secret is in the engineering — IKEA uses the same soft-close European-style hinges and undermount drawer slides found in cabinets costing three to four times the price.</p>
       <p>However, IKEA's installation service only covers cabinet assembly and mounting. A complete IKEA kitchen remodel also requires demolition, plumbing, electrical work, countertop fabrication, backsplash installation, and flooring — all coordinated separately. This is why working with an experienced IKEA kitchen installer who handles the full project can save both time and money compared to coordinating multiple contractors yourself.</p>
 
+      <h3>Kitchen Remodel Cost Per Square Foot</h3>
+      <p>Kitchen remodel costs per square foot vary widely based on scope and finish level. Budget remodels typically run $100&ndash;$250 per square foot, mid-range projects fall between $200&ndash;$450, and high-end renovations can reach $400&ndash;$800 or more. These figures include all labor and materials. Smaller kitchens often have a higher per-square-foot cost because fixed expenses like plumbing, electrical, and demolition are spread over fewer square feet. Our estimator calculates your per-square-foot cost automatically based on your specific selections and location.</p>
+
       <h3>Kitchen Remodel Costs in Seattle</h3>
-      <p>The Seattle-Tacoma metro area consistently ranks 20–25% above the national average for remodeling costs, driven by strong demand, high labor rates for skilled trades, and the region's building code requirements. Homeowners in Seattle, Bellevue, Tacoma, and the greater Puget Sound should factor in this regional premium when budgeting their projects. Our estimator automatically adjusts for these local cost differences based on your zip code.</p>
+      <p>The Seattle-Tacoma metro area consistently ranks 20&ndash;25% above the national average for remodeling costs, driven by strong demand, high labor rates for skilled trades, and the region's building code requirements. Homeowners in Seattle, Bellevue, Tacoma, and the greater Puget Sound should factor in this regional premium when budgeting their projects. Our estimator automatically adjusts for these local cost differences based on your zip code.</p>
 
     </div>
   </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A kitchen remodel typically costs between $15,000 and $75,000, depending on size, finish level, and location. Budget remodels average $10,000–$20,000, mid-range $25,000–$65,000, and high-end can exceed $100,000."}},{"@type":"Question","name":"How much should a 10x10 kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A 10x10 kitchen remodel typically costs $12,000–$55,000 depending on finish level. Budget runs $12,000–$18,000, mid-range $25,000–$45,000, and IKEA with professional installation $10,000–$35,000."}},{"@type":"Question","name":"How much does an IKEA kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A complete IKEA kitchen remodel including all trade work typically runs $10,000–$35,000. IKEA cabinets average about $5,500, with installation around $2,500. Budget 3–5 times the cabinet cost for the complete project."}},{"@type":"Question","name":"How much does a kitchen remodel cost in Seattle?","acceptedAnswer":{"@type":"Answer","text":"Kitchen remodels in Seattle cost approximately 20–25% more than the national average. A mid-range kitchen remodel in Seattle typically runs $30,000–$65,000. IKEA kitchen remodels range from $10,000–$35,000."}},{"@type":"Question","name":"Is an IKEA kitchen cheaper than a custom kitchen?","acceptedAnswer":{"@type":"Answer","text":"Yes — an IKEA kitchen typically costs 40–60% less than a comparable custom kitchen while using the same quality European-style hardware."}},{"@type":"Question","name":"How much does a 12x12 kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A 12x12 (144 sq ft) kitchen mid-range remodel typically costs $22,000–$55,000. Budget runs $14,000–$22,000, high-end $65,000–$85,000. Costs vary by region."}},{"@type":"Question","name":"How much does a small kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A small kitchen (60–80 sq ft) remodel costs $8,000–$35,000. Cosmetic refresh runs $8,000–$15,000, replacing cabinets and countertops $18,000–$35,000."}},{"@type":"Question","name":"How much does kitchen demolition cost?","acceptedAnswer":{"@type":"Answer","text":"Kitchen demolition typically costs $1,000–$4,000. A standard gut demo of a 120 sq ft kitchen runs $1,500–$2,500 including cabinet, countertop, and flooring removal plus hauling."}},{"@type":"Question","name":"What does a kitchen remodel cost per square foot?","acceptedAnswer":{"@type":"Answer","text":"Kitchen remodel costs per square foot range from $100–$250 (budget), $200–$450 (mid-range), to $400–$800+ (high-end), including all labor and materials."}}]}
+  </script>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -222,17 +445,11 @@
         <a href="https://www.nwhomeworks.com" target="_blank" rel="noopener">nwhomeworks.com</a>
         <a href="https://www.nwhomeworks.com/contact" target="_blank" rel="noopener">Contact</a>
         <a href="https://www.nwhomeworks.com/services/kitchens" target="_blank" rel="noopener">Kitchen Remodeling</a>
-        <a href="https://www.nwhomeworks.com/services/bathrooms" target="_blank" rel="noopener">Bathroom Remodeling</a>
         <a href="https://www.nwhomeworks.com/services/ikea" target="_blank" rel="noopener">IKEA Installation</a>
       </div>
       <p class="footer-copy">&copy; 2026 NW Homeworks. Tacoma, WA. <a href="tel:+12534489462">(253) 448-9462</a></p>
     </div>
   </footer>
-
-  <!-- FAQ Schema -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A kitchen remodel typically costs between $15,000 and $75,000, depending on size, finish level, and location. Budget remodels average $10,000–$20,000, mid-range $25,000–$65,000, and high-end can exceed $100,000."}},{"@type":"Question","name":"How much should a 10x10 kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A 10x10 kitchen remodel typically costs $12,000–$55,000 depending on finish level. Budget runs $12,000–$18,000, mid-range $25,000–$45,000, and IKEA with professional installation $10,000–$35,000."}},{"@type":"Question","name":"How much does an IKEA kitchen remodel cost?","acceptedAnswer":{"@type":"Answer","text":"A complete IKEA kitchen remodel including all trade work typically runs $10,000–$35,000. IKEA cabinets average about $5,500, with installation around $2,500. Budget 3–5 times the cabinet cost for the complete project."}},{"@type":"Question","name":"How much does a bathroom remodel cost?","acceptedAnswer":{"@type":"Answer","text":"Bathroom remodels range from $3,000 for a basic half-bath refresh to $75,000+ for a luxury primary bathroom. The national average for a mid-range bathroom remodel is $18,000–$35,000."}},{"@type":"Question","name":"How much does it cost to remodel a small bathroom?","acceptedAnswer":{"@type":"Answer","text":"A small bathroom remodel typically costs $5,000–$18,000. A budget update runs $5,000–$8,000, while a full renovation costs $12,000–$18,000."}},{"@type":"Question","name":"How much does a kitchen remodel cost in Seattle?","acceptedAnswer":{"@type":"Answer","text":"Kitchen remodels in Seattle cost approximately 20–25% more than the national average. A mid-range kitchen remodel in Seattle typically runs $30,000–$65,000. IKEA kitchen remodels range from $10,000–$35,000."}},{"@type":"Question","name":"Is an IKEA kitchen cheaper than a custom kitchen?","acceptedAnswer":{"@type":"Answer","text":"Yes — an IKEA kitchen typically costs 40–60% less than a comparable custom kitchen while using the same quality European-style hardware."}}]}
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
   <script src="js/cost-data.js" defer></script>
