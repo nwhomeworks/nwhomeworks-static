@@ -113,5 +113,19 @@
   <footer class="site-footer"><div class="footer-inner"><span>&copy;2026 NW Homeworks &mdash; Serving Seattle, Bellevue, Tacoma &amp; the Greater Puget Sound Area</span><div class="footer-contact"><a href="mailto:query@nwhomeworks.com">query@nwhomeworks.com</a><a href="tel:2534489462">(253) 448-9462</a></div><a href="/privacy-policy/">Privacy Policy</a></div></footer>
 
   <script defer src="/js/main.js"></script>
+  <script>
+  document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    var projectTypes = [];
+    document.querySelectorAll('input[name="project_type[]"]:checked').forEach(function(cb) {
+      projectTypes.push(cb.value);
+    });
+    gtag('event', 'generate_lead', {
+      event_category: 'Contact',
+      event_label: projectTypes.join(', ') || 'Not specified',
+      referral_source: document.getElementById('referral').value || 'Not specified',
+      transport_type: 'beacon'
+    });
+  });
+  </script>
 </body>
 </html>
