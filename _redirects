@@ -38,15 +38,26 @@
 /works/ /portfolio/ 301
 /author/* /blog/ 301
 /blog/page/* /blog/ 301
+/index.html / 301
 
-# WordPress category/tag pages → blog
+# WordPress category/tag pages → blog (root-level and /blog/ prefixed)
+/category/* /blog/ 301
 /blog/category/* /blog/ 301
 /blog/tag/* /blog/ 301
+
+# Old WordPress mobile URLs → blog equivalents
+/m/2013/12/01/ikea-hacks-and-other-fun-stuff/ /blog/ikea-hacks-and-other-fun-stuff/ 301
+/m/2015/01/02/ikea-hacks/ /blog/ikea-hacks/ 301
+/m/* /blog/ 301
+/mobile/2013/12/01/ikea-hacks-and-other-fun-stuff/ /blog/ikea-hacks-and-other-fun-stuff/ 301
+/mobile/* /blog/ 301
 
 # WordPress system URLs → homepage
 /wp-admin/* / 301
 /wp-login.php / 301
 /xmlrpc.php / 301
 /wp-json/* / 301
+/wp-content/plugins/* / 301
 /feed/ / 301
 /comments/feed/ / 301
+/embed/ / 301
