@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="520" viewBox="0 0 680 520">
+  <!-- Header band -->
+  <rect x="0" y="0" width="680" height="64" fill="#8eba3f" opacity="0.12"/>
+  <rect x="0" y="0" width="6" height="520" fill="#8eba3f"/>
+  <text x="340" y="24" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="500" fill="#5a7a25" letter-spacing="2">NW HOMEWORKS</text>
+  <text x="340" y="47" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#3a3a3a">How to vet a Seattle kitchen remodeling contractor</text>
+
+  <!-- Column label -->
+  <text x="534" y="86" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="#8a8880" letter-spacing="1">NW HOMEWORKS</text>
+
+  <!-- Row 1 -->
+  <rect x="24" y="96" width="480" height="52" rx="8" fill="#f7f9f2" stroke="#d4e4a8" stroke-width="0.5"/>
+  <text x="48" y="118" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#3a3a3a">Licensed, bonded &amp; insured (WA L&amp;I)</text>
+  <text x="48" y="136" font-family="Arial,sans-serif" font-size="11" fill="#7a6b5c">Verify free at lni.wa.gov — takes 30 seconds</text>
+  <rect x="516" y="108" width="36" height="28" rx="6" fill="#8eba3f"/>
+  <text x="534" y="127" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="white">&#x2713;</text>
+
+  <!-- Row 2 -->
+  <rect x="24" y="156" width="480" height="52" rx="8" fill="#f7f9f2" stroke="#d4e4a8" stroke-width="0.5"/>
+  <text x="48" y="178" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#3a3a3a">Kitchen-specific experience</text>
+  <text x="48" y="196" font-family="Arial,sans-serif" font-size="11" fill="#7a6b5c">Ask how many kitchens/year. See portfolio photos specifically.</text>
+  <rect x="516" y="168" width="36" height="28" rx="6" fill="#8eba3f"/>
+  <text x="534" y="187" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="white">&#x2713;</text>
+
+  <!-- Row 3 -->
+  <rect x="24" y="216" width="480" height="52" rx="8" fill="#f7f9f2" stroke="#d4e4a8" stroke-width="0.5"/>
+  <text x="48" y="238" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#3a3a3a">Full project management (one point of contact)</text>
+  <text x="48" y="256" font-family="Arial,sans-serif" font-size="11" fill="#7a6b5c">Demo, plumbing, electrical, cabinets, tile — all coordinated.</text>
+  <rect x="516" y="228" width="36" height="28" rx="6" fill="#8eba3f"/>
+  <text x="534" y="247" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="white">&#x2713;</text>
+
+  <!-- Row 4 -->
+  <rect x="24" y="276" width="480" height="52" rx="8" fill="#f7f9f2" stroke="#d4e4a8" stroke-width="0.5"/>
+  <text x="48" y="298" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#3a3a3a">Permits pulled when required</text>
+  <text x="48" y="316" font-family="Arial,sans-serif" font-size="11" fill="#7a6b5c">Structural, new circuits, panel upgrades, drain moves — all need permits.</text>
+  <rect x="516" y="288" width="36" height="28" rx="6" fill="#8eba3f"/>
+  <text x="534" y="307" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="white">&#x2713;</text>
+
+  <!-- Row 5 -->
+  <rect x="24" y="336" width="480" height="52" rx="8" fill="#f7f9f2" stroke="#d4e4a8" stroke-width="0.5"/>
+  <text x="48" y="358" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#3a3a3a">Itemized estimate (not a single total)</text>
+  <text x="48" y="376" font-family="Arial,sans-serif" font-size="11" fill="#7a6b5c">Line items for cabinets, countertops, demo, electrical, flooring, etc.</text>
+  <rect x="516" y="348" width="36" height="28" rx="6" fill="#8eba3f"/>
+  <text x="534" y="367" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="white">&#x2713;</text>
+
+  <!-- Row 6 -->
+  <rect x="24" y="396" width="480" height="52" rx="8" fill="#f7f9f2" stroke="#d4e4a8" stroke-width="0.5"/>
+  <text x="48" y="418" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#3a3a3a">Clear process for the unexpected</text>
+  <text x="48" y="436" font-family="Arial,sans-serif" font-size="11" fill="#7a6b5c">Ask: "What happens if you find something behind the walls?"</text>
+  <rect x="516" y="408" width="36" height="28" rx="6" fill="#8eba3f"/>
+  <text x="534" y="427" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="white">&#x2713;</text>
+
+  <!-- Footer -->
+  <rect x="24" y="462" width="632" height="42" rx="8" fill="#8eba3f" opacity="0.12" stroke="#8eba3f" stroke-width="0.5"/>
+  <text x="340" y="479" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="#5a7a25">NW HOMEWORKS CHECKS ALL SIX</text>
+  <text x="340" y="496" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#7a6b5c">nwhomeworks.com · (253) 448-9462 · Serving Seattle, Bellevue, Kirkland, Bothell, Tacoma</text>
+</svg>
