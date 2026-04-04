@@ -36,6 +36,8 @@
 
 # Old WordPress structural redirects
 /works/ /portfolio/ 301
+/works.html /portfolio/ 301
+/contact-1 /contact/ 301
 /author/* /blog/ 301
 /blog/page/* /blog/ 301
 /index.html / 301
