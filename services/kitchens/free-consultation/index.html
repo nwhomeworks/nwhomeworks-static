@@ -76,46 +76,95 @@
     .lp-header-phone:hover { color: #8eba3f; }
     .lp-header-phone svg { width: 16px; height: 16px; fill: #8eba3f; }
 
-    /* ── Hero Section ── */
+    /* ── Hero Section (full-width cinematic image) ── */
     .lp-hero {
       position: relative;
-      background: #1a1a1a;
+      width: 100%;
+      height: 38vh;
+      min-height: 320px;
       overflow: hidden;
-      padding: 80px 40px 60px;
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      max-width: 100%;
+    }
+    .lp-hero-image {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .lp-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .lp-hero-image::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.1) 100%);
     }
     .lp-hero-content {
-      flex: 1;
-      min-width: 0;
+      position: absolute;
+      bottom: 32px;
+      left: 40px;
+      right: 40px;
       z-index: 2;
     }
     .lp-hero h1 {
       color: #fff;
       font-weight: 300;
-      font-size: 48px;
+      font-size: 52px;
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 12px rgba(0,0,0,.3);
     }
     .lp-hero h1 strong {
       font-weight: 700;
       color: #aedb42;
     }
     .lp-hero-sub {
-      color: rgba(255,255,255,.75);
+      color: rgba(255,255,255,.85);
       font-size: 18px;
-      line-height: 1.5;
-      margin-bottom: 32px;
-      max-width: 520px;
+      line-height: 1.4;
+      max-width: 600px;
+      text-shadow: 0 1px 6px rgba(0,0,0,.3);
+    }
+
+    /* ── Proof + CTA strip (below hero image) ── */
+    .lp-hero-strip {
+      background: #1a1a1a;
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .lp-hero-proof {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .lp-hero-proof .proof-item {
+      color: rgba(255,255,255,.6);
+      font-family: "Figtree", sans-serif;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .proof-item .proof-number {
+      color: #aedb42;
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
     }
     .lp-hero-ctas {
       display: flex;
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 32px;
     }
     .btn-primary {
       display: inline-block;
@@ -140,39 +189,6 @@
       transition: color .3s ease;
     }
     .btn-secondary:hover { color: #aedb42; }
-    .lp-hero-proof {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .lp-hero-proof .proof-item {
-      color: rgba(255,255,255,.6);
-      font-family: "Figtree", sans-serif;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .proof-item .proof-number {
-      color: #aedb42;
-      font-family: "Syne", sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-    }
-    .lp-hero-image {
-      flex: 1;
-      min-width: 0;
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      max-width: 520px;
-    }
-    .lp-hero-image img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
 
     /* ── Section base ── */
     .lp-section {
@@ -275,15 +291,17 @@
 
     /* ── Before/After Gallery ── */
     .lp-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
     }
     .lp-gallery-item {
       border-radius: 8px;
       overflow: hidden;
       background: #fff;
-      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
     }
     .lp-gallery-pair {
       display: grid;
@@ -291,17 +309,22 @@
     }
     .lp-gallery-pair img {
       width: 100%;
-      height: 180px;
+      height: 320px;
       object-fit: cover;
+      cursor: pointer;
+      transition: opacity .3s ease;
+    }
+    .lp-gallery-pair img:hover {
+      opacity: .9;
     }
     .lp-gallery-label {
-      padding: 12px 16px;
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .lp-gallery-label span {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: #1a1a1a;
     }
@@ -312,6 +335,58 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .5px;
+    }
+    .lp-gallery-pair .ba-label {
+      position: absolute;
+      top: 12px;
+      padding: 4px 10px;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      font-size: 11px;
+      font-family: "Syne", sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    .lp-gallery-pair > div {
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-gallery-pair > div:first-child .ba-label { left: 12px; }
+    .lp-gallery-pair > div:last-child .ba-label { right: 12px; }
+
+    /* ── Lightbox ── */
+    .lp-lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,.9);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .lp-lightbox.active { display: flex; }
+    .lp-lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      cursor: default;
+    }
+    .lp-lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      color: #fff;
+      font-size: 36px;
+      font-weight: 300;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 100000;
     }
 
     /* ── Benefits ── */
@@ -553,17 +628,13 @@
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
-      .lp-hero {
-        flex-direction: column;
-        padding: 48px 24px 40px;
-        gap: 32px;
-      }
+      .lp-hero { height: 35vh; min-height: 280px; }
       .lp-hero h1 { font-size: 36px; }
-      .lp-hero-image { max-width: 100%; }
-      .lp-hero-image img { height: 280px; }
+      .lp-hero-content { left: 24px; right: 24px; bottom: 24px; }
+      .lp-hero-strip { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
       .lp-section { padding: 60px 24px; }
       .lp-section-dark { padding: 60px 24px; }
-      .lp-gallery { grid-template-columns: 1fr; }
+      .lp-gallery-pair img { height: 240px; }
       .lp-benefits { grid-template-columns: 1fr; }
       .lp-testimonials { grid-template-columns: 1fr; }
       .lp-steps { grid-template-columns: 1fr; gap: 20px; }
@@ -577,9 +648,11 @@
     @media (max-width: 768px) {
       .lp-header { padding: 14px 20px; }
       .lp-header img { height: 30px; }
-      .lp-hero { padding: 36px 20px 32px; }
-      .lp-hero h1 { font-size: 30px; }
-      .lp-hero-sub { font-size: 16px; }
+      .lp-hero { height: 32vh; min-height: 240px; }
+      .lp-hero h1 { font-size: 28px; }
+      .lp-hero-sub { font-size: 15px; }
+      .lp-hero-content { left: 20px; right: 20px; bottom: 20px; }
+      .lp-hero-strip { padding: 16px 20px; gap: 16px; }
       .lp-hero-proof { gap: 16px; }
       .proof-item .proof-number { font-size: 17px; }
       .lp-hero-proof .proof-item { font-size: 13px; }
@@ -590,7 +663,7 @@
       .lp-final-cta { padding: 48px 20px; }
       .lp-section-green { padding: 40px 20px; }
       .lp-footer { padding: 20px; }
-      .lp-gallery-pair img { height: 140px; }
+      .lp-gallery-pair img { height: 160px; }
     }
   </style>
 </head>
@@ -608,26 +681,32 @@
   </header>
 
   <!-- ════════════════════════════════════════════ -->
-  <!-- HERO SECTION                                 -->
+  <!-- HERO SECTION (full-width cinematic image)    -->
   <!-- ════════════════════════════════════════════ -->
   <section class="lp-hero">
-    <div class="lp-hero-content">
-      <h1>Your Dream Kitchen, <strong>Built Right</strong></h1>
-      <p class="lp-hero-sub">Seattle's most trusted kitchen remodeler. From design to done, we handle everything so you don't have to.</p>
-      <div class="lp-hero-ctas">
-        <a href="#consultation" class="btn-primary">Get My Free Consultation</a>
-        <a href="tel:2534489462" class="btn-secondary">Or Call (253) 448-9462</a>
-      </div>
-      <div class="lp-hero-proof">
-        <div class="proof-item"><span class="proof-number">500+</span> Projects Completed</div>
-        <div class="proof-item"><span class="proof-number">14</span> Years in Seattle</div>
-        <div class="proof-item"><span class="proof-number">30+</span> Years Experience</div>
-      </div>
-    </div>
     <div class="lp-hero-image">
       <img src="/images/2026/03/vashon-kitchen-after.webp" alt="Beautiful kitchen remodel in Seattle by NW Homeworks" width="800" height="533" loading="eager">
     </div>
+    <div class="lp-hero-content">
+      <h1>Your Dream Kitchen, <strong>Built Right</strong></h1>
+      <p class="lp-hero-sub">Seattle's most trusted kitchen remodeler. From design to done, we handle everything so you don't have to.</p>
+    </div>
   </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PROOF + CTA STRIP                            -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="lp-hero-strip">
+    <div class="lp-hero-proof">
+      <div class="proof-item"><span class="proof-number">500+</span> Projects Completed</div>
+      <div class="proof-item"><span class="proof-number">14</span> Years in Seattle</div>
+      <div class="proof-item"><span class="proof-number">30+</span> Years Experience</div>
+    </div>
+    <div class="lp-hero-ctas">
+      <a href="#consultation" class="btn-primary">Get My Free Consultation</a>
+      <a href="tel:2534489462" class="btn-secondary">Or Call (253) 448-9462</a>
+    </div>
+  </div>
 
   <!-- ════════════════════════════════════════════ -->
   <!-- PROBLEM / EMPATHY (StoryBrand: Problem + Guide) -->
@@ -673,32 +752,32 @@
     <div class="lp-gallery">
       <div class="lp-gallery-item">
         <div class="lp-gallery-pair">
-          <img src="/images/2026/03/vashon-kitchen-before.webp" alt="Kitchen before remodel - Vashon Island" loading="lazy">
-          <img src="/images/2026/03/vashon-kitchen-after.webp" alt="Kitchen after remodel - Vashon Island" loading="lazy">
+          <div><span class="ba-label">Before</span><img src="/images/2026/03/vashon-kitchen-before.webp" alt="Kitchen before remodel - Vashon Island" loading="lazy" class="lp-lightbox-trigger"></div>
+          <div><span class="ba-label">After</span><img src="/images/2026/03/vashon-kitchen-after.webp" alt="Kitchen after remodel - Vashon Island" loading="lazy" class="lp-lightbox-trigger"></div>
         </div>
         <div class="lp-gallery-label">
           <span>Vashon Island</span>
-          <span class="label-tag">Before &amp; After</span>
+          <span class="label-tag">Click to enlarge</span>
         </div>
       </div>
       <div class="lp-gallery-item">
         <div class="lp-gallery-pair">
-          <img src="/images/2026/03/Sammamish-kitchen-before.webp" alt="Kitchen before remodel - Sammamish" loading="lazy">
-          <img src="/images/2026/03/Sammamish-kitchen-1.webp" alt="Kitchen after remodel - Sammamish" loading="lazy">
+          <div><span class="ba-label">Before</span><img src="/images/2026/03/Sammamish-kitchen-before.webp" alt="Kitchen before remodel - Sammamish" loading="lazy" class="lp-lightbox-trigger"></div>
+          <div><span class="ba-label">After</span><img src="/images/2026/03/Sammamish-kitchen-1.webp" alt="Kitchen after remodel - Sammamish" loading="lazy" class="lp-lightbox-trigger"></div>
         </div>
         <div class="lp-gallery-label">
           <span>Sammamish</span>
-          <span class="label-tag">Before &amp; After</span>
+          <span class="label-tag">Click to enlarge</span>
         </div>
       </div>
       <div class="lp-gallery-item">
         <div class="lp-gallery-pair">
-          <img src="/images/2026/03/Ravenna-Kitchen-Remodel-Before.webp" alt="Kitchen before remodel - Ravenna, Seattle" loading="lazy">
-          <img src="/images/2026/03/ravenna-kitchen-remodel-vg-fir-cabinets-grey-quartz-countertops-induction-cooktop-1.webp" alt="Kitchen after remodel - Ravenna, Seattle" loading="lazy">
+          <div><span class="ba-label">Before</span><img src="/images/2026/03/Ravenna-Kitchen-Remodel-Before.webp" alt="Kitchen before remodel - Ravenna, Seattle" loading="lazy" class="lp-lightbox-trigger"></div>
+          <div><span class="ba-label">After</span><img src="/images/2026/03/ravenna-kitchen-remodel-vg-fir-cabinets-grey-quartz-countertops-induction-cooktop-1.webp" alt="Kitchen after remodel - Ravenna, Seattle" loading="lazy" class="lp-lightbox-trigger"></div>
         </div>
         <div class="lp-gallery-label">
           <span>Ravenna, Seattle</span>
-          <span class="label-tag">Before &amp; After</span>
+          <span class="label-tag">Click to enlarge</span>
         </div>
       </div>
     </div>
@@ -866,12 +945,35 @@
     <span>&copy; 2026 NW Homeworks &mdash; Serving Seattle, Bellevue, Tacoma &amp; the Greater Puget Sound Area &mdash; <a href="tel:2534489462">(253) 448-9462</a></span>
   </footer>
 
-  <!-- FAQ Toggle Script -->
+  <!-- Lightbox -->
+  <div class="lp-lightbox" id="lightbox">
+    <span class="lp-lightbox-close">&times;</span>
+    <img src="" alt="">
+  </div>
+
+  <!-- FAQ Toggle + Lightbox Script -->
   <script>
   document.querySelectorAll('.lp-faq-q').forEach(function(q) {
     q.addEventListener('click', function() {
       this.parentElement.classList.toggle('open');
     });
+  });
+
+  // Lightbox
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = lightbox.querySelector('img');
+  document.querySelectorAll('.lp-lightbox-trigger').forEach(function(img) {
+    img.addEventListener('click', function() {
+      lightboxImg.src = this.src;
+      lightboxImg.alt = this.alt;
+      lightbox.classList.add('active');
+    });
+  });
+  lightbox.addEventListener('click', function() {
+    lightbox.classList.remove('active');
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') lightbox.classList.remove('active');
   });
   </script>
 
