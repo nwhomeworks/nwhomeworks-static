@@ -870,6 +870,7 @@
       <h2>Ready to <strong>Love Your Kitchen?</strong></h2>
       <p class="lp-form-sub">Schedule your free, no-pressure consultation. We'll visit your home, discuss your vision, and give you an honest quote.</p>
       <form class="lp-form" action="https://formspree.io/f/mkoqlqyz" method="POST">
+        <input type="hidden" name="_next" value="https://nwhomeworks.com/thank-you/">
         <input type="hidden" name="_subject" value="Landing Page: Kitchen Remodel Consultation">
         <input type="hidden" name="source" value="Google Ads - Kitchen Remodel Seattle">
         <input type="hidden" name="project_type[]" value="Kitchen">
@@ -980,17 +981,6 @@
   });
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') lightbox.classList.remove('active');
-  });
-  </script>
-
-  <!-- GA4 Event Tracking for Form -->
-  <script>
-  document.querySelector('.lp-form').addEventListener('submit', function() {
-    gtag('event', 'generate_lead', {
-      event_category: 'Landing Page',
-      event_label: 'Kitchen Remodel - Google Ads',
-      transport_type: 'beacon'
-    });
   });
   </script>
 
