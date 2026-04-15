@@ -869,8 +869,7 @@
     <div class="lp-form-inner">
       <h2>Ready to <strong>Love Your Kitchen?</strong></h2>
       <p class="lp-form-sub">Schedule your free, no-pressure consultation. We'll visit your home, discuss your vision, and give you an honest quote.</p>
-      <form class="lp-form" action="https://formspree.io/f/mkoqlqyz" method="POST">
-        <input type="hidden" name="_next" value="https://nwhomeworks.com/thank-you/">
+      <form class="lp-form" id="lp-consult-form" action="https://formspree.io/f/mkoqlqyz" method="POST">
         <input type="hidden" name="_subject" value="Landing Page: Kitchen Remodel Consultation">
         <input type="hidden" name="source" value="Google Ads - Kitchen Remodel Seattle">
         <input type="hidden" name="project_type[]" value="Kitchen">
@@ -893,6 +892,7 @@
           <textarea id="lp-message" name="message" placeholder="What are you envisioning? Any timeline or budget in mind?"></textarea>
         </div>
         <button type="submit" class="btn-primary">Get My Free Consultation</button>
+        <p id="lp-form-error" style="display:none; color:#c0392b; margin-top:16px; font-size:14px;">Sorry, there was a problem sending your message. Please try again or call us at (253) 448-9462.</p>
       </form>
       <p class="lp-form-trust">Your info is safe with us. No spam, no pressure &mdash; just honest advice.</p>
       <p class="lp-form-alt">Prefer to talk? Call <a href="tel:2534489462">(253) 448-9462</a></p>
@@ -982,6 +982,47 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') lightbox.classList.remove('active');
   });
+  </script>
+
+  <!-- AJAX form submission → redirect to /thank-you/ on success -->
+  <script>
+  (function() {
+    var form = document.getElementById('lp-consult-form');
+    var errorEl = document.getElementById('lp-form-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalBtnText = submitBtn.textContent;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      errorEl.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response) {
+        if (response.ok) {
+          window.location.href = '/thank-you/';
+        } else {
+          response.json().then(function(data) {
+            errorEl.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+          }).catch(function() {
+            errorEl.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+          });
+        }
+      }).catch(function() {
+        errorEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      });
+    });
+  })();
   </script>
 
 </body>
