@@ -1,0 +1,20 @@
+#!/bin/sh
+# Auto cache-bust: before each commit, rewrite CSS/JS references in HTML
+# with a content-hash query string so edits invalidate CDN + browser cache.
+#
+# Re-stages any HTML files the cachebust script modifies so they're included
+# in the commit the user is making.
+
+set -e
+
+# Run the cachebust script. Fails the commit if the script errors.
+node scripts/cachebust.mjs
+
+# Re-stage any HTML files that the script modified in the working tree.
+# `git diff --name-only` lists unstaged changes; we add back only *.html.
+changed_html=$(git diff --name-only -- '*.html' || true)
+if [ -n "$changed_html" ]; then
+  echo "$changed_html" | while IFS= read -r f; do
+    [ -n "$f" ] && git add -- "$f"
+  done
+fi
