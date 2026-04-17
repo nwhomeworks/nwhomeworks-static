@@ -1,3 +1,19 @@
+# Old portfolio URLs → current portfolio pages
+/portfolio/custom-ikea-kitchen-sammamish/ /portfolio/sammamish-kitchen/ 301
+/portfolio/vaulted-ceiling-kitchen/ /portfolio/vashon-kitchen/ 301
+
+# Old WordPress page slugs that never got redirects
+/home / 301
+/services/design/ /services/ 301
+/embed/ / 301
+/ikea-kitchens/* /services/ikea/ 301
+
+# Misspelled/variant old WordPress blog URL
+/2015/01/17/ikea-cabinets-custom-made-doors-awesome-kitche-n/ /blog/custom-doors-ikea-cabinets/ 301
+
+# Old date-based URL with wrong month in path
+/2013/09/04/vashon-island-kitchen-part-1-vaulted-ceiling/ /blog/vashon-island-kitchen-part-1-vaulted-ceiling/ 301
+
 # Old WordPress date-based blog URLs → new blog URLs
 /2016/07/23/an-ikea-kitchen-in-capitol-hill-seattle/ /blog/an-ikea-kitchen-in-capitol-hill-seattle/ 301
 /2015/11/24/kids-bathroom-makeover/ /blog/kids-bathroom-makeover/ 301
@@ -62,4 +78,3 @@
 /wp-content/plugins/* / 301
 /feed/ / 301
 /comments/feed/ / 301
-/embed/ / 301
