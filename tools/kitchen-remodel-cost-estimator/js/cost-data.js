@@ -7,23 +7,24 @@
 // At 120 SF reference kitchen. All values scale proportionally with kitchen SF.
 // cabinetFaceSF = total face area of base + upper cabinets
 // counterSF = counter surface area (counterLF × 2ft depth)
-// backsplashSF = wall counter LF × 1.5ft height (island excluded)
+// backsplashSF = wall counter LF × 2ft height (island excluded)
 
 const LAYOUT_REFERENCE_SF = 120;
 
 const KITCHEN_LAYOUTS = {
-  galley:  { label: 'Galley',      counterLF: 16, counterSF: 32, backsplashSF: 24, cabinetFaceSF: 80 },
-  lshape:  { label: 'L-Shape',     counterLF: 20, counterSF: 40, backsplashSF: 30, cabinetFaceSF: 100 },
-  ushape:  { label: 'U-Shape',     counterLF: 24, counterSF: 48, backsplashSF: 36, cabinetFaceSF: 120 },
-  lisland: { label: 'L + Island',  counterLF: 26, counterSF: 52, backsplashSF: 30, cabinetFaceSF: 115 },
-  uisland: { label: 'U + Island',  counterLF: 30, counterSF: 60, backsplashSF: 36, cabinetFaceSF: 135 }
+  galley:  { label: 'Galley',      hint: 'Best for small spaces',     counterLF: 16, counterSF: 32, backsplashSF: 32, cabinetFaceSF: 80 },
+  lshape:  { label: 'L-Shape',     hint: 'Most popular',              counterLF: 20, counterSF: 40, backsplashSF: 40, cabinetFaceSF: 100 },
+  ushape:  { label: 'U-Shape',     hint: 'Maximum storage',           counterLF: 24, counterSF: 48, backsplashSF: 48, cabinetFaceSF: 120 },
+  lisland: { label: 'L + Island',  hint: 'Great for entertaining',    counterLF: 26, counterSF: 52, backsplashSF: 40, cabinetFaceSF: 115 },
+  uisland: { label: 'U + Island',  hint: 'Open-concept showpiece',    counterLF: 30, counterSF: 60, backsplashSF: 48, cabinetFaceSF: 135 }
 };
 
 function getDerivedAreas(kitchenSF, layout) {
   const ref = KITCHEN_LAYOUTS[layout];
-  if (!ref) return { counterSF: 0, backsplashSF: 0, cabinetFaceSF: 0, kitchenSF: kitchenSF };
+  if (!ref) return { counterLF: 0, counterSF: 0, backsplashSF: 0, cabinetFaceSF: 0, kitchenSF: kitchenSF };
   const scale = kitchenSF / LAYOUT_REFERENCE_SF;
   return {
+    counterLF:     +(ref.counterLF * scale).toFixed(2),
     counterSF:     Math.round(ref.counterSF * scale),
     backsplashSF:  Math.round(ref.backsplashSF * scale),
     cabinetFaceSF: Math.round(ref.cabinetFaceSF * scale),
@@ -49,18 +50,16 @@ const CABINET_TIERS = {
   budget:   { label: 'Budget / Stock',          rate: 82,  low: 0.85, high: 1.15, desc: 'Stock cabinets, basic styles',          brands: 'IKEA, Hampton Bay' },
   midRange: { label: 'Mid-Range',               rate: 103, low: 0.85, high: 1.15, desc: 'Semi-custom, quality hardware',         brands: 'KraftMaid, Thomasville' },
   upperMid: { label: 'Upper-Mid / Semi-Custom', rate: 160, low: 0.85, high: 1.15, desc: 'Semi-custom with premium options',      brands: 'Canyon Creek, Dura Supreme' },
-  highEnd:  { label: 'High-End / Custom',       rate: 271, low: 0.85, high: 1.15, desc: 'Fully custom, premium materials',       brands: 'Wood-Mode, Brookhaven' },
-  luxury:   { label: 'Luxury',                  rate: 388, low: 0.85, high: 1.15, desc: 'European luxury, exotic materials',     brands: 'Poggenpohl, Bulthaup' }
+  highEnd:  { label: 'High-End / Custom',       rate: 271, low: 0.85, high: 1.15, desc: 'Fully custom, premium materials',       brands: 'Wood-Mode, Brookhaven' }
 };
 
 // ─── Countertop Materials ───────────────────────────────────────────
 // Rate = total installed $/SF of counter surface area
 
 const COUNTERTOP_MATERIALS = {
-  laminate:      { label: 'Laminate',           rate: 42,  low: 0.85, high: 1.15, desc: 'Affordable, wide variety of looks' },
-  butcherBlock:  { label: 'Butcher Block',      rate: 48,  low: 0.85, high: 1.15, desc: 'Warm natural wood, maple to walnut' },
-  quartz:        { label: 'Engineered Quartz',  rate: 113, low: 0.85, high: 1.15, desc: 'Durable, low-maintenance, popular choice' },
-  naturalStone:  { label: 'Natural Stone',      rate: 118, low: 0.85, high: 1.15, desc: 'Granite or marble, unique patterns' }
+  laminate:      { label: 'Laminate',                      rate: 42,  low: 0.85, high: 1.15, desc: 'Affordable, wide variety of looks' },
+  butcherBlock:  { label: 'Butcher Block',                 rate: 48,  low: 0.85, high: 1.15, desc: 'Warm natural wood, maple to walnut' },
+  quartz:        { label: 'Quartz / Natural Stone',        rate: 115, low: 0.85, high: 1.15, desc: 'Engineered quartz, granite, or marble' }
 };
 
 // ─── Backsplash Options ─────────────────────────────────────────────
@@ -69,10 +68,10 @@ const COUNTERTOP_MATERIALS = {
 
 const BACKSPLASH_OPTIONS = {
   budgetTile: { label: 'Budget Tile',        rate: 31,   low: 0.85, high: 1.15, desc: 'Basic subway tile' },
-  midTile:    { label: 'Mid-Range Tile',     rate: 34,   low: 0.85, high: 1.15, desc: 'Glass, patterned ceramic, standard mosaic' },
-  upperTile:  { label: 'Upper-Mid Tile',     rate: 46,   low: 0.85, high: 1.15, desc: 'Natural stone, premium mosaic, large format' },
-  highTile:   { label: 'High-End Tile',      rate: 73,   low: 0.85, high: 1.15, desc: 'Handmade/artisan tile, designer patterns' },
-  slab:       { label: 'Slab',              rate: null,  low: 0.85, high: 1.15, desc: 'Matches countertop material' }
+  midTile:    { label: 'Mid-Range Tile',     rate: 35,   low: 0.85, high: 1.15, desc: 'Glass, patterned ceramic, standard mosaic, porcelain' },
+  highTile:   { label: 'High-End Tile',      rate: 46,   low: 0.85, high: 1.15, desc: '3D textured, hand crafted, designer patterns' },
+  slab4:      { label: '4\u2033 Slab',           rate: null, low: 0.85, high: 1.15, desc: 'Short 4-inch slab matched to counter', type: 'slab4' },
+  slabFull:   { label: 'Full-Height Slab',    rate: null, low: 0.85, high: 1.15, desc: 'Full backsplash matched to counter', type: 'slabFull' }
 };
 
 const BACKSPLASH_MIN_CHARGE = 750; // Minimum for jobs under ~25sf
@@ -83,7 +82,7 @@ const BACKSPLASH_MIN_CHARGE = 750; // Minimum for jobs under ~25sf
 const FLOORING_MATERIALS = {
   lvp:         { label: 'LVP / Composite',                    rateLow: 6,     rateHigh: 8,     desc: 'Waterproof rigid core, kitchen-grade' },
   prefinished: { label: 'Prefinished / Engineered Hardwood',  rateLow: 10.29, rateHigh: 16.29, desc: 'Factory-finished, domestic species' },
-  unfinished:  { label: 'Unfinished Hardwood (Site-Finished)',rateLow: 15,    rateHigh: 17,    desc: 'Sanded, stained & finished in place' },
+  unfinished:  { label: 'Unfinished Hardwood (Site-Finished)',rateLow: 16,    rateHigh: 18,    desc: 'Sanded, stained & finished in place' },
   tile:        { label: 'Tile (Ceramic / Porcelain)',         rateLow: 24,    rateHigh: 29,    desc: 'Includes thinset, grout & sealer' }
 };
 
@@ -566,123 +565,14 @@ function getDrywallTier(state) {
   return null;
 }
 
-// ─── Quick Mode Cost Data (V1-based) ──────────────────────────────────
-// Structure: QUICK_COST_DATA[category][finishLevel] → { base, perSqft, low, high }
-// Formula: cost = (base + perSqft × sqft) × low/high × regionalMultiplier
-
-const QUICK_COST_DATA = {
-  cabinets: {
-    label: 'Cabinets',
-    budget:   { base: 800,  perSqft: 45,  low: 0.75, high: 1.3 },
-    midRange: { base: 1500, perSqft: 90,  low: 0.8,  high: 1.25 },
-    highEnd:  { base: 3000, perSqft: 180, low: 0.8,  high: 1.3 },
-    ikea:     { base: 1000, perSqft: 35,  low: 0.8,  high: 1.3 }
-  },
-  countertops: {
-    label: 'Countertops',
-    budget:   { base: 400,  perSqft: 18, low: 0.8, high: 1.3 },
-    midRange: { base: 800,  perSqft: 35, low: 0.8, high: 1.3 },
-    highEnd:  { base: 1500, perSqft: 70, low: 0.75, high: 1.35 },
-    ikea:     { base: 600,  perSqft: 22, low: 0.8, high: 1.3 }
-  },
-  backsplash: {
-    label: 'Backsplash',
-    budget:   { base: 300,  perSqft: 5,  low: 0.8, high: 1.2 },
-    midRange: { base: 600,  perSqft: 10, low: 0.8, high: 1.3 },
-    highEnd:  { base: 1200, perSqft: 20, low: 0.75, high: 1.35 },
-    ikea:     { base: 400,  perSqft: 6,  low: 0.8, high: 1.25 }
-  },
-  flooring: {
-    label: 'Flooring',
-    budget:   { base: 300,  perSqft: 8,  low: 0.8, high: 1.25 },
-    midRange: { base: 500,  perSqft: 15, low: 0.8, high: 1.25 },
-    highEnd:  { base: 800,  perSqft: 30, low: 0.8, high: 1.3 },
-    ikea:     { base: 300,  perSqft: 10, low: 0.8, high: 1.25 }
-  },
-  plumbing: {
-    label: 'Plumbing',
-    budget:   { base: 600,  perSqft: 3,  low: 0.8, high: 1.2 },
-    midRange: { base: 1000, perSqft: 5,  low: 0.8, high: 1.25 },
-    highEnd:  { base: 1800, perSqft: 10, low: 0.75, high: 1.3 },
-    ikea:     { base: 800,  perSqft: 3,  low: 0.8, high: 1.2 }
-  },
-  electrical: {
-    label: 'Electrical',
-    budget:   { base: 500,  perSqft: 5,  low: 0.8, high: 1.25 },
-    midRange: { base: 1200, perSqft: 8,  low: 0.8, high: 1.3 },
-    highEnd:  { base: 2000, perSqft: 15, low: 0.75, high: 1.35 },
-    ikea:     { base: 800,  perSqft: 6,  low: 0.8, high: 1.25 }
-  },
-  demolition: {
-    label: 'Demolition',
-    budget:   { base: 500,  perSqft: 2, low: 0.85, high: 1.2 },
-    midRange: { base: 800,  perSqft: 3, low: 0.85, high: 1.2 },
-    highEnd:  { base: 1200, perSqft: 5, low: 0.8,  high: 1.25 },
-    ikea:     { base: 500,  perSqft: 2, low: 0.85, high: 1.2 }
-  },
-  drywall: {
-    label: 'Drywall & Framing',
-    budget:   { base: 300,  perSqft: 3,  low: 0.8, high: 1.2 },
-    midRange: { base: 600,  perSqft: 5,  low: 0.8, high: 1.25 },
-    highEnd:  { base: 1000, perSqft: 10, low: 0.8, high: 1.3 },
-    ikea:     { base: 400,  perSqft: 3,  low: 0.8, high: 1.2 }
-  }
-};
-
-// Quick mode grouped toggle → underlying cost data category mapping
-const QUICK_TOGGLE_MAP = {
-  cabinets:              ['cabinets'],
-  countertopsBacksplash: ['countertops', 'backsplash'],
-  flooring:              ['flooring'],
-  plumbingElectrical:    ['plumbing', 'electrical'],
-  demoPrep:              ['demolition', 'drywall']
-};
-
-const QUICK_TOGGLE_META = {
-  cabinets:              { label: 'Cabinets',                desc: 'New cabinets, doors, hardware & installation' },
-  countertopsBacksplash: { label: 'Countertops & Backsplash', desc: 'Counter surfaces, backsplash tile & installation' },
-  flooring:              { label: 'Flooring',                desc: 'New flooring material & installation' },
-  plumbingElectrical:    { label: 'Plumbing & Electrical',   desc: 'Sink, faucet, outlets, switches & lighting' },
-  demoPrep:              { label: 'Demo, Drywall & Prep',    desc: 'Demolition, drywall repair & hauling' }
-};
-
-const QUICK_FINISH_LEVELS = {
-  budget:   { label: 'Budget',      icon: '$',    description: 'Stock materials, basic fixtures, cosmetic updates' },
-  midRange: { label: 'Mid-Range',   icon: '$$',   description: 'Semi-custom cabinets, quartz counters, quality fixtures' },
-  highEnd:  { label: 'High-End',    icon: '$$$',  description: 'Custom cabinets, natural stone, premium appliances' },
-  ikea:     { label: 'IKEA Kitchen', icon: 'IKEA', description: 'SEKTION cabinets with professional full-service installation' }
-};
-
 // ─── Contextual Tips ──────────────────────────────────────────────────
 
 const TIPS = {
-  ikea: [
-    "IKEA cabinets typically save 40\u201360% compared to custom cabinets of similar quality.",
-    "Budget 3\u20135\u00d7 the cost of IKEA cabinets alone for the complete kitchen project.",
-    "IKEA's SEKTION system uses the same quality European-style hinges and drawer slides found in high-end custom kitchens.",
-    "A certified IKEA kitchen installer coordinates all trades \u2014 plumbing, electrical, countertops \u2014 so you don't have to."
-  ],
-  budget: [
-    "Stock cabinets and laminate countertops offer the best value for a budget remodel.",
-    "Keeping the existing layout avoids costly plumbing and electrical relocation.",
-    "Refinishing existing cabinets instead of replacing them can save 50% or more on cabinet costs."
-  ],
-  midRange: [
-    "Semi-custom cabinets paired with quartz countertops hit the mid-range sweet spot.",
-    "Mid-range remodels offer the best return on investment for home resale \u2014 typically recouping 75\u201380% of costs.",
-    "Consider soft-close hinges and undermount drawer slides \u2014 they add minimal cost but significant daily comfort."
-  ],
-  highEnd: [
-    "Custom cabinets and natural stone countertops define a high-end remodel.",
-    "Expect longer lead times for custom materials \u2014 plan 3\u20136 months ahead for ordering.",
-    "Invest in quality appliances and fixtures \u2014 they're used daily and make the biggest impact on how the space feels."
-  ],
   general: [
     "Always add 10\u201315% contingency to your remodel budget for unexpected costs.",
     "Getting 3+ contractor bids helps ensure fair pricing for your project.",
     "Permits typically cost $200\u2013$1,500 depending on scope and location."
   ],
-  // Detailed mode tips — keyed by selection context
   detailed: {
     replacingCabinets:   "Replacing cabinets is the single biggest cost driver \u2014 typically 25\u201340% of your total budget.",
     keepingLayout:       "Keeping your current layout saves thousands by avoiding plumbing and electrical relocation.",
@@ -693,18 +583,6 @@ const TIPS = {
     fullRenovation:      "A full kitchen renovation typically takes 8\u201312 weeks \u2014 plan for temporary cooking arrangements."
   }
 };
-
-function selectTips(finishLevel) {
-  const levelTips = TIPS[finishLevel] || TIPS.midRange;
-  const generalTips = TIPS.general;
-  var picked = [];
-  picked.push(levelTips[Math.floor(Math.random() * levelTips.length)]);
-  var second;
-  do { second = levelTips[Math.floor(Math.random() * levelTips.length)]; } while (second === picked[0] && levelTips.length > 1);
-  picked.push(second);
-  picked.push(generalTips[Math.floor(Math.random() * generalTips.length)]);
-  return picked;
-}
 
 function selectDetailedTips(state) {
   var tips = [];
@@ -717,9 +595,7 @@ function selectDetailedTips(state) {
   if (state.cabinetsReplacing && (state.cabinetTier === 'budget')) {
     tips.push(TIPS.detailed.budgetCabinets);
   }
-  if (state.countertopsReplacing && state.countertopMaterial === 'naturalStone') {
-    tips.push(TIPS.detailed.highEndCountertops);
-  } else if (state.countertopsReplacing && state.countertopMaterial === 'quartz') {
+  if (state.countertopsReplacing && state.countertopMaterial === 'quartz') {
     tips.push(TIPS.detailed.quartzCountertops);
   }
   if (state.flooringReplacing) {
@@ -745,20 +621,10 @@ const ROI_TIERS = [
   { id: 'upscale',    roi: 38, label: 'Upscale remodel' }
 ];
 
-function getROITier(mode, state) {
-  if (mode === 'quick') {
-    var level = state.quickFinishLevel;
-    var activeCount = Object.keys(state.quickCategories).filter(function(k) { return state.quickCategories[k]; }).length;
-    if (level === 'highEnd' && activeCount >= 4) return ROI_TIERS[3]; // upscale
-    if (level === 'highEnd') return ROI_TIERS[2]; // major mid-range
-    if ((level === 'midRange' || level === 'ikea') && activeCount >= 4) return ROI_TIERS[2]; // major mid
-    if (!state.quickCategories.cabinets || activeCount <= 2) return ROI_TIERS[0]; // minor
-    return ROI_TIERS[1]; // mid-range
-  }
-  // Detailed mode
+function getROITier(state) {
   var replacingCount = [state.cabinetsReplacing, state.countertopsReplacing, state.flooringReplacing, state.plumbingReplacing].filter(Boolean).length;
   if (!state.cabinetsReplacing && replacingCount <= 2) return ROI_TIERS[0]; // minor
-  var isHighEnd = state.cabinetTier === 'highEnd' || state.cabinetTier === 'luxury';
+  var isHighEnd = state.cabinetTier === 'highEnd';
   if (isHighEnd && replacingCount >= 3) return ROI_TIERS[3]; // upscale
   if (replacingCount >= 3) return ROI_TIERS[2]; // major mid
   return ROI_TIERS[1]; // mid-range
@@ -773,20 +639,10 @@ const TIMELINE_TIERS = [
   { maxCategories: 99, noCabinets: false, label: '10\u201316 weeks' }
 ];
 
-function getTimeline(mode, state) {
-  if (mode === 'quick') {
-    var activeCount = Object.keys(state.quickCategories).filter(function(k) { return state.quickCategories[k]; }).length;
-    var hasCabinets = state.quickCategories.cabinets;
-    var isHighEnd = state.quickFinishLevel === 'highEnd';
-    if (!hasCabinets && activeCount <= 2) return '1\u20133 weeks';
-    if (isHighEnd && activeCount >= 4) return '10\u201316 weeks';
-    if (activeCount >= 4) return '8\u201312 weeks';
-    return '4\u20138 weeks';
-  }
-  // Detailed mode
+function getTimeline(state) {
   var replacingCount = [state.cabinetsReplacing, state.countertopsReplacing, state.flooringReplacing, state.plumbingReplacing, state.backsplashReplacing].filter(Boolean).length;
   var hasCabs = state.cabinetsReplacing;
-  var highEnd = state.cabinetTier === 'highEnd' || state.cabinetTier === 'luxury';
+  var highEnd = state.cabinetTier === 'highEnd';
   if (!hasCabs && replacingCount <= 2) return '1\u20133 weeks';
   if (highEnd && replacingCount >= 3) return '10\u201316 weeks';
   if (replacingCount >= 3) return '8\u201312 weeks';

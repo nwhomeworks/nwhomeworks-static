@@ -8,25 +8,12 @@
 
   // ─── State ──────────────────────────────────────────────────
   const state = {
-    mode: 'quick',
-
     zipCode: '',
     kitchenSF: 120,
     sizeMode: 'preset',
     selectedPreset: 'k-md',
     layout: 'lshape',
 
-    // Quick mode state
-    quickFinishLevel: 'midRange',
-    quickCategories: {
-      cabinets: true,
-      countertopsBacksplash: true,
-      flooring: true,
-      plumbingElectrical: true,
-      demoPrep: true
-    },
-
-    // Detailed mode state
     cabinetsReplacing: true,
     cabinetTier: 'midRange',
 
@@ -68,27 +55,103 @@
     '#847667', '#a89888', '#d4d0cc', '#5c4f43'
   ];
 
-  // ─── Layout SVG Icons ─────────────────────────────────────────
-  const LAYOUT_ICONS = {
-    galley:  '<svg viewBox="0 0 48 36"><rect x="4" y="4" width="40" height="8" rx="2"/><rect x="4" y="24" width="40" height="8" rx="2"/></svg>',
-    lshape:  '<svg viewBox="0 0 48 36"><rect x="4" y="4" width="40" height="8" rx="2"/><rect x="4" y="4" width="8" height="28" rx="2"/></svg>',
-    ushape:  '<svg viewBox="0 0 48 36"><rect x="4" y="4" width="40" height="8" rx="2"/><rect x="4" y="4" width="8" height="28" rx="2"/><rect x="36" y="4" width="8" height="28" rx="2"/></svg>',
-    lisland: '<svg viewBox="0 0 48 36"><rect x="4" y="4" width="40" height="8" rx="2"/><rect x="4" y="4" width="8" height="28" rx="2"/><rect x="18" y="22" width="20" height="6" rx="2" opacity="0.5"/></svg>',
-    uisland: '<svg viewBox="0 0 48 36"><rect x="4" y="4" width="40" height="8" rx="2"/><rect x="4" y="4" width="8" height="28" rx="2"/><rect x="36" y="4" width="8" height="28" rx="2"/><rect x="18" y="22" width="14" height="6" rx="2" opacity="0.5"/></svg>'
+  // ─── 3D Isometric Layout Icons ───────────────────────────────
+  // Each layout is described as a set of cabinet "runs" and optional
+  // "islands" in plan-view coordinates (u = width, v = depth from front).
+  // We render each run as an isometric 3D box with top, front, and right
+  // faces and paint back-to-front so near boxes occlude far ones.
+  const LAYOUT_DEFS = {
+    galley: {
+      runs: [
+        { u1: 0, u2: 10, v1: 6, v2: 8 },
+        { u1: 0, u2: 10, v1: 0, v2: 2 }
+      ],
+      islands: []
+    },
+    lshape: {
+      runs: [
+        { u1: 0, u2: 10, v1: 6, v2: 8 },
+        { u1: 0, u2: 2,  v1: 0, v2: 6 }
+      ],
+      islands: []
+    },
+    ushape: {
+      runs: [
+        { u1: 0, u2: 10, v1: 6, v2: 8 },
+        { u1: 0, u2: 2,  v1: 0, v2: 6 },
+        { u1: 8, u2: 10, v1: 0, v2: 6 }
+      ],
+      islands: []
+    },
+    lisland: {
+      runs: [
+        { u1: 0, u2: 10, v1: 6, v2: 8 },
+        { u1: 0, u2: 2,  v1: 0, v2: 6 }
+      ],
+      islands: [
+        { u1: 4, u2: 8, v1: 2, v2: 4 }
+      ]
+    },
+    uisland: {
+      runs: [
+        { u1: 0, u2: 10, v1: 6, v2: 8 },
+        { u1: 0, u2: 2,  v1: 0, v2: 6 },
+        { u1: 8, u2: 10, v1: 0, v2: 6 }
+      ],
+      islands: [
+        { u1: 3.5, u2: 6.5, v1: 2, v2: 4 }
+      ]
+    }
   };
+
+  function buildLayoutIcon(key) {
+    var def = LAYOUT_DEFS[key];
+    if (!def) return '';
+    var scale = 5;
+    var offsetX = 15;
+    var offsetY = 60;
+    var H = 3;       // cabinet height
+    var VDX = 0.55;  // v-axis projects this much to the right
+    var VDY = 0.35;  // v-axis projects this much upward
+
+    function proj(u, v, h) {
+      return [
+        +(offsetX + (u + v * VDX) * scale).toFixed(2),
+        +(offsetY - (v * VDY + h) * scale).toFixed(2)
+      ];
+    }
+    function pts(arr) {
+      return arr.map(function (p) { return p[0] + ',' + p[1]; }).join(' ');
+    }
+    function box(r, islandCls) {
+      var baseCls = islandCls ? 'layout-3d__island' : 'layout-3d__run';
+      var top   = [proj(r.u1, r.v2, H), proj(r.u2, r.v2, H), proj(r.u2, r.v1, H), proj(r.u1, r.v1, H)];
+      var front = [proj(r.u1, r.v1, H), proj(r.u2, r.v1, H), proj(r.u2, r.v1, 0), proj(r.u1, r.v1, 0)];
+      var right = [proj(r.u2, r.v1, H), proj(r.u2, r.v2, H), proj(r.u2, r.v2, 0), proj(r.u2, r.v1, 0)];
+      return '<polygon class="' + baseCls + ' layout-3d__front" points="' + pts(front) + '"/>' +
+             '<polygon class="' + baseCls + ' layout-3d__right" points="' + pts(right) + '"/>' +
+             '<polygon class="' + baseCls + ' layout-3d__top"   points="' + pts(top) + '"/>';
+    }
+
+    var all = [];
+    def.runs.forEach(function (r) { all.push({ r: r, island: false }); });
+    def.islands.forEach(function (r) { all.push({ r: r, island: true }); });
+    // Draw furthest-back first so nearer boxes paint on top.
+    all.sort(function (a, b) {
+      return (b.r.v1 + b.r.v2) - (a.r.v1 + a.r.v2);
+    });
+
+    var body = all.map(function (item) { return box(item.r, item.island); }).join('');
+    return '<svg class="layout-3d" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">' + body + '</svg>';
+  }
 
   // ─── Init ───────────────────────────────────────────────────
   function init() {
-    // Shared inputs
+    hydrateStateFromURL();
+
     renderSizePresets();
     attachInputListeners();
-    attachModeToggle();
 
-    // Quick mode
-    renderFinishCards();
-    renderQuickToggles();
-
-    // Detailed mode
     renderLayoutCards();
     renderCabinetCards();
     renderCountertopCards();
@@ -102,131 +165,59 @@
     renderFinishingToggles();
     attachAccordionListeners();
     attachReplacingToggles();
+    attachShareButton();
+    attachStickyTotalObserver();
+    syncInputsFromState();
 
     openSection(0);
-    applyMode();
+    updateMetroHint();
     recalculate();
   }
 
+  function syncInputsFromState() {
+    var zipInput = document.getElementById('zip-code');
+    if (zipInput && state.zipCode) zipInput.value = state.zipCode;
+
+    if (state.sizeMode === 'custom') {
+      document.querySelectorAll('.size-toggle__btn').forEach(function (b) {
+        b.classList.toggle('active', b.dataset.mode === 'custom');
+      });
+      document.getElementById('size-presets').classList.add('hidden');
+      var customEl = document.getElementById('size-custom');
+      customEl.classList.remove('hidden');
+      var sqftInput = document.getElementById('sqft-input');
+      if (sqftInput) sqftInput.value = state.kitchenSF;
+    }
+
+    // Sync the static Replacing / Keeping Current toggles + their option panels.
+    var replacingMap = [
+      { id: 'cabinets-toggle',    stateKey: 'cabinetsReplacing',    optionsId: 'cabinets-options' },
+      { id: 'countertops-toggle', stateKey: 'countertopsReplacing', optionsId: 'countertops-options' },
+      { id: 'backsplash-toggle',  stateKey: 'backsplashReplacing',  optionsId: 'backsplash-options' },
+      { id: 'flooring-toggle',    stateKey: 'flooringReplacing',    optionsId: 'flooring-options' },
+      { id: 'appliances-toggle',  stateKey: 'appliancesBuying',     optionsId: 'appliances-tier-options' },
+      { id: 'plumbing-toggle',    stateKey: 'plumbingReplacing',    optionsId: 'plumbing-options' }
+    ];
+    replacingMap.forEach(function (t) {
+      var container = document.getElementById(t.id);
+      if (!container) return;
+      var val = state[t.stateKey];
+      container.querySelectorAll('.replacing-toggle__btn').forEach(function (b) {
+        b.classList.toggle('active', (b.dataset.value === 'true') === val);
+      });
+      var options = document.getElementById(t.optionsId);
+      if (options) options.classList.toggle('collapsed', !val);
+    });
+
+    // If we hydrated an invalid slab selection, fall back to tile.
+    if (isSlabOption(state.backsplashOption) && !state.countertopsReplacing) {
+      state.backsplashOption = 'midTile';
+      renderBacksplashCards();
+    }
+  }
+
   function recalculate() {
-    if (state.mode === 'quick') {
-      calculateQuick();
-    } else {
-      calculate();
-    }
-  }
-
-  // ─── Mode Toggle ──────────────────────────────────────────────
-  function attachModeToggle() {
-    var toggle = document.getElementById('mode-toggle');
-    if (!toggle) return;
-    toggle.querySelectorAll('.mode-toggle__btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        toggle.querySelectorAll('.mode-toggle__btn').forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        state.mode = btn.dataset.mode;
-        applyMode();
-        recalculate();
-      });
-    });
-  }
-
-  function applyMode() {
-    var calc = document.getElementById('calculator');
-    var subtitle = document.getElementById('hero-subtitle');
-    if (state.mode === 'quick') {
-      calc.className = 'calculator mode-quick';
-      if (subtitle) subtitle.innerHTML = 'Get a quick ballpark estimate in 30 seconds.<br>No signup required.';
-    } else {
-      calc.className = 'calculator mode-detailed';
-      if (subtitle) subtitle.innerHTML = 'Pick your materials, layout, and options. Get a detailed, itemized estimate<br>adjusted for your location. No signup required.';
-    }
-  }
-
-  // ─── Render: Finish Level Cards (Quick Mode) ────────────────
-  function renderFinishCards() {
-    var container = document.getElementById('finish-cards');
-    if (!container) return;
-    container.innerHTML = Object.entries(QUICK_FINISH_LEVELS).map(function (entry) {
-      var key = entry[0], level = entry[1];
-      var isIkea = key === 'ikea';
-      return '<button class="finish-card' + (key === state.quickFinishLevel ? ' active' : '') +
-        (isIkea ? ' finish-card--ikea' : '') + '" data-key="' + key + '">' +
-        '<span class="finish-card__icon">' + level.icon + '</span>' +
-        '<span class="finish-card__label">' + level.label + '</span>' +
-        '<span class="finish-card__desc">' + level.description + '</span></button>';
-    }).join('');
-
-    container.querySelectorAll('.finish-card').forEach(function (card) {
-      card.addEventListener('click', function () {
-        container.querySelectorAll('.finish-card').forEach(function (c) { c.classList.remove('active'); });
-        card.classList.add('active');
-        state.quickFinishLevel = card.dataset.key;
-        recalculate();
-      });
-    });
-  }
-
-  // ─── Render: Quick Scope Toggles ────────────────────────────
-  function renderQuickToggles() {
-    var container = document.getElementById('quick-toggles');
-    if (!container) return;
-    container.innerHTML = Object.entries(QUICK_TOGGLE_META).map(function (entry) {
-      var key = entry[0], meta = entry[1];
-      var isActive = state.quickCategories[key];
-      return '<div class="quick-toggle' + (isActive ? ' active' : '') + '" data-key="' + key + '">' +
-        '<div class="quick-toggle__info"><span class="quick-toggle__label">' + meta.label + '</span>' +
-        '<span class="quick-toggle__desc">' + meta.desc + '</span></div>' +
-        '<div class="quick-toggle__switch"></div></div>';
-    }).join('');
-
-    container.querySelectorAll('.quick-toggle').forEach(function (toggle) {
-      toggle.addEventListener('click', function () {
-        var key = toggle.dataset.key;
-        state.quickCategories[key] = !state.quickCategories[key];
-        toggle.classList.toggle('active');
-        recalculate();
-      });
-    });
-  }
-
-  // ─── Quick Mode Calculation ─────────────────────────────────
-  function calculateQuick() {
-    var m = getRegionalMultiplier(state.zipCode);
-    var sqft = state.kitchenSF;
-    var level = state.quickFinishLevel;
-    var results = { sections: [], totalLow: 0, totalHigh: 0 };
-
-    Object.entries(state.quickCategories).forEach(function (entry) {
-      var groupKey = entry[0], isActive = entry[1];
-      if (!isActive) return;
-
-      var categoryKeys = QUICK_TOGGLE_MAP[groupKey];
-      var groupLow = 0, groupHigh = 0;
-
-      categoryKeys.forEach(function (catKey) {
-        var tierData = QUICK_COST_DATA[catKey][level];
-        if (!tierData) return;
-        var rawCost = tierData.base + (tierData.perSqft * sqft);
-        groupLow += Math.round(rawCost * tierData.low * m);
-        groupHigh += Math.round(rawCost * tierData.high * m);
-      });
-
-      if (groupLow > 0 || groupHigh > 0) {
-        results.sections.push({ label: QUICK_TOGGLE_META[groupKey].label, low: groupLow, high: groupHigh });
-      }
-    });
-
-    results.sections.forEach(function (s) {
-      results.totalLow += s.low;
-      results.totalHigh += s.high;
-    });
-
-    results.multiplier = m;
-    results.metroName = getMetroDisplayName(state.zipCode);
-
-    renderResults(results);
-    renderExtras(results);
+    calculate();
   }
 
   // ─── Accordion ────────────────────────────────────────────────
@@ -295,8 +286,10 @@
       var key = entry[0], layout = entry[1];
       return '<button class="layout-card' + (key === state.layout ? ' active' : '') +
         '" data-layout="' + key + '">' +
-        '<span class="layout-card__icon">' + LAYOUT_ICONS[key] + '</span>' +
-        '<span class="layout-card__label">' + layout.label + '</span></button>';
+        '<span class="layout-card__icon">' + buildLayoutIcon(key) + '</span>' +
+        '<span class="layout-card__label">' + layout.label + '</span>' +
+        (layout.hint ? '<span class="layout-card__hint">' + layout.hint + '</span>' : '') +
+        '</button>';
     }).join('');
 
     container.querySelectorAll('.layout-card').forEach(function (card) {
@@ -361,18 +354,23 @@
   function renderApplianceTierCards() { renderOptionCards('appliance-tier-cards', APPLIANCE_TIERS, 'applianceTier'); }
   function renderPlumbingCards() { renderOptionCards('plumbing-cards', PLUMBING_TIERS, 'plumbingTier'); }
 
+  function isSlabOption(key) {
+    var opt = BACKSPLASH_OPTIONS[key];
+    return !!(opt && opt.type && opt.type.indexOf('slab') === 0);
+  }
+
   function renderBacksplashCards() {
     var data = {};
     Object.entries(BACKSPLASH_OPTIONS).forEach(function (entry) {
       var key = entry[0], item = entry[1];
       var clone = Object.assign({}, item);
-      if (key === 'slab') {
+      if (isSlabOption(key)) {
         if (!state.countertopsReplacing) {
           clone._disabled = true;
           clone._disabledReason = 'Requires new countertops';
         } else {
           var ctRate = COUNTERTOP_MATERIALS[state.countertopMaterial].rate;
-          clone.desc = 'Matches countertop ($' + ctRate + '/sf)';
+          clone.desc = clone.desc + ' ($' + ctRate + '/sf)';
         }
       }
       data[key] = clone;
@@ -381,7 +379,7 @@
   }
 
   function updateBacksplashSlab() {
-    if (state.backsplashOption === 'slab' && !state.countertopsReplacing) {
+    if (isSlabOption(state.backsplashOption) && !state.countertopsReplacing) {
       state.backsplashOption = 'midTile';
     }
     renderBacksplashCards();
@@ -655,8 +653,11 @@
       var metro = getMetroDisplayName(state.zipCode);
       var multiplier = getRegionalMultiplier(state.zipCode);
       if (metro) {
-        hint.textContent = metro + ' \u2014 ' + getMultiplierDescription(multiplier);
-        hint.className = 'form-hint form-hint--active';
+        hint.innerHTML = '<span class="metro-chip"><span class="metro-chip__check" aria-hidden="true"></span>' +
+          '<strong>' + metro + '</strong>' +
+          '<span class="metro-chip__sep">\u00b7</span>' +
+          '<span>' + multiplier.toFixed(2) + '\u00d7 national avg</span></span>';
+        hint.className = 'form-hint form-hint--chip';
       } else {
         hint.textContent = 'Using national average rates';
         hint.className = 'form-hint';
@@ -694,16 +695,20 @@
 
     // Backsplash
     if (state.backsplashReplacing) {
-      var bsRate;
-      if (state.backsplashOption === 'slab' && state.countertopsReplacing) {
-        bsRate = COUNTERTOP_MATERIALS[state.countertopMaterial].rate;
-      } else {
-        var bs = BACKSPLASH_OPTIONS[state.backsplashOption];
-        bsRate = bs.rate || 34;
-      }
       var bsOpt = BACKSPLASH_OPTIONS[state.backsplashOption] || BACKSPLASH_OPTIONS.midTile;
-      var bsLow = Math.round(Math.max(areas.backsplashSF * bsRate * (bsOpt.low || 0.85) * m, BACKSPLASH_MIN_CHARGE * m));
-      var bsHigh = Math.round(Math.max(areas.backsplashSF * bsRate * (bsOpt.high || 1.15) * m, BACKSPLASH_MIN_CHARGE * m));
+      var bsRate, bsArea;
+      if (bsOpt.type === 'slab4' && state.countertopsReplacing) {
+        bsRate = COUNTERTOP_MATERIALS[state.countertopMaterial].rate;
+        bsArea = areas.counterLF * (4 / 12);
+      } else if (bsOpt.type === 'slabFull' && state.countertopsReplacing) {
+        bsRate = COUNTERTOP_MATERIALS[state.countertopMaterial].rate;
+        bsArea = areas.backsplashSF;
+      } else {
+        bsRate = bsOpt.rate || 34;
+        bsArea = areas.backsplashSF;
+      }
+      var bsLow = Math.round(Math.max(bsArea * bsRate * (bsOpt.low || 0.85) * m, BACKSPLASH_MIN_CHARGE * m));
+      var bsHigh = Math.round(Math.max(bsArea * bsRate * (bsOpt.high || 1.15) * m, BACKSPLASH_MIN_CHARGE * m));
       results.sections.push({ label: 'Backsplash', low: bsLow, high: bsHigh });
     }
 
@@ -805,6 +810,8 @@
   function renderResults(results) {
     var placeholder = document.getElementById('results-placeholder');
     var content = document.getElementById('results-content');
+
+    updateStickyTotal(results);
 
     if (results.sections.length === 0) {
       placeholder.classList.remove('hidden');
@@ -997,12 +1004,7 @@
   function renderTips() {
     var container = document.getElementById('results-tips');
     if (!container) return;
-    var tips;
-    if (state.mode === 'quick') {
-      tips = selectTips(state.quickFinishLevel);
-    } else {
-      tips = selectDetailedTips(state);
-    }
+    var tips = selectDetailedTips(state);
     if (tips.length === 0) {
       container.classList.add('hidden');
       return;
@@ -1016,7 +1018,7 @@
   function renderROI() {
     var container = document.getElementById('results-roi');
     if (!container) return;
-    var roiTier = getROITier(state.mode, state);
+    var roiTier = getROITier(state);
     container.classList.remove('hidden');
     document.getElementById('roi-bar-fill').style.width = roiTier.roi + '%';
     document.getElementById('roi-pct').textContent = roiTier.roi + '% recouped at resale';
@@ -1026,7 +1028,7 @@
   function renderTimeline() {
     var el = document.getElementById('results-timeline');
     if (!el) return;
-    var timeline = getTimeline(state.mode, state);
+    var timeline = getTimeline(state);
     el.innerHTML = 'Typical timeline: <strong>' + timeline + '</strong>';
     el.classList.remove('hidden');
   }
@@ -1040,6 +1042,150 @@
     } else {
       el.classList.add('hidden');
     }
+  }
+
+  // ─── Sticky Mobile Total ──────────────────────────────────────
+  function updateStickyTotal(results) {
+    var valEl = document.getElementById('sticky-total-value');
+    if (!valEl) return;
+    if (results.totalLow > 0) {
+      valEl.innerHTML = formatCurrency(results.totalLow) + ' \u2013 ' + formatCurrency(results.totalHigh);
+    } else {
+      valEl.textContent = '\u2014';
+    }
+  }
+
+  function attachStickyTotalObserver() {
+    var sticky = document.getElementById('sticky-total');
+    var sentinel = document.getElementById('results-total');
+    if (!sticky || !sentinel || !('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        // Show sticky bar only when the in-page total is NOT visible.
+        if (entry.isIntersecting) {
+          sticky.classList.remove('visible');
+          sticky.setAttribute('aria-hidden', 'true');
+        } else if (document.getElementById('sticky-total-value').textContent.trim() !== '\u2014') {
+          sticky.classList.add('visible');
+          sticky.setAttribute('aria-hidden', 'false');
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -20% 0px' });
+    observer.observe(sentinel);
+  }
+
+  // ─── Share / URL State ────────────────────────────────────────
+  var URL_MAP = {
+    zip: ['zipCode', 'str'],
+    sf: ['kitchenSF', 'int'],
+    sm: ['sizeMode', 'str'],
+    sp: ['selectedPreset', 'str'],
+    l:  ['layout', 'str'],
+    cr: ['cabinetsReplacing', 'bool'],
+    ct: ['cabinetTier', 'str'],
+    tr: ['countertopsReplacing', 'bool'],
+    tm: ['countertopMaterial', 'str'],
+    br: ['backsplashReplacing', 'bool'],
+    bo: ['backsplashOption', 'str'],
+    fr: ['flooringReplacing', 'bool'],
+    fm: ['flooringMaterial', 'str'],
+    ab: ['appliancesBuying', 'bool'],
+    at: ['applianceTier', 'str'],
+    pr: ['plumbingReplacing', 'bool'],
+    pt: ['plumbingTier', 'str'],
+    lr: ['lightingRecessed', 'bool'],
+    lu: ['lightingUnderCab', 'bool'],
+    lp: ['lightingPendants', 'bool'],
+    lc: ['layoutChange', 'bool'],
+    te: ['trimEnabled', 'bool'],
+    pe: ['paintEnabled', 'bool']
+  };
+
+  function encodeStateToParams() {
+    var params = new URLSearchParams();
+    Object.keys(URL_MAP).forEach(function (key) {
+      var map = URL_MAP[key];
+      var stateKey = map[0], type = map[1];
+      var v = state[stateKey];
+      if (v === '' || v === null || v === undefined) return;
+      if (type === 'bool') {
+        params.set(key, v ? '1' : '0');
+      } else {
+        params.set(key, String(v));
+      }
+    });
+    // Encode active appliance installs as a comma list of active keys.
+    var activeInstalls = Object.keys(state.applianceInstalls).filter(function (k) {
+      return state.applianceInstalls[k];
+    });
+    if (activeInstalls.length) params.set('ai', activeInstalls.join(','));
+    return params;
+  }
+
+  function hydrateStateFromURL() {
+    if (!window.location.search) return;
+    var params = new URLSearchParams(window.location.search);
+    Object.keys(URL_MAP).forEach(function (key) {
+      if (!params.has(key)) return;
+      var map = URL_MAP[key];
+      var stateKey = map[0], type = map[1];
+      var raw = params.get(key);
+      if (type === 'bool') {
+        state[stateKey] = raw === '1';
+      } else if (type === 'int') {
+        var n = parseInt(raw, 10);
+        if (!isNaN(n)) state[stateKey] = n;
+      } else {
+        state[stateKey] = raw;
+      }
+    });
+    if (params.has('ai')) {
+      var keys = params.get('ai').split(',').filter(Boolean);
+      Object.keys(state.applianceInstalls).forEach(function (k) {
+        state.applianceInstalls[k] = keys.indexOf(k) !== -1;
+      });
+    }
+  }
+
+  function attachShareButton() {
+    var btn = document.getElementById('share-btn');
+    var toast = document.getElementById('share-toast');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var params = encodeStateToParams();
+      var url = window.location.origin + window.location.pathname + '?' + params.toString();
+      var label = btn.querySelector('.share-btn__label');
+
+      // Fire-and-forget the modern Clipboard API, with a synchronous execCommand fallback.
+      var copied = false;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try { navigator.clipboard.writeText(url); copied = true; } catch (_) { /* fall through */ }
+      }
+      if (!copied) fallbackCopy(url);
+
+      // Give feedback immediately — don't wait on the clipboard promise.
+      btn.classList.add('share-btn--copied');
+      if (label) label.textContent = 'Copied!';
+      if (toast) {
+        toast.classList.add('visible');
+        setTimeout(function () { toast.classList.remove('visible'); }, 2000);
+      }
+      setTimeout(function () {
+        btn.classList.remove('share-btn--copied');
+        if (label) label.textContent = 'Copy link';
+      }, 2200);
+    });
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '-1000px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) { /* ignore */ }
+    document.body.removeChild(ta);
   }
 
   // ─── Boot ─────────────────────────────────────────────────────

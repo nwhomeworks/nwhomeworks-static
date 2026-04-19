@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kitchen Remodel Cost Calculator (2026) | Free Estimator by Zip Code</title>
-  <meta name="description" content="Free kitchen remodel cost calculator for 2026. Get a quick estimate or build a detailed budget with cabinets, countertops, flooring &amp; more. Itemized breakdown adjusted by zip code.">
+  <title>Kitchen Remodel Cost Estimator (2026) | Detailed Calculator by Zip Code</title>
+  <meta name="description" content="Free detailed kitchen remodel cost estimator. Choose cabinets, countertops, flooring, appliances, lighting and more. Itemized breakdown by zip code.">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/">
 
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Kitchen Remodel Cost Calculator (2026) — Free Estimator">
-  <meta property="og:description" content="Free kitchen remodel cost calculator. Quick ballpark or detailed itemized estimate adjusted for your zip code. No signup required.">
+  <meta property="og:title" content="Kitchen Remodel Cost Estimator (2026) — Free Calculator">
+  <meta property="og:description" content="Free kitchen remodel cost calculator. Detailed itemized estimate adjusted for your zip code. No signup required.">
   <meta property="og:url" content="https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/">
   <meta property="og:site_name" content="NW Homeworks">
   <meta name="twitter:card" content="summary_large_image">
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Kitchen Remodel Cost Calculator","description":"Free kitchen remodel cost calculator with quick and detailed modes. Itemized breakdown adjusted for your zip code with IKEA pricing option.","url":"https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/","applicationCategory":"UtilityApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"LocalBusiness","name":"NW Homeworks","url":"https://www.nwhomeworks.com","telephone":"+12534489462","address":{"@type":"PostalAddress","addressLocality":"Tacoma","addressRegion":"WA","addressCountry":"US"}}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Kitchen Remodel Cost Estimator","description":"Free kitchen remodel cost calculator with detailed itemized breakdown adjusted for your zip code, including an IKEA pricing option.","url":"https://www.nwhomeworks.com/tools/kitchen-remodel-cost-estimator/","applicationCategory":"UtilityApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"LocalBusiness","name":"NW Homeworks","url":"https://www.nwhomeworks.com","telephone":"+12534489462","address":{"@type":"PostalAddress","addressLocality":"Tacoma","addressRegion":"WA","addressCountry":"US"}}}
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,21 +41,13 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
-      <h1>Kitchen Remodel Cost<br>Calculator &amp; Estimator <span class="year-badge">2026</span></h1>
-      <p class="hero-subtitle" id="hero-subtitle">Get a quick ballpark estimate in 30 seconds.<br>No signup required.</p>
+      <h1>Kitchen Remodel<br>Cost Estimator <span class="year-badge">2026</span></h1>
+      <p class="hero-subtitle" id="hero-subtitle">Pick your materials, layout, and options. Get a detailed, itemized estimate<br>adjusted for your location. No signup required.</p>
     </div>
   </section>
 
-  <!-- Mode Toggle -->
-  <div class="mode-toggle-wrapper">
-    <div class="mode-toggle" id="mode-toggle">
-      <button class="mode-toggle__btn active" data-mode="quick">Quick Estimate</button>
-      <button class="mode-toggle__btn" data-mode="detailed">Detailed Estimate</button>
-    </div>
-  </div>
-
   <!-- Calculator -->
-  <section class="calculator mode-quick" id="calculator">
+  <section class="calculator" id="calculator">
     <div class="calculator-inner">
 
       <!-- Form -->
@@ -81,19 +73,7 @@
           </div>
         </div>
 
-        <!-- Quick Mode Form -->
-        <div class="quick-form" id="quick-form">
-          <div class="form-group">
-            <label class="form-label">Finish Level</label>
-            <div class="finish-cards" id="finish-cards"></div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">What's Included</label>
-            <div class="quick-toggles" id="quick-toggles"></div>
-          </div>
-        </div>
-
-        <!-- Detailed Mode Form (V2 Accordion) -->
+        <!-- Detailed Form (V2 Accordion) -->
         <div class="detailed-form" id="detailed-form">
           <div class="accordion" id="accordion">
 
@@ -130,7 +110,7 @@
                   <button class="replacing-toggle__btn" data-value="false">Keeping Current</button>
                 </div>
                 <div class="section-options" id="cabinets-options">
-                  <div class="option-cards option-cards--5" id="cabinet-cards"></div>
+                  <div class="option-cards option-cards--4" id="cabinet-cards"></div>
                 </div>
               </div>
             </div>
@@ -152,7 +132,7 @@
                 </div>
                 <span class="forced-note hidden" id="countertops-forced">Required when replacing cabinets</span>
                 <div class="section-options" id="countertops-options">
-                  <div class="option-cards option-cards--4" id="countertop-cards"></div>
+                  <div class="option-cards option-cards--3" id="countertop-cards"></div>
                 </div>
               </div>
             </div>
@@ -291,12 +271,28 @@
       <!-- Results Panel -->
       <div class="calculator__results" id="results">
         <div class="results-placeholder" id="results-placeholder">
-          <div class="results-placeholder__icon">&#8942;&#8942;&#8942;</div>
-          <p>Select your options to see a cost estimate</p>
+          <div class="results-skeleton" aria-hidden="true">
+            <div class="results-skeleton__label">Your Estimated Cost</div>
+            <div class="results-skeleton__total"></div>
+            <div class="results-skeleton__regional"></div>
+            <div class="results-skeleton__rows">
+              <div class="results-skeleton__row"><div class="results-skeleton__row-label"></div><div class="results-skeleton__row-bar" style="width:86%"></div></div>
+              <div class="results-skeleton__row"><div class="results-skeleton__row-label"></div><div class="results-skeleton__row-bar" style="width:64%"></div></div>
+              <div class="results-skeleton__row"><div class="results-skeleton__row-label"></div><div class="results-skeleton__row-bar" style="width:48%"></div></div>
+              <div class="results-skeleton__row"><div class="results-skeleton__row-label"></div><div class="results-skeleton__row-bar" style="width:32%"></div></div>
+            </div>
+          </div>
+          <p class="results-placeholder__text">Pick a layout to see your estimate</p>
         </div>
         <div class="results-content hidden" id="results-content">
           <div class="results-header">
-            <h2 class="results-title">Your Estimated Cost</h2>
+            <div class="results-header__top">
+              <h2 class="results-title">Your Estimated Cost</h2>
+              <button type="button" class="share-btn" id="share-btn" aria-label="Copy link to this estimate">
+                <span class="share-btn__icon" aria-hidden="true"></span>
+                <span class="share-btn__label">Copy link</span>
+              </button>
+            </div>
             <div class="results-total" id="results-total"></div>
             <div class="results-regional" id="results-regional"></div>
             <div class="results-timeline hidden" id="results-timeline"></div>
@@ -316,20 +312,36 @@
               <span class="results-roi__pct" id="roi-pct"></span>
               <span class="results-roi__label" id="roi-label"></span>
             </div>
-            <div class="results-roi__source">Source: Remodeling Magazine Cost vs. Value Report</div>
+            <div class="results-roi__source">Source: <a href="https://www.costvsvalue.com/" target="_blank" rel="noopener">Remodeling Magazine Cost vs. Value Report</a></div>
           </div>
           <div class="results-disclaimer">
             These estimates are for planning purposes only. Actual costs vary based on materials, labor availability, structural conditions, and contractor pricing.
           </div>
+          <div class="results-trust">
+            <div class="results-trust__stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="results-trust__text">
+              <strong>Dozens of 5-star reviews</strong>
+              <span>Serving the greater Seattle area since 2011 &middot; 500+ projects completed</span>
+            </div>
+          </div>
           <div class="results-cta">
             <p>Want a more precise estimate for your specific project?</p>
-            <a href="https://www.nwhomeworks.com/contact/" class="btn-cta" target="_blank" rel="noopener">
+            <a href="https://www.nwhomeworks.com/contact" class="btn-cta" target="_blank" rel="noopener">
               Schedule a Free Consultation &amp; Quote
             </a>
             <span class="results-cta__phone">or call <a href="tel:+12534489462">(253) 448-9462</a></span>
           </div>
         </div>
       </div>
+
+      <!-- Sticky mobile running total -->
+      <div class="sticky-total" id="sticky-total" aria-hidden="true">
+        <div class="sticky-total__label">Estimate</div>
+        <div class="sticky-total__value" id="sticky-total-value">&mdash;</div>
+      </div>
+
+      <!-- Share toast -->
+      <div class="toast" id="share-toast" role="status" aria-live="polite">Link copied to clipboard</div>
 
     </div>
   </section>
@@ -357,12 +369,12 @@
 
         <details class="faq-item">
           <summary>What is the average cost of a kitchen remodel?</summary>
-          <div class="faq-answer"><p>The national average kitchen remodel cost is approximately $25,000–$45,000 for a mid-range project. However, costs vary dramatically by region — a remodel that costs $35,000 in Dallas might cost $50,000 in Seattle or $55,000 in San Francisco. Our calculator adjusts estimates based on your zip code to give you locally relevant numbers.</p></div>
+          <div class="faq-answer"><p>The national average kitchen remodel cost is approximately $25,000–$45,000 for a mid-range project, a range consistent with published data from industry aggregators like <a href="https://www.homeadvisor.com/" target="_blank" rel="noopener">HomeAdvisor</a> and <a href="https://www.angi.com/" target="_blank" rel="noopener">Angi</a>, and with the annual <a href="https://www.costvsvalue.com/" target="_blank" rel="noopener">Remodeling Magazine Cost vs. Value Report</a>. However, costs vary dramatically by region — a remodel that costs $35,000 in Dallas might cost $50,000 in Seattle or $55,000 in San Francisco. Our calculator adjusts estimates based on your zip code to give you locally relevant numbers.</p></div>
         </details>
 
         <details class="faq-item">
           <summary>How much does a kitchen remodel cost in Seattle?</summary>
-          <div class="faq-answer"><p>Kitchen remodels in the Seattle-Tacoma metro area cost approximately 20–25% more than the national average due to higher labor rates and material costs. A mid-range kitchen remodel in Seattle typically runs $30,000–$65,000, while a high-end renovation can exceed $120,000. IKEA kitchen remodels in the Seattle area range from $10,000–$35,000 with full professional installation.</p></div>
+          <div class="faq-answer"><p>Kitchen remodels in the Seattle-Tacoma metro area cost approximately 20–25% more than the national average due to higher labor rates and material costs (see <a href="https://www.bls.gov/regions/west/washington.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a> regional wage data). A mid-range kitchen remodel in Seattle typically runs $30,000–$65,000, while a high-end renovation can exceed $120,000. IKEA kitchen remodels in the Seattle area range from $10,000–$35,000 with full professional installation.</p></div>
         </details>
 
         <details class="faq-item">
@@ -372,7 +384,7 @@
 
         <details class="faq-item">
           <summary>Is an IKEA kitchen cheaper than a custom kitchen?</summary>
-          <div class="faq-answer"><p>Yes — significantly. An IKEA kitchen typically costs 40–60% less than a comparable custom kitchen. IKEA's SEKTION system uses the same quality European-style hardware (soft-close hinges, undermount drawer slides) found in custom shops, but at mass-market pricing. The savings come from flat-pack manufacturing and standardized sizing, not reduced quality. Where custom kitchens shine is in non-standard sizes, exotic materials, and unique configurations.</p></div>
+          <div class="faq-answer"><p>Yes — significantly. An IKEA kitchen typically costs 40–60% less than a comparable custom kitchen. <a href="https://www.ikea.com/us/en/rooms/kitchen/" target="_blank" rel="noopener">IKEA's SEKTION system</a> uses the same quality European-style hardware (soft-close hinges, undermount drawer slides) found in custom shops, but at mass-market pricing. The savings come from flat-pack manufacturing and standardized sizing, not reduced quality. Where custom kitchens shine is in non-standard sizes, exotic materials, and unique configurations.</p></div>
         </details>
 
         <details class="faq-item">
@@ -411,49 +423,32 @@
       <h2>Understanding Kitchen Remodel Costs in 2026</h2>
       <p>Kitchen remodeling costs have risen steadily over the past few years, driven by increased material costs, higher labor rates, and supply chain adjustments. In 2026, the most important factors affecting your kitchen remodel cost are:</p>
       <ul>
-        <li><strong>Finish level:</strong> The gap between budget and high-end has widened. Stock cabinets start around $60&ndash;$100 per linear foot, while custom cabinetry can exceed $500 per linear foot.</li>
+        <li><strong>Finish level:</strong> The gap between budget and high-end has widened. Stock cabinets start around $60–$100 per linear foot, while custom cabinetry can exceed $500 per linear foot.</li>
         <li><strong>Location:</strong> Labor costs vary dramatically by metro area. A kitchen remodel in San Francisco costs 45% more than the same project in Houston.</li>
         <li><strong>Scope:</strong> A cosmetic refresh (new countertops, paint, hardware) costs a fraction of a full gut renovation that includes structural changes, new plumbing, and electrical upgrades.</li>
         <li><strong>Material choices:</strong> Countertop costs alone range from $15/sq ft (laminate) to $150+/sq ft (engineered quartz or natural stone).</li>
       </ul>
 
-      <h3>How to Use This Kitchen Remodel Calculator</h3>
-      <p>Our kitchen remodel cost calculator offers two modes. <strong>Quick Estimate</strong> gives you a ballpark in about 30 seconds &mdash; just enter your zip code, choose a kitchen size, and select your finish level. <strong>Detailed Estimate</strong> lets you build a line-by-line budget by choosing specific cabinets, countertops, backsplash, flooring, appliances, lighting, and more. Both modes adjust costs automatically based on your zip code using regional labor and material data.</p>
-      <p>The calculator generates an itemized cost breakdown, a visual chart showing where your budget goes, and a return-on-investment estimate based on current home values in your area. Use it to compare different material combinations, see how switching from custom cabinets to IKEA changes your total, or figure out whether that waterfall quartz island is worth the splurge.</p>
-
-      <h3>Kitchen Remodel Cost by Size</h3>
-      <p>Kitchen size is one of the biggest cost drivers, but the relationship isn't always linear. Here's what to expect in 2026:</p>
-      <ul>
-        <li><strong>Small galley kitchen (60&ndash;80 sq ft):</strong> $8,000&ndash;$35,000. Compact spaces cost less overall but more per square foot because plumbing, electrical, and demolition costs don't shrink with the room.</li>
-        <li><strong>Standard kitchen (100&ndash;150 sq ft):</strong> $15,000&ndash;$65,000. This is where most homeowners land. An L-shaped or U-shaped layout with stock or semi-custom cabinets hits the sweet spot for value.</li>
-        <li><strong>Large kitchen (150&ndash;200 sq ft):</strong> $30,000&ndash;$90,000. Larger footprints mean more cabinetry, more countertop surface, and often an island &mdash; all of which add up quickly.</li>
-        <li><strong>Extra-large kitchen (200+ sq ft):</strong> $50,000&ndash;$150,000+. At this scale, layout complexity matters as much as material choices. Multiple work zones, prep sinks, and commercial-style appliances are common.</li>
-      </ul>
-
       <h3>IKEA Kitchen Remodel: A Cost-Effective Alternative</h3>
-      <p>IKEA's SEKTION kitchen system has become one of the most popular choices for homeowners seeking quality at a reasonable price. The secret is in the engineering &mdash; IKEA uses the same soft-close European-style hinges and undermount drawer slides found in cabinets costing three to four times the price.</p>
-      <p>However, IKEA's installation service only covers cabinet assembly and mounting. A complete IKEA kitchen remodel also requires demolition, plumbing, electrical work, countertop fabrication, backsplash installation, and flooring &mdash; all coordinated separately. This is why working with an <a href="https://www.nwhomeworks.com/services/ikea/">experienced IKEA kitchen installer</a> who handles the full project can save both time and money compared to coordinating multiple contractors yourself.</p>
+      <p><a href="https://www.ikea.com/us/en/rooms/kitchen/" target="_blank" rel="noopener">IKEA's SEKTION kitchen system</a> has become one of the most popular choices for homeowners seeking quality at a reasonable price. The secret is in the engineering — IKEA uses the same soft-close European-style hinges and undermount drawer slides found in cabinets costing three to four times the price.</p>
+      <p>However, IKEA's installation service only covers cabinet assembly and mounting. A complete IKEA kitchen remodel also requires demolition, plumbing, electrical work, countertop fabrication, backsplash installation, and flooring — all coordinated separately. This is why working with an experienced IKEA kitchen installer who handles the full project can save both time and money compared to coordinating multiple contractors yourself.</p>
 
       <h3>Kitchen Remodel Cost Per Square Foot</h3>
-      <p>Kitchen remodel costs per square foot vary widely based on scope and finish level. Budget remodels typically run $100&ndash;$250 per square foot, mid-range projects fall between $200&ndash;$450, and high-end renovations can reach $400&ndash;$800 or more. These figures include all labor and materials. Smaller kitchens often have a higher per-square-foot cost because fixed expenses like plumbing, electrical, and demolition are spread over fewer square feet. Our calculator computes your per-square-foot cost automatically based on your specific selections and location.</p>
-
-      <h3>What Costs the Most in a Kitchen Remodel?</h3>
-      <p>Cabinets and countertops together typically account for 50&ndash;60% of a kitchen remodel budget. Here's a typical breakdown for a mid-range project:</p>
-      <ul>
-        <li><strong>Cabinets:</strong> 25&ndash;35% of total budget</li>
-        <li><strong>Countertops:</strong> 10&ndash;15%</li>
-        <li><strong>Appliances:</strong> 10&ndash;20%</li>
-        <li><strong>Flooring:</strong> 5&ndash;10%</li>
-        <li><strong>Plumbing &amp; electrical:</strong> 10&ndash;15%</li>
-        <li><strong>Backsplash:</strong> 3&ndash;7%</li>
-        <li><strong>Demolition &amp; prep:</strong> 3&ndash;5%</li>
-        <li><strong>Finishing (paint, trim, hardware):</strong> 3&ndash;5%</li>
-      </ul>
-      <p>Understanding where the money goes helps you make smarter trade-offs. For example, choosing IKEA cabinets instead of semi-custom can free up thousands of dollars for a nicer countertop or better appliances.</p>
+      <p>Kitchen remodel costs per square foot vary widely based on scope and finish level. Budget remodels typically run $100&ndash;$250 per square foot, mid-range projects fall between $200&ndash;$450, and high-end renovations can reach $400&ndash;$800 or more. These figures include all labor and materials. Smaller kitchens often have a higher per-square-foot cost because fixed expenses like plumbing, electrical, and demolition are spread over fewer square feet. Our estimator calculates your per-square-foot cost automatically based on your specific selections and location.</p>
 
       <h3>Kitchen Remodel Costs in Seattle</h3>
-      <p>The Seattle-Tacoma metro area consistently ranks 20&ndash;25% above the national average for remodeling costs, driven by strong demand, high labor rates for skilled trades, and the region's building code requirements. Homeowners in Seattle, Bellevue, Tacoma, and the greater Puget Sound should factor in this regional premium when budgeting their projects. Our calculator automatically adjusts for these local cost differences based on your zip code.</p>
-      <p>If you're planning a <a href="https://www.nwhomeworks.com/services/kitchens/">kitchen remodel in the Seattle area</a>, getting an accurate budget early helps avoid surprises. Use this calculator for a ballpark, then <a href="https://www.nwhomeworks.com/contact/">schedule a free consultation</a> for a detailed quote based on your actual kitchen.</p>
+      <p>The Seattle-Tacoma metro area consistently ranks 20&ndash;25% above the national average for remodeling costs, driven by strong demand, high labor rates for skilled trades, and the region's building code requirements. Homeowners in Seattle, Bellevue, Tacoma, and the greater Puget Sound should factor in this regional premium when budgeting their projects. Our estimator automatically adjusts for these local cost differences based on your zip code.</p>
+
+      <h3>Sources &amp; Methodology</h3>
+      <p>The cost ranges, ROI figures, and regional adjustments in this calculator are built from a combination of industry research, manufacturer pricing, and data from our own kitchen remodels across the Puget Sound. Key references we rely on:</p>
+      <ul>
+        <li><a href="https://www.costvsvalue.com/" target="_blank" rel="noopener">Remodeling Magazine Cost vs. Value Report</a> &mdash; annual national and regional benchmarks for remodeling cost and resale ROI.</li>
+        <li><a href="https://www.nkba.org/" target="_blank" rel="noopener">National Kitchen &amp; Bath Association (NKBA)</a> &mdash; industry standards, design guidelines, and member survey data on kitchen budgeting.</li>
+        <li><a href="https://www.ikea.com/us/en/rooms/kitchen/" target="_blank" rel="noopener">IKEA SEKTION kitchen system</a> &mdash; published manufacturer pricing for cabinet boxes, fronts, and components.</li>
+        <li><a href="https://www.homeadvisor.com/" target="_blank" rel="noopener">HomeAdvisor</a> and <a href="https://www.angi.com/" target="_blank" rel="noopener">Angi</a> &mdash; national remodel cost aggregators used to validate our mid-range and budget tiers.</li>
+        <li><a href="https://www.bls.gov/oes/current/oes_nat.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics (OES)</a> &mdash; regional wage data for skilled construction trades used to tune our zip-code multipliers.</li>
+      </ul>
+      <p>Estimates are refreshed annually to reflect current material pricing, published cost indices, and on-the-ground bid data from projects we complete. For a precise quote on your specific project, <a href="https://www.nwhomeworks.com/contact" target="_blank" rel="noopener">schedule a consultation</a>.</p>
 
     </div>
   </section>
@@ -471,9 +466,9 @@
       </div>
       <div class="footer-links">
         <a href="https://www.nwhomeworks.com" target="_blank" rel="noopener">nwhomeworks.com</a>
-        <a href="https://www.nwhomeworks.com/contact/" target="_blank" rel="noopener">Contact</a>
-        <a href="https://www.nwhomeworks.com/services/kitchens/" target="_blank" rel="noopener">Kitchen Remodeling</a>
-        <a href="https://www.nwhomeworks.com/services/ikea/" target="_blank" rel="noopener">IKEA Installation</a>
+        <a href="https://www.nwhomeworks.com/contact" target="_blank" rel="noopener">Contact</a>
+        <a href="https://www.nwhomeworks.com/services/kitchens" target="_blank" rel="noopener">Kitchen Remodeling</a>
+        <a href="https://www.nwhomeworks.com/services/ikea" target="_blank" rel="noopener">IKEA Installation</a>
       </div>
       <p class="footer-copy">&copy; 2026 NW Homeworks. Tacoma, WA. <a href="tel:+12534489462">(253) 448-9462</a></p>
     </div>
