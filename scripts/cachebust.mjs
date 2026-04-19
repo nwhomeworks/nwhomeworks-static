@@ -15,8 +15,9 @@ const htmlFiles = execSync('git ls-files "*.html"', { encoding: 'utf8' })
   .filter(Boolean)
   .filter((p) => !p.startsWith('.claude/') && !p.startsWith('node_modules/'));
 
-// Matches absolute refs like /css/site.css or /js/main.js with an optional ?v=
-const assetRefRe = /\/((?:css|js)\/[^"'?\s]+\.(?:css|js))(\?v=[^"']*)?/g;
+// Matches absolute refs like /css/site.css, /js/main.js, or nested paths like
+// /tools/kitchen-remodel-cost-estimator/css/estimator.css, with an optional ?v=.
+const assetRefRe = /\/([\w.\-/]*?(?:css|js)\/[\w.\-]+\.(?:css|js))(\?v=[^"']*)?/g;
 
 // Pass 1: discover every asset referenced in any tracked HTML file.
 const assets = new Set();
