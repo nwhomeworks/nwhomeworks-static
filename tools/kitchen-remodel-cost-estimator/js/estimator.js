@@ -297,20 +297,12 @@
         container.querySelectorAll('.layout-card').forEach(function (c) { c.classList.remove('active'); });
         card.classList.add('active');
         state.layout = card.dataset.layout;
-        applyLayoutApplianceDefaults();
         recalculate();
       });
     });
   }
 
-  function isIslandLayout() {
-    return state.layout === 'lisland' || state.layout === 'uisland';
-  }
-
-  function applyLayoutApplianceDefaults() {
-    state.applianceInstalls.canopyHood = isIslandLayout();
-    renderApplianceInstallToggles();
-  }
+  var HOOD_KEYS = ['microhood', 'wallHood', 'canopyHood'];
 
   // ─── Render: Option Cards (generic) ───────────────────────────
   function renderOptionCards(containerId, data, stateKey, extraFields) {
@@ -414,6 +406,12 @@
         } else if (key === 'range' && state.applianceInstalls.range) {
           state.applianceInstalls.cooktop = false;
           state.applianceInstalls.wallOven = false;
+          renderApplianceInstallToggles();
+        } else if (HOOD_KEYS.indexOf(key) !== -1 && state.applianceInstalls[key]) {
+          // Hood interlock — only one of micro/wall/canopy at a time.
+          HOOD_KEYS.forEach(function (h) {
+            if (h !== key) state.applianceInstalls[h] = false;
+          });
           renderApplianceInstallToggles();
         } else {
           toggle.classList.toggle('active');
