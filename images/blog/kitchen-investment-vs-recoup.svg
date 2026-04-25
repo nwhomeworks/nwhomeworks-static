@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="kr-title kr-desc" style="font-family:'Outfit','Figtree',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;max-width:100%;height:auto;">
+  <title id="kr-title">Kitchen pre-sale investment versus resale recoup, national versus Pacific region</title>
+  <desc id="kr-desc">Two paired stat cards showing the typical mid-range kitchen remodel investment and the average dollar amount recouped at resale, with national figures and regional figures for the Pacific census region.</desc>
+
+  <rect width="800" height="480" fill="#ffffff"/>
+
+  <text x="40" y="48" font-family="Syne,sans-serif" font-size="24" font-weight="700" fill="#1a1a1a">Kitchen Pre-Sale Investment vs. Recoup</text>
+  <text x="40" y="74" font-size="14" font-weight="400" fill="#545554">Mid-range kitchen remodel: what you spend, what you get back at resale.</text>
+
+  <line x1="40" y1="92" x2="760" y2="92" stroke="#e8e5e0" stroke-width="1"/>
+
+  <!-- National card -->
+  <g>
+    <rect x="40" y="125" width="345" height="270" fill="#f5f3f0" stroke="#e8e5e0" stroke-width="1" rx="6"/>
+    <rect x="40" y="125" width="345" height="42" fill="#1a1a1a" rx="6"/>
+    <rect x="40" y="155" width="345" height="12" fill="#1a1a1a"/>
+    <text x="60" y="153" font-family="Syne,sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="1">NATIONAL</text>
+
+    <text x="60" y="200" font-size="12" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">TYPICAL INVESTMENT</text>
+    <text x="60" y="240" font-family="Syne,sans-serif" font-size="32" font-weight="700" fill="#1a1a1a">$27,492</text>
+
+    <line x1="60" y1="262" x2="365" y2="262" stroke="#c5c0b8" stroke-width="1"/>
+
+    <text x="60" y="290" font-size="12" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">AVERAGE RESALE RECOUP</text>
+    <text x="60" y="330" font-family="Syne,sans-serif" font-size="32" font-weight="700" fill="#1a1a1a">$26,406</text>
+
+    <rect x="60" y="350" width="305" height="32" fill="#8eba3f" rx="4"/>
+    <text x="212.5" y="372" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a" text-anchor="middle">96% recouped</text>
+  </g>
+
+  <!-- Pacific region card -->
+  <g>
+    <rect x="415" y="125" width="345" height="270" fill="#f5f3f0" stroke="#e8e5e0" stroke-width="1" rx="6"/>
+    <rect x="415" y="125" width="345" height="42" fill="#5e9ab2" rx="6"/>
+    <rect x="415" y="155" width="345" height="12" fill="#5e9ab2"/>
+    <text x="435" y="153" font-family="Syne,sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="1">PACIFIC REGION (SEATTLE)</text>
+
+    <text x="435" y="200" font-size="12" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">TYPICAL INVESTMENT</text>
+    <text x="435" y="240" font-family="Syne,sans-serif" font-size="32" font-weight="700" fill="#1a1a1a">$34,300</text>
+
+    <line x1="435" y1="262" x2="740" y2="262" stroke="#c5c0b8" stroke-width="1"/>
+
+    <text x="435" y="290" font-size="12" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">AVERAGE RESALE RECOUP</text>
+    <text x="435" y="330" font-family="Syne,sans-serif" font-size="32" font-weight="700" fill="#1a1a1a">$30,620</text>
+
+    <rect x="435" y="350" width="305" height="32" fill="#8eba3f" rx="4"/>
+    <text x="587.5" y="372" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a" text-anchor="middle">89% recouped</text>
+  </g>
+
+  <line x1="40" y1="420" x2="760" y2="420" stroke="#e8e5e0" stroke-width="1"/>
+  <text x="40" y="445" font-size="11.5" fill="#7a6b5c" font-weight="500">Source: NAR &amp; NARI Remodeling Impact Report (nar.realtor)</text>
+  <text x="40" y="463" font-size="10.5" fill="#8a8880">Pacific region figures reflect higher labor and materials costs typical of Seattle-area projects.</text>
+  <text x="760" y="463" font-size="10.5" fill="#8a8880" text-anchor="end" font-weight="500">NW Homeworks</text>
+</svg>

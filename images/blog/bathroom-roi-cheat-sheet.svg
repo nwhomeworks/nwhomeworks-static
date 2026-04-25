@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="br-title br-desc" style="font-family:'Outfit','Figtree',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;max-width:100%;height:auto;">
+  <title id="br-title">Bathroom remodel ROI cheat sheet for three project types</title>
+  <desc id="br-desc">Three side-by-side cards showing typical cost and resale recoup for a tub-to-shower conversion, a full mid-range bathroom remodel, and a heated floor add-on, based on the NAR Remodeling Impact Report.</desc>
+
+  <rect width="800" height="500" fill="#ffffff"/>
+
+  <text x="40" y="48" font-family="Syne,sans-serif" font-size="24" font-weight="700" fill="#1a1a1a">Bathroom Remodel ROI Cheat Sheet</text>
+  <text x="40" y="74" font-size="14" font-weight="400" fill="#545554">Three pre-sale bathroom moves, ranked by what they cost and what you get back.</text>
+
+  <line x1="40" y1="92" x2="760" y2="92" stroke="#e8e5e0" stroke-width="1"/>
+
+  <!-- Card 1: Tub-to-shower -->
+  <g>
+    <rect x="40" y="125" width="230" height="280" fill="#ffffff" stroke="#c5c0b8" stroke-width="1.5" rx="6"/>
+    <rect x="40" y="125" width="230" height="6" fill="#8eba3f" rx="6"/>
+    <rect x="40" y="125" width="230" height="3" fill="#8eba3f"/>
+
+    <text x="60" y="170" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a">Tub-to-shower</text>
+    <text x="60" y="190" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a">conversion</text>
+
+    <text x="60" y="232" font-size="11" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">TYPICAL COST</text>
+    <text x="60" y="258" font-family="Syne,sans-serif" font-size="22" font-weight="700" fill="#1a1a1a">$7K&#8211;$15K</text>
+
+    <text x="60" y="295" font-size="11" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">TYPICAL RECOUP</text>
+    <text x="60" y="318" font-family="Syne,sans-serif" font-size="20" font-weight="700" fill="#1a1a1a">60&#8211;70%</text>
+
+    <line x1="60" y1="335" x2="250" y2="335" stroke="#e8e5e0" stroke-width="1"/>
+    <text x="60" y="360" font-size="12" font-weight="500" fill="#1a1a1a">Most-requested bathroom</text>
+    <text x="60" y="378" font-size="12" font-weight="500" fill="#1a1a1a">change in 2026.</text>
+  </g>
+
+  <!-- Card 2: Full mid-range remodel -->
+  <g>
+    <rect x="285" y="125" width="230" height="280" fill="#ffffff" stroke="#c5c0b8" stroke-width="1.5" rx="6"/>
+    <rect x="285" y="125" width="230" height="6" fill="#5e9ab2" rx="6"/>
+    <rect x="285" y="125" width="230" height="3" fill="#5e9ab2"/>
+
+    <text x="305" y="170" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a">Full mid-range</text>
+    <text x="305" y="190" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a">bathroom remodel</text>
+
+    <text x="305" y="232" font-size="11" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">AVERAGE COST</text>
+    <text x="305" y="258" font-family="Syne,sans-serif" font-size="22" font-weight="700" fill="#1a1a1a">$26,574</text>
+
+    <text x="305" y="295" font-size="11" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">AVERAGE RECOUP</text>
+    <text x="305" y="318" font-family="Syne,sans-serif" font-size="20" font-weight="700" fill="#1a1a1a">$19,213 / 72%</text>
+
+    <line x1="305" y1="335" x2="495" y2="335" stroke="#e8e5e0" stroke-width="1"/>
+    <text x="305" y="360" font-size="12" font-weight="500" fill="#1a1a1a">Per the NAR Remodeling</text>
+    <text x="305" y="378" font-size="12" font-weight="500" fill="#1a1a1a">Impact Report.</text>
+  </g>
+
+  <!-- Card 3: Heated floor add-on -->
+  <g>
+    <rect x="530" y="125" width="230" height="280" fill="#ffffff" stroke="#c5c0b8" stroke-width="1.5" rx="6"/>
+    <rect x="530" y="125" width="230" height="6" fill="#7a6b5c" rx="6"/>
+    <rect x="530" y="125" width="230" height="3" fill="#7a6b5c"/>
+
+    <text x="550" y="170" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a">Heated floor</text>
+    <text x="550" y="190" font-family="Syne,sans-serif" font-size="16" font-weight="700" fill="#1a1a1a">add-on (primary)</text>
+
+    <text x="550" y="232" font-size="11" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">INSTALLED COST</text>
+    <text x="550" y="258" font-family="Syne,sans-serif" font-size="22" font-weight="700" fill="#1a1a1a">$1.5K&#8211;$3K</text>
+
+    <text x="550" y="295" font-size="11" font-weight="500" fill="#7a6b5c" letter-spacing="0.5">LISTING IMPACT</text>
+    <text x="550" y="318" font-family="Syne,sans-serif" font-size="20" font-weight="700" fill="#1a1a1a">"Luxury" tag</text>
+
+    <line x1="550" y1="335" x2="740" y2="335" stroke="#e8e5e0" stroke-width="1"/>
+    <text x="550" y="360" font-size="12" font-weight="500" fill="#1a1a1a">Quiet luxury feature</text>
+    <text x="550" y="378" font-size="12" font-weight="500" fill="#1a1a1a">agents call out in listings.</text>
+  </g>
+
+  <line x1="40" y1="430" x2="760" y2="430" stroke="#e8e5e0" stroke-width="1"/>
+  <text x="40" y="455" font-size="11.5" fill="#7a6b5c" font-weight="500">Source: NAR &amp; NARI Remodeling Impact Report (nar.realtor)</text>
+  <text x="40" y="473" font-size="10.5" fill="#8a8880">Tub-to-shower and heated-floor figures reflect typical Seattle-area pricing.</text>
+  <text x="760" y="473" font-size="10.5" fill="#8a8880" text-anchor="end" font-weight="500">NW Homeworks</text>
+</svg>
