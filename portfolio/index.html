@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
   <meta name="pinterest" content="noform">
-  <title>Remodeling Portfolio | Kitchen & Bath Projects | NW Homeworks</title>
+  <title>Remodeling Portfolio | Kitchen &amp; Bath Projects | NW Homeworks</title>
   <meta name="description" content="Browse our portfolio of kitchen remodels, bathroom renovations, and custom projects across the Puget Sound. See real results from real homes.">
   <link rel="canonical" href="https://www.nwhomeworks.com/portfolio/">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Remodeling Portfolio | Kitchen & Bath Projects | NW Homeworks">
+  <meta property="og:title" content="Remodeling Portfolio | Kitchen &amp; Bath Projects | NW Homeworks">
   <meta property="og:url" content="https://www.nwhomeworks.com/portfolio/">
   <meta property="og:site_name" content="NW Homeworks">
   <meta property="og:image" content="/images/2026/03/engineered-quartz-countertop-installation-seattle.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Schema -->
@@ -27,15 +26,95 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link rel="stylesheet" href="/css/site.css?v=ec4f3184">
-  <link rel="stylesheet" href="/css/portfolio.css?v=22978fa2" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/css/portfolio.css?v=22978fa2"></noscript>
+  <link rel="stylesheet" href="/css/site.css?v=a9ac81e4">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVJ4CWM5DR"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KVJ4CWM5DR');gtag('config','AW-18056594442');gtag('config','AW-18056594442/U3rwCNTGlZwcEIqIh6JD',{'phone_conversion_number':'(253) 448-9462'});</script>
+
+  <style>
+    body { background:#fff; color:#1a1a1a; }
+
+    .hub-page { padding-top:120px; padding-bottom:0; }
+
+    /* Intro */
+    .hub-intro { max-width:1200px; margin:0 auto; padding:0 40px 48px; text-align:center; }
+    .hub-intro h1 { font-family:"Outfit",sans-serif; font-weight:300; font-size:56px; line-height:1.1; color:#1a1a1a; margin:0 0 16px; }
+    .hub-intro .hub-subtitle { font-family:"Syne",sans-serif; font-weight:500; font-size:18px; color:#5e9ab2; letter-spacing:.3px; margin:0 0 24px; }
+    .hub-intro .hub-description { font-family:"Figtree",sans-serif; font-size:16px; line-height:1.7; color:#545554; max-width:780px; margin:0 auto; }
+
+    /* Section spacing — edge-to-edge full-width */
+    .hub-featured { padding:0; }
+    .hub-grid { padding:56px 0 80px; max-width:none; margin:0; }
+
+    /* Tile base */
+    .hub-tile { position:relative; display:block; overflow:hidden; border-radius:6px; background:#f5f3f0; text-decoration:none; color:inherit; }
+    .hub-tile-img { position:relative; width:100%; overflow:hidden; }
+    .hub-tile-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+    .hub-tile-img::after { content:""; position:absolute; left:0; right:0; bottom:0; height:55%; background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.35) 50%, transparent 100%); pointer-events:none; }
+    .hub-tile:hover .hub-tile-img img { transform:scale(1.04); }
+    .hub-tile-info { position:absolute; left:0; right:0; bottom:0; padding:20px 24px; z-index:2; }
+    .hub-tile-label { display:block; font-family:"Syne",sans-serif; font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#aedb42; margin-bottom:6px; text-shadow:0 1px 4px rgba(0,0,0,.4); }
+    .hub-tile-name { display:block; font-family:"Outfit",sans-serif; font-weight:500; font-size:20px; color:#fff; margin:0 0 4px; line-height:1.2; text-shadow:0 1px 6px rgba(0,0,0,.5); }
+    .hub-tile-location { display:block; font-family:"Figtree",sans-serif; font-size:13px; color:rgba(255,255,255,.85); margin:0; text-shadow:0 1px 4px rgba(0,0,0,.4); }
+    .hub-tile-cta { display:inline-flex; align-items:center; gap:6px; margin-top:10px; font-family:"Syne",sans-serif; font-weight:500; font-size:13px; color:rgba(255,255,255,.9); letter-spacing:.3px; opacity:0; transition:opacity .3s ease, color .3s ease; text-shadow:0 1px 4px rgba(0,0,0,.4); }
+    .hub-tile-cta .cta-arrow { display:inline-block; transition:transform .3s ease; }
+    .hub-tile:hover .hub-tile-cta { opacity:1; }
+    .hub-tile:hover .hub-tile-cta .cta-arrow { transform:translateX(4px); }
+
+    /* Featured (2-up side-by-side, full-width) */
+    .hub-featured { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+    .hub-tile-feature { border-radius:0; background:transparent; }
+    .hub-tile-feature .hub-tile-img { aspect-ratio:16/10; width:100%; }
+    .hub-tile-feature .hub-tile-info { padding:28px 36px; }
+    .hub-tile-feature .hub-tile-name { font-size:28px; font-weight:400; line-height:1.2; }
+    .hub-tile-feature .hub-tile-label { font-size:11px; }
+    .hub-tile-feature .hub-tile-location { font-size:14px; }
+    .hub-tile-feature .hub-tile-cta { font-size:13px; }
+
+    /* Grid (3-up, full-width) */
+    .hub-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:0; }
+    .hub-grid .hub-tile { border-radius:0; }
+    .hub-grid .hub-tile-img { aspect-ratio:4/3; }
+    .hub-grid .hub-tile-info { padding:20px 22px; }
+
+    /* CTA band */
+    .hub-cta { background:#5e9ab2; padding:72px 40px; text-align:center; }
+    .hub-cta h2 { font-family:"Outfit",sans-serif; font-weight:300; font-size:36px; color:#fff; margin:0 0 16px; }
+    .hub-cta p { font-family:"Figtree",sans-serif; font-size:16px; line-height:1.7; color:rgba(255,255,255,.9); max-width:640px; margin:0 auto 28px; }
+    .hub-cta-btn { display:inline-block; background:#8eba3f; color:#1a1a1a; font-family:"Syne",sans-serif; font-weight:600; font-size:15px; padding:14px 32px; border-radius:4px; text-decoration:none; letter-spacing:.3px; transition:background .3s ease, transform .3s ease; }
+    .hub-cta-btn:hover { background:#aedb42; transform:translateY(-2px); }
+
+    /* Tablet */
+    @media (max-width:1024px) {
+      .hub-page { padding-top:100px; }
+      .hub-intro h1 { font-size:44px; }
+      .hub-tile-feature .hub-tile-img { aspect-ratio:3/2; }
+      .hub-tile-feature .hub-tile-name { font-size:22px; }
+      .hub-tile-feature .hub-tile-info { padding:22px 24px; }
+      .hub-grid { grid-template-columns:repeat(2, 1fr); padding-top:40px; }
+      .hub-grid .hub-tile-info { padding:18px 20px; }
+    }
+
+    /* Mobile */
+    @media (max-width:600px) {
+      .hub-page { padding-top:90px; }
+      .hub-intro { padding:0 20px 32px; }
+      .hub-intro h1 { font-size:34px; }
+      .hub-intro .hub-subtitle { font-size:15px; }
+      .hub-intro .hub-description { font-size:15px; }
+      .hub-featured { grid-template-columns:1fr; }
+      .hub-grid { grid-template-columns:1fr; padding-top:32px; }
+      .hub-tile-feature .hub-tile-img { aspect-ratio:4/3; }
+      .hub-tile-feature .hub-tile-info { padding:18px 20px; }
+      .hub-tile-feature .hub-tile-name { font-size:22px; }
+      .hub-grid .hub-tile-info { padding:16px 20px; }
+      .hub-tile-name { font-size:18px; }
+      .hub-tile-cta { opacity:1; }
+      .hub-cta { padding:56px 24px; }
+      .hub-cta h2 { font-size:28px; }
+    }
+  </style>
 </head>
-<body>
+<body class="light-page">
 
   <header class="site-header"><div class="header-inner"><nav class="header-nav header-nav-left"><a href="/">Home</a><div class="nav-item-dropdown">
         <a href="/services/">Services<span class="nav-chevron" aria-hidden="true">&#9662;</span></a>
@@ -60,47 +139,125 @@
       </div><a href="/portfolio/">Works</a>
     <a href="/tools/kitchen-remodel-cost-estimator/">Tools</a><a href="/contact/">Contact</a><a href="/blog/">Blog</a><a href="tel:2534489462">Call (253) 448-9462</a></nav>
 
-  <div class="portfolio-page">
-    <div class="portfolio-scatter-heading">Our Work</div>
+  <main class="hub-page">
 
-    <div class="portfolio-header">
+    <section class="hub-intro">
       <h1>Our Work</h1>
-      <p>Kitchens, bathrooms, and beyond &mdash; built across the Puget Sound</p>
-      <p>Browse through our past projects to find inspiration for your next remodel and get a feel for how we work. Every project tells a story &mdash; from the initial challenge to the creative solutions that brought it all together. Whether it's a mid-century kitchen transformation, an attic-to-spa bathroom conversion, or a custom IKEA installation that doesn't look like IKEA, each one reflects the care, craftsmanship, and problem-solving our clients count on.</p>
+      <p class="hub-subtitle">Kitchens, bathrooms, and beyond &mdash; built across the Puget Sound</p>
+      <p class="hub-description">Get some inspiration from our curated portfolio. Not everything we&rsquo;ve built, but a collection of projects we&rsquo;re most proud of. Below you&rsquo;ll find a slice of our recent work across Seattle, Bellevue, Tacoma, and the rest of the Puget Sound: kitchen remodels, bathroom renovations, IKEA installs, and custom one-offs. In fifteen years we&rsquo;ve completed more than 500 projects. What&rsquo;s here is the work we&rsquo;d point a friend to.</p>
+    </section>
+
+    <section class="hub-featured" aria-label="Featured projects">
+      <a class="hub-tile hub-tile-feature" href="/portfolio/normandy-park-kitchen/">
+        <div class="hub-tile-img"><img src="/images/2026/03/normandy-park-walnut-cabinets-farnhouse-sink-tile-backsplash-1-2048x1153.webp" alt="Normandy Park kitchen remodel with dark walnut cabinets, white quartz, and arabesque tile backsplash" loading="lazy" width="2048" height="1153"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-label">Featured Kitchen</span>
+          <span class="hub-tile-name">Normandy Park Kitchen</span>
+          <span class="hub-tile-location">Normandy Park, WA &middot; Mid-century modern with wet bar</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <a class="hub-tile hub-tile-feature" href="/portfolio/maple-leaf-master-bath/">
+        <div class="hub-tile-img"><img src="/images/2026/03/master-bath-remodel-green-tile-shower-surround-brass-hardware.webp" alt="Maple Leaf master bath remodel with green tile shower surround and brass hardware" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-label">Featured Bathroom</span>
+          <span class="hub-tile-name">Maple Leaf Master Bath</span>
+          <span class="hub-tile-location">Seattle, WA &middot; Green tile, brass hardware, walk-in shower</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+    </section>
+
+    <section class="hub-grid" aria-label="All projects">
+      <a class="hub-tile" href="/portfolio/bainbridge-island-kitchen/">
+        <div class="hub-tile-img"><img src="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle.webp" alt="Bainbridge Island kitchen remodel with bright modern Scandinavian style" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">Bainbridge Island Kitchen</span>
+          <span class="hub-tile-location">Bainbridge Island, WA</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="hub-tile" href="/portfolio/sammamish-kitchen/">
+        <div class="hub-tile-img"><img src="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1.webp" alt="Sammamish IKEA kitchen install with custom teak doors and integrated fridge" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">Sammamish Kitchen</span>
+          <span class="hub-tile-location">Sammamish, WA &middot; IKEA with custom teak doors</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="hub-tile" href="/portfolio/ravenna-kitchen/">
+        <div class="hub-tile-img"><img src="/images/2026/03/engineered-quartz-countertop-installation-seattle.webp" alt="Ravenna kitchen remodel in Seattle with engineered quartz countertops" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">Ravenna Kitchen</span>
+          <span class="hub-tile-location">Seattle, WA</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="hub-tile" href="/portfolio/gig-harbor-master-bath/">
+        <div class="hub-tile-img"><img src="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp" alt="Gig Harbor luxury marble master bath with freestanding tub and walk-in shower" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">Gig Harbor Master Bath</span>
+          <span class="hub-tile-location">Gig Harbor, WA &middot; Luxury marble &amp; freestanding tub</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="hub-tile" href="/portfolio/queen-anne-fireplace/">
+        <div class="hub-tile-img"><img src="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp" alt="Queen Anne fireplace feature wall with tile surround and media wall" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">Queen Anne Fireplace</span>
+          <span class="hub-tile-location">Seattle, WA &middot; Tile feature wall &amp; media surround</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="hub-tile" href="/portfolio/vashon-kitchen/">
+        <div class="hub-tile-img"><img src="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp" alt="Vashon modern farmhouse kitchen with white cabinets and wood island" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">Vashon Kitchen</span>
+          <span class="hub-tile-location">Vashon, WA &middot; Modern farmhouse</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="hub-tile" href="/portfolio/redmond-kitchen/">
+        <div class="hub-tile-img"><img src="/images/2026/03/redmond-kitchen-remodel-white-shaker-cabinets-blue-star-professional-range.webp" alt="Redmond kitchen remodel with white shaker cabinets and Blue Star range" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">Redmond Kitchen</span>
+          <span class="hub-tile-location">Redmond, WA &middot; White shaker &amp; pro range</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="hub-tile" href="/portfolio/view-ridge-kids-bath/">
+        <div class="hub-tile-img"><img src="/images/2026/03/kids-bath-remodel-view-ridge-seattle.webp" alt="View Ridge kids bathroom remodel in Seattle" loading="lazy"></div>
+        <div class="hub-tile-info">
+          <span class="hub-tile-name">View Ridge Kid&rsquo;s Bath</span>
+          <span class="hub-tile-location">Seattle, WA</span>
+          <span class="hub-tile-cta">View Project <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+    </section>
+
+    <section class="hub-cta">
+      <h2>Ready to start your project?</h2>
+      <p>Whether it&rsquo;s a full kitchen remodel, a master bath redo, or something more focused, we&rsquo;d love to hear about it. Free consultations, no pressure.</p>
+      <a href="/contact/" class="hub-cta-btn">Get a Free Quote &rarr;</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy;2026 NW Homeworks &mdash; Serving Seattle, <a href="/areas/bellevue/">Bellevue</a>, Tacoma &amp; the Greater Puget Sound Area</span>
+      <div class="footer-contact"><a href="mailto:query@nwhomeworks.com">query@nwhomeworks.com</a><a href="tel:2534489462">(253) 448-9462</a></div>
+      <a href="/privacy-policy/">Privacy Policy</a>
     </div>
-
-    <div class="portfolio-footer">
-      <div class="portfolio-footer-cta"><a href="/contact/">Ready to start your project? Get a Free Quote <span class="cta-arrow">&rarr;</span></a></div>
-      <div class="portfolio-footer-hint"><span class="hint-desktop">Scroll to explore</span><span class="hint-mobile">Swipe to explore</span></div>
-    </div>
-
-    <div class="portfolio-carousel">
-      <div class="portfolio-card"><a href="/portfolio/ravenna-kitchen/"><img src="/images/2026/03/engineered-quartz-countertop-installation-seattle.webp" alt="Ravenna Kitchen remodel in Seattle"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Ravenna Kitchen</div><div class="portfolio-card-location">Seattle, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/bainbridge-island-kitchen/"><img src="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle.webp" alt="Bainbridge Island kitchen remodel"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Bainbridge Island Kitchen</div><div class="portfolio-card-location">Bainbridge Island, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/maple-leaf-master-bath/"><img src="/images/2026/03/master-bath-remodel-green-tile-shower-surround-brass-hardware.webp" alt="Maple Leaf master bath remodel in Seattle"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Maple Leaf Master Bath</div><div class="portfolio-card-location">Seattle, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/queen-anne-fireplace/"><img src="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp" alt="Queen Anne fireplace feature wall in Seattle"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Queen Anne Fireplace</div><div class="portfolio-card-location">Seattle, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/gig-harbor-master-bath/"><img src="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp" alt="Gig Harbor luxury master bath remodel"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Gig Harbor Master Bath</div><div class="portfolio-card-location">Gig Harbor, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/normandy-park-kitchen/"><img src="/images/2026/03/normandy-park-walnut-cabinets-farnhouse-sink-tile-backsplash.webp" alt="Normandy Park kitchen remodel with walnut cabinets"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Normandy Park Kitchen</div><div class="portfolio-card-location">Normandy Park, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/sammamish-kitchen/"><img src="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1.webp" alt="Sammamish IKEA kitchen with custom teak doors"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Sammamish Kitchen</div><div class="portfolio-card-location">Sammamish, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/vashon-kitchen/"><img src="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp" alt="Vashon modern farmhouse kitchen remodel"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Vashon Kitchen</div><div class="portfolio-card-location">Vashon, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/redmond-kitchen/"><img src="/images/2026/03/redmond-kitchen-remodel-white-shaker-cabinets-blue-star-professional-range.webp" alt="Redmond kitchen remodel with white shaker cabinets"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">Redmond Kitchen</div><div class="portfolio-card-location">Redmond, WA</div></div></div>
-
-      <div class="portfolio-card"><a href="/portfolio/view-ridge-kids-bath/"><img src="/images/2026/03/kids-bath-remodel-view-ridge-seattle.webp" alt="View Ridge kids bathroom remodel in Seattle"><div class="portfolio-card-overlay"><span>View Project <span class="cta-arrow">&rarr;</span></span></div></a><div class="portfolio-card-info"><div class="portfolio-card-name">View Ridge Kid's Bath</div><div class="portfolio-card-location">Seattle, WA</div></div></div>
-    </div>
-  </div>
-
-  <!-- Scroll spacer for scatter-to-settle scrub -->
-  <div class="portfolio-scroll-spacer"></div>
+  </footer>
 
   <script defer src="/js/main.js?v=ace077f8"></script>
-  <script defer src="/js/portfolio-hub.js?v=6fce01f0"></script>
 </body>
 </html>
