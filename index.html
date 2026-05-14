@@ -27,10 +27,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Preload hero slide 1 (responsive) -->
-  <link rel="preload" as="image"
+  <!-- Preload hero slide 1 (different image on mobile vs desktop for better crop) -->
+  <link rel="preload" as="image" media="(max-width:768px)"
+    href="/images/2026/05/sammamish-ikea-kitchen-mobile-hero.webp"
+    fetchpriority="high">
+  <link rel="preload" as="image" media="(min-width:769px)"
     href="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp"
-    imagesrcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1000.webp 1000w, /images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp 1600w, /images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp 2500w"
+    imagesrcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp 1600w, /images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp 2500w"
     imagesizes="100vw"
     fetchpriority="high">
 
@@ -135,7 +138,8 @@
     .services-cards:hover .service-card{opacity:.55}
     .services-cards:hover .service-card:hover{opacity:1}
     .service-card a{display:block;width:100%;height:100%;position:relative}
-    .service-card-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .6s ease}
+    .service-card-bg{display:block;width:100%;height:100%;transition:transform .6s ease;overflow:hidden}
+    .service-card-bg img{width:100%;height:100%;object-fit:cover;display:block}
     .service-card:hover .service-card-bg{transform:scale(1.05)}
     .service-card a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:50%;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);z-index:1;pointer-events:none}
     .service-card-title{position:absolute;bottom:28px;left:28px;z-index:2;font-family:'Outfit',sans-serif;font-weight:400;font-size:24px;color:#fff;pointer-events:none}
@@ -197,7 +201,8 @@
     .projects-header h2 strong{font-weight:600}
     .projects-grid{width:100%;display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:0 6px}
     .project-tile{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer}
-    .project-tile-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .6s ease}
+    .project-tile-bg{display:block;width:100%;height:100%;transition:transform .6s ease}
+    .project-tile-bg img{width:100%;height:100%;object-fit:cover;display:block}
     .project-tile:hover .project-tile-bg{transform:scale(1.06)}
     .project-tile::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:55%;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);z-index:1;pointer-events:none;opacity:0;transition:opacity .4s ease}
     .project-tile:hover::after{opacity:1}
@@ -327,21 +332,21 @@
   <section class="hero">
     <div class="hero-slide">
       <picture class="hero-slide-bg">
-        <source media="(max-width:768px)" srcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1000.webp" type="image/webp">
+        <source media="(max-width:768px)" srcset="/images/2026/05/sammamish-ikea-kitchen-mobile-hero.webp" type="image/webp">
         <source media="(max-width:1400px)" srcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp" type="image/webp">
         <img src="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp" alt="Normandy Park kitchen remodel with walnut cabinets and farmhouse sink" width="2500" height="1875" fetchpriority="high" decoding="async">
       </picture>
     </div>
     <div class="hero-slide">
       <picture class="hero-slide-bg">
-        <source media="(max-width:768px)" srcset="/images/2026/05/maple-leaf-master-bathroom-remodel-1-1000.webp" type="image/webp">
+        <source media="(max-width:768px)" srcset="/images/2026/05/gig-harbor-master-bath-mobile-hero.webp" type="image/webp">
         <source media="(max-width:1400px)" srcset="/images/2026/05/maple-leaf-master-bathroom-remodel-1-1600.webp" type="image/webp">
         <img src="/images/2026/05/maple-leaf-master-bathroom-remodel-1.webp" alt="Maple Leaf master bathroom remodel with marble tile and brass fixtures" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="hero-slide">
       <picture class="hero-slide-bg">
-        <source media="(max-width:768px)" srcset="/images/2026/05/bainbridge-island-kitchen-remodel-1-1000.webp" type="image/webp">
+        <source media="(max-width:768px)" srcset="/images/2026/05/chan-kitchen-mobile-hero.webp" type="image/webp">
         <source media="(max-width:1400px)" srcset="/images/2026/05/bainbridge-island-kitchen-remodel-1-1600.webp" type="image/webp">
         <img src="/images/2026/05/bainbridge-island-kitchen-remodel-1.webp" alt="Bainbridge Island modern kitchen renovation" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
       </picture>
@@ -385,28 +390,44 @@
     <div class="services-cards">
       <div class="service-card">
         <a href="/services/kitchens/">
-          <div class="service-card-bg" style="background-image:url('/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle.webp')"></div>
+          <picture class="service-card-bg">
+            <source media="(max-width:768px)" srcset="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle-800.webp" type="image/webp">
+            <source media="(max-width:1400px)" srcset="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle-1600.webp" type="image/webp">
+            <img src="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle.webp" alt="Bright modern Scandinavian-style kitchen remodel in Seattle" loading="lazy" decoding="async">
+          </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">Kitchen Remodeling</div>
         </a>
       </div>
       <div class="service-card">
         <a href="/services/bathrooms/">
-          <div class="service-card-bg" style="background-image:url('/images/2026/03/teal-green-tile-mosaic-spa-like-shower.webp')"></div>
+          <picture class="service-card-bg">
+            <source media="(max-width:768px)" srcset="/images/2026/03/teal-green-tile-mosaic-spa-like-shower-800.webp" type="image/webp">
+            <source media="(max-width:1400px)" srcset="/images/2026/03/teal-green-tile-mosaic-spa-like-shower-1600.webp" type="image/webp">
+            <img src="/images/2026/03/teal-green-tile-mosaic-spa-like-shower.webp" alt="Teal green tile mosaic spa-like shower" loading="lazy" decoding="async">
+          </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">Bathroom Remodeling</div>
         </a>
       </div>
       <div class="service-card">
         <a href="/services/ikea/">
-          <div class="service-card-bg" style="background-image:url('/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home.webp')"></div>
+          <picture class="service-card-bg">
+            <source media="(max-width:768px)" srcset="/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home-800.webp" type="image/webp">
+            <source media="(max-width:1400px)" srcset="/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home-1600.webp" type="image/webp">
+            <img src="/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home.webp" alt="IKEA kitchen installation in a Seattle old-home remodel" loading="lazy" decoding="async">
+          </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">IKEA Installation</div>
         </a>
       </div>
       <div class="service-card">
         <a href="/services/beyond/">
-          <div class="service-card-bg" style="background-image:url('/images/2026/03/laundry-room-remodel-seattle.webp')"></div>
+          <picture class="service-card-bg">
+            <source media="(max-width:768px)" srcset="/images/2026/03/laundry-room-remodel-seattle-800.webp" type="image/webp">
+            <source media="(max-width:1400px)" srcset="/images/2026/03/laundry-room-remodel-seattle-1600.webp" type="image/webp">
+            <img src="/images/2026/03/laundry-room-remodel-seattle.webp" alt="Seattle laundry room remodel" loading="lazy" decoding="async">
+          </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">Beyond Kitchen &amp; Bath</div>
         </a>
@@ -489,27 +510,51 @@
     </div>
     <div class="projects-grid">
       <a class="project-tile" href="/portfolio/ravenna-kitchen/">
-        <div class="project-tile-bg" style="background-image:url('/images/2026/03/engineered-quartz-countertop-installation-seattle.webp')"></div>
+        <picture class="project-tile-bg">
+          <source media="(max-width:768px)" srcset="/images/2026/03/engineered-quartz-countertop-installation-seattle-500.webp" type="image/webp">
+          <source media="(max-width:1400px)" srcset="/images/2026/03/engineered-quartz-countertop-installation-seattle-800.webp" type="image/webp">
+          <img src="/images/2026/03/engineered-quartz-countertop-installation-seattle.webp" alt="Ravenna kitchen with engineered quartz countertops" loading="lazy" decoding="async">
+        </picture>
         <div class="project-tile-caption"><div class="title">Ravenna Kitchen</div><div class="place">Seattle, WA</div></div>
       </a>
       <a class="project-tile" href="/portfolio/sammamish-kitchen/">
-        <div class="project-tile-bg" style="background-image:url('/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1.webp')"></div>
+        <picture class="project-tile-bg">
+          <source media="(max-width:768px)" srcset="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1-500.webp" type="image/webp">
+          <source media="(max-width:1400px)" srcset="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1-800.webp" type="image/webp">
+          <img src="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1.webp" alt="Sammamish IKEA kitchen installation with custom teak doors" loading="lazy" decoding="async">
+        </picture>
         <div class="project-tile-caption"><div class="title">Sammamish Kitchen</div><div class="place">Sammamish, WA</div></div>
       </a>
       <a class="project-tile" href="/portfolio/gig-harbor-master-bath/">
-        <div class="project-tile-bg" style="background-image:url('/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp')"></div>
+        <picture class="project-tile-bg">
+          <source media="(max-width:768px)" srcset="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1-500.webp" type="image/webp">
+          <source media="(max-width:1400px)" srcset="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1-800.webp" type="image/webp">
+          <img src="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp" alt="Gig Harbor luxury marble master bath" loading="lazy" decoding="async">
+        </picture>
         <div class="project-tile-caption"><div class="title">Gig Harbor Master Bath</div><div class="place">Gig Harbor, WA</div></div>
       </a>
       <a class="project-tile" href="/portfolio/queen-anne-fireplace/">
-        <div class="project-tile-bg" style="background-image:url('/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp')"></div>
+        <picture class="project-tile-bg">
+          <source media="(max-width:768px)" srcset="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall-500.webp" type="image/webp">
+          <source media="(max-width:1400px)" srcset="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall-800.webp" type="image/webp">
+          <img src="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp" alt="Queen Anne fireplace feature wall and media surround" loading="lazy" decoding="async">
+        </picture>
         <div class="project-tile-caption"><div class="title">Queen Anne Fireplace</div><div class="place">Seattle, WA</div></div>
       </a>
       <a class="project-tile" href="/portfolio/vashon-kitchen/">
-        <div class="project-tile-bg" style="background-image:url('/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp')"></div>
+        <picture class="project-tile-bg">
+          <source media="(max-width:768px)" srcset="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500-500.webp" type="image/webp">
+          <source media="(max-width:1400px)" srcset="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500-800.webp" type="image/webp">
+          <img src="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp" alt="Vashon modern farmhouse kitchen with white cabinets and wood island" loading="lazy" decoding="async">
+        </picture>
         <div class="project-tile-caption"><div class="title">Vashon Kitchen</div><div class="place">Vashon, WA</div></div>
       </a>
       <a class="project-tile" href="/portfolio/view-ridge-kids-bath/">
-        <div class="project-tile-bg" style="background-image:url('/images/2026/03/kids-bath-remodel-view-ridge-seattle.webp')"></div>
+        <picture class="project-tile-bg">
+          <source media="(max-width:768px)" srcset="/images/2026/03/kids-bath-remodel-view-ridge-seattle-500.webp" type="image/webp">
+          <source media="(max-width:1400px)" srcset="/images/2026/03/kids-bath-remodel-view-ridge-seattle-800.webp" type="image/webp">
+          <img src="/images/2026/03/kids-bath-remodel-view-ridge-seattle.webp" alt="View Ridge kid's bathroom remodel" loading="lazy" decoding="async">
+        </picture>
         <div class="project-tile-caption"><div class="title">View Ridge Kid's Bath</div><div class="place">Seattle, WA</div></div>
       </a>
     </div>
