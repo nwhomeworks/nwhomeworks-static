@@ -69,10 +69,10 @@
 
     /* Hero */
     .hero{position:relative;width:100%;height:100vh;overflow:hidden;background:#1a1a1a}
-    .hero-slide{position:absolute;inset:0;opacity:0;animation:slideCycle 12s infinite}
-    .hero-slide:nth-child(1){animation-delay:0s}
-    .hero-slide:nth-child(2){animation-delay:4s}
-    .hero-slide:nth-child(3){animation-delay:8s}
+    .hero-slide{position:absolute;inset:0;opacity:0}
+    .hero-slide:nth-child(1){opacity:1;animation:slide1Cycle 12s infinite}
+    .hero-slide:nth-child(2){animation:slideCycle 12s 4s infinite}
+    .hero-slide:nth-child(3){animation:slideCycle 12s 8s infinite}
     .hero-slide-bg{position:absolute;inset:-5%;animation:kenBurns 12s infinite ease-in-out;will-change:transform}
     .hero-slide-bg img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-slide:nth-child(1) .hero-slide-bg{animation-delay:0s}
@@ -102,6 +102,7 @@
     .hero-ctas{animation:heroCtasIn .8s cubic-bezier(.22,1,.36,1) 1.6s both}
 
     @keyframes slideCycle{0%{opacity:0}8%{opacity:1}33%{opacity:1}41%{opacity:0}100%{opacity:0}}
+    @keyframes slide1Cycle{0%{opacity:1}33%{opacity:1}41%{opacity:0}92%{opacity:0}100%{opacity:1}}
     @keyframes kenBurns{0%{transform:scale(1) translate(0,0)}33%{transform:scale(1.08) translate(-1%,-.5%)}100%{transform:scale(1.08) translate(-1%,-.5%)}}
 
     /* Trust strip */
@@ -424,7 +425,11 @@
   <section class="founder-section">
     <div class="founder-inner">
       <div class="founder-photo">
-        <img src="/images/2026/03/tim-founder-of-nw-homeworks-seattle-sitchen-and-bath-remodeling.webp" alt="Tim, founder of NW Homeworks - Seattle kitchen and bath remodeling" width="1692" height="2256" loading="lazy">
+        <picture>
+          <source media="(max-width:768px)" srcset="/images/2026/03/tim-founder-of-nw-homeworks-seattle-sitchen-and-bath-remodeling-640.webp" type="image/webp">
+          <source media="(max-width:1400px)" srcset="/images/2026/03/tim-founder-of-nw-homeworks-seattle-sitchen-and-bath-remodeling-1000.webp" type="image/webp">
+          <img src="/images/2026/03/tim-founder-of-nw-homeworks-seattle-sitchen-and-bath-remodeling.webp" alt="Tim, founder of NW Homeworks - Seattle kitchen and bath remodeling" width="1692" height="2256" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="founder-text">
         <div class="eyebrow">Meet the Founder</div>
@@ -536,9 +541,32 @@
   <!-- Shared main.js for header scroll + mobile menu -->
   <script defer src="/js/main.js?v=725db182"></script>
 
-  <!-- Google Analytics (moved to body end to reduce TBT) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVJ4CWM5DR"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KVJ4CWM5DR');gtag('config','AW-18056594442');gtag('config','AW-18056594442/U3rwCNTGlZwcEIqIh6JD',{'phone_conversion_number':'(253) 448-9462'});</script>
+  <!-- Google Analytics — deferred to reduce TBT/LCP impact -->
+  <script>
+    (function(){
+      var loaded=false;
+      function loadGA(){
+        if(loaded)return;loaded=true;
+        var s=document.createElement('script');
+        s.async=true;
+        s.src='https://www.googletagmanager.com/gtag/js?id=G-KVJ4CWM5DR';
+        document.head.appendChild(s);
+        window.dataLayer=window.dataLayer||[];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag=gtag;
+        gtag('js',new Date());
+        gtag('config','G-KVJ4CWM5DR');
+        gtag('config','AW-18056594442');
+        gtag('config','AW-18056594442/U3rwCNTGlZwcEIqIh6JD',{'phone_conversion_number':'(253) 448-9462'});
+      }
+      // Load on first interaction OR 2.5s after page load — whichever is first
+      ['scroll','mousemove','touchstart','keydown','click'].forEach(function(e){
+        window.addEventListener(e,loadGA,{once:true,passive:true});
+      });
+      if(document.readyState==='complete')setTimeout(loadGA,2500);
+      else window.addEventListener('load',function(){setTimeout(loadGA,2500);});
+    })();
+  </script>
 
 </body>
 </html>
