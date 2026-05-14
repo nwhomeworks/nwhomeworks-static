@@ -27,8 +27,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Preload hero slide 1 -->
-  <link rel="preload" as="image" href="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp" fetchpriority="high">
+  <!-- Preload hero slide 1 (responsive) -->
+  <link rel="preload" as="image"
+    href="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp"
+    imagesrcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1000.webp 1000w, /images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp 1600w, /images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp 2500w"
+    imagesizes="100vw"
+    fetchpriority="high">
 
   <!-- Fonts -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap">
@@ -69,7 +73,8 @@
     .hero-slide:nth-child(1){animation-delay:0s}
     .hero-slide:nth-child(2){animation-delay:4s}
     .hero-slide:nth-child(3){animation-delay:8s}
-    .hero-slide-bg{position:absolute;inset:-5%;background-size:cover;background-position:center;animation:kenBurns 12s infinite ease-in-out;will-change:transform}
+    .hero-slide-bg{position:absolute;inset:-5%;animation:kenBurns 12s infinite ease-in-out;will-change:transform}
+    .hero-slide-bg img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-slide:nth-child(1) .hero-slide-bg{animation-delay:0s}
     .hero-slide:nth-child(2) .hero-slide-bg{animation-delay:4s}
     .hero-slide:nth-child(3) .hero-slide-bg{animation-delay:8s}
@@ -92,9 +97,9 @@
     @keyframes heroHeadlineIn{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:translateX(0)}}
     @keyframes heroTaglineIn{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
     @keyframes heroCtasIn{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:translateY(0)}}
-    .hero-content h1{animation:heroHeadlineIn 1.3s cubic-bezier(.22,1,.36,1) 1.5s both}
-    .hero-tagline{animation:heroTaglineIn 1.4s cubic-bezier(.25,.46,.45,.94) 2.5s both;transform-origin:left center}
-    .hero-ctas{animation:heroCtasIn 1s cubic-bezier(.22,1,.36,1) 3.4s both}
+    .hero-content h1{animation:heroHeadlineIn 1s cubic-bezier(.22,1,.36,1) .3s both}
+    .hero-tagline{animation:heroTaglineIn 1.1s cubic-bezier(.25,.46,.45,.94) .9s both;transform-origin:left center}
+    .hero-ctas{animation:heroCtasIn .8s cubic-bezier(.22,1,.36,1) 1.6s both}
 
     @keyframes slideCycle{0%{opacity:0}8%{opacity:1}33%{opacity:1}41%{opacity:0}100%{opacity:0}}
     @keyframes kenBurns{0%{transform:scale(1) translate(0,0)}33%{transform:scale(1.08) translate(-1%,-.5%)}100%{transform:scale(1.08) translate(-1%,-.5%)}}
@@ -255,9 +260,6 @@
     }
   </style>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVJ4CWM5DR"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KVJ4CWM5DR');gtag('config','AW-18056594442');gtag('config','AW-18056594442/U3rwCNTGlZwcEIqIh6JD',{'phone_conversion_number':'(253) 448-9462'});</script>
 </head>
 <body>
 
@@ -323,13 +325,25 @@
   <!-- ══════════════════════════════════════════════ HERO (Ken Burns slider) ══════════════════════════════════════════════ -->
   <section class="hero">
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp')"></div>
+      <picture class="hero-slide-bg">
+        <source media="(max-width:768px)" srcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1000.webp" type="image/webp">
+        <source media="(max-width:1400px)" srcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp" type="image/webp">
+        <img src="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp" alt="Normandy Park kitchen remodel with walnut cabinets and farmhouse sink" width="2500" height="1875" fetchpriority="high" decoding="async">
+      </picture>
     </div>
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('/images/2026/05/maple-leaf-master-bathroom-remodel-1.webp')"></div>
+      <picture class="hero-slide-bg">
+        <source media="(max-width:768px)" srcset="/images/2026/05/maple-leaf-master-bathroom-remodel-1-1000.webp" type="image/webp">
+        <source media="(max-width:1400px)" srcset="/images/2026/05/maple-leaf-master-bathroom-remodel-1-1600.webp" type="image/webp">
+        <img src="/images/2026/05/maple-leaf-master-bathroom-remodel-1.webp" alt="Maple Leaf master bathroom remodel with marble tile and brass fixtures" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('/images/2026/05/bainbridge-island-kitchen-remodel-1.webp')"></div>
+      <picture class="hero-slide-bg">
+        <source media="(max-width:768px)" srcset="/images/2026/05/bainbridge-island-kitchen-remodel-1-1000.webp" type="image/webp">
+        <source media="(max-width:1400px)" srcset="/images/2026/05/bainbridge-island-kitchen-remodel-1-1600.webp" type="image/webp">
+        <img src="/images/2026/05/bainbridge-island-kitchen-remodel-1.webp" alt="Bainbridge Island modern kitchen renovation" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -521,6 +535,10 @@
 
   <!-- Shared main.js for header scroll + mobile menu -->
   <script defer src="/js/main.js?v=725db182"></script>
+
+  <!-- Google Analytics (moved to body end to reduce TBT) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVJ4CWM5DR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KVJ4CWM5DR');gtag('config','AW-18056594442');gtag('config','AW-18056594442/U3rwCNTGlZwcEIqIh6JD',{'phone_conversion_number':'(253) 448-9462'});</script>
 
 </body>
 </html>
