@@ -4,21 +4,29 @@
 .project-hero { position:relative; width:100%; height:60vh; overflow:hidden; }
 .project-hero img { width:100%; height:100%; object-fit:cover; display:block; }
 
-.project-heading { padding:48px 80px 24px; background:#f5f3f0; }
+.project-heading { padding:48px 80px 24px; background:#fff; }
 .project-heading h1 { font-family:"Outfit",sans-serif; color:#1a1a1a; font-weight:300; font-size:48px; margin:0 0 8px; clip-path:inset(0 0 100% 0); }
 .project-heading .project-location { font-family:"Figtree",sans-serif; font-weight:400; font-size:15px; font-style:italic; color:#8a8880; margin:0 0 24px; opacity:0; }
 .project-heading .project-description { font-family:"Figtree",sans-serif; font-weight:400; font-size:16px; color:#545554; line-height:1.7; max-width:800px; margin:0; opacity:0; }
 
-.project-story { padding:0 80px 64px; background:#f5f3f0; max-width:960px; }
+.project-story { padding:0 80px 64px; background:#fff; max-width:960px; }
 .project-story h2 { font-family:"Outfit",sans-serif; font-weight:400; font-size:28px; color:#1a1a1a; margin:0 0 20px; }
 .project-story p { font-family:"Figtree",sans-serif; font-weight:400; font-size:16px; color:#545554; line-height:1.7; margin:0 0 16px; }
 .project-story p:last-child { margin-bottom:0; }
 .project-story a { color:#5e9ab2; text-decoration:none; transition:color .3s ease; }
 .project-story a:hover { color:#1a1a1a; }
 
-.project-gallery { padding:0 80px 80px; background:#f5f3f0; }
+/* Two-column story (text + before image aside) — used on project pages with a before photo */
+.project-story.has-aside { max-width:1400px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,400px); gap:64px; align-items:start; }
+.project-story.has-aside .project-story-content { max-width:720px; }
+.project-story-aside { margin:0; }
+.project-story-aside img { width:100%; height:auto; display:block; border-radius:6px; }
+.project-story-caption { display:block; margin-top:12px; font-family:"Syne",sans-serif; font-weight:600; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:#8a8880; }
+
+.project-gallery { padding:0 80px 80px; background:#fff; }
 .project-gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.project-gallery-item { aspect-ratio:4/3; overflow:hidden; border-radius:4px; cursor:pointer; opacity:0; transform:translateY(20px); }
+.project-gallery-item { position:relative; aspect-ratio:4/3; overflow:hidden; border-radius:4px; cursor:pointer; opacity:0; transform:translateY(20px); }
+.project-gallery-item-label { position:absolute; top:12px; left:12px; z-index:2; padding:6px 10px; background:rgba(26,26,26,.85); color:#fff; font-family:"Syne",sans-serif; font-weight:600; font-size:10px; letter-spacing:1.2px; text-transform:uppercase; border-radius:3px; pointer-events:none; }
 .project-gallery-item img { width:100%; height:100%; object-fit:cover; display:block; border-radius:4px; transition:transform .5s ease; }
 .project-gallery-item:hover img { transform:scale(1.05); }
 
@@ -33,9 +41,9 @@
 .lightbox-next { right:20px; }
 .lightbox-counter { position:absolute; bottom:24px; left:50%; transform:translateX(-50%); font-family:"Figtree",sans-serif; font-size:14px; color:rgba(255,255,255,.6); }
 
-.project-nav { display:flex; border-top:1px solid #e8e4df; background:#f5f3f0; }
+.project-nav { display:flex; border-top:1px solid #e8e4df; background:#fff; }
 .project-nav-link { flex:1; display:flex; align-items:center; gap:16px; padding:32px 40px; text-decoration:none; transition:background .3s ease; }
-.project-nav-link:hover { background:#edeae6; }
+.project-nav-link:hover { background:#f5f3f0; }
 .project-nav-link.next { flex-direction:row-reverse; text-align:right; border-left:1px solid #e8e4df; }
 .project-nav-thumb { width:80px; height:60px; overflow:hidden; border-radius:4px; flex-shrink:0; }
 .project-nav-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -49,6 +57,9 @@
   .project-heading h1 { font-size:32px; }
   .project-story { padding:0 24px 40px; }
   .project-story h2 { font-size:24px; }
+  .project-story.has-aside { display:block; max-width:none; }
+  .project-story-aside { margin-top:32px; }
+  .project-story-aside img { border-radius:4px; }
   .project-gallery { padding:0 24px 48px; }
   .project-gallery-grid { grid-template-columns:1fr; gap:12px; }
   .lightbox-arrow { width:36px; height:36px; }
