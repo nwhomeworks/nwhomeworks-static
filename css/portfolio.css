@@ -18,6 +18,7 @@
 
 /* Two-column story (text + before image aside) — used on project pages with a before photo */
 .project-story.has-aside { max-width:1400px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,400px); gap:64px; align-items:start; }
+.project-story.has-aside.aside-center { align-items:center; }
 .project-story.has-aside .project-story-content { max-width:720px; }
 .project-story-aside { margin:0; }
 .project-story-aside img { width:100%; height:auto; display:block; border-radius:6px; }
