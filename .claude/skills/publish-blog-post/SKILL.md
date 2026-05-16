@@ -144,7 +144,7 @@ Create `/blog/{slug}/index.html` using the template structure below. Reference a
     "mainEntityOfPage": "https://www.nwhomeworks.com/blog/{slug}/"
   }
   </script>
-  <!-- If the post answers common questions, add FAQPage schema here too -->
+  <!-- Do NOT add FAQPage schema: Google deprecated FAQ rich results (May 2026) and NW Homeworks was never eligible. Visible FAQ content sections are still fine; just skip the JSON-LD. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
