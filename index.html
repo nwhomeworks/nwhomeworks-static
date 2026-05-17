@@ -76,7 +76,7 @@
     .hero-slide:nth-child(1){opacity:1;animation:slide1Cycle 12s infinite}
     .hero-slide:nth-child(2){animation:slideCycle 12s 4s infinite}
     .hero-slide:nth-child(3){animation:slideCycle 12s 8s infinite}
-    .hero-slide-bg{position:absolute;inset:-5%;animation:kenBurns 12s infinite ease-in-out;will-change:transform}
+    .hero-slide-bg{position:absolute;top:-5%;left:-5%;width:110%;height:110%;animation:kenBurns 12s infinite ease-in-out;will-change:transform}
     .hero-slide-bg img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-slide:nth-child(1) .hero-slide-bg{animation-delay:0s}
     .hero-slide:nth-child(2) .hero-slide-bg{animation-delay:4s}
@@ -129,9 +129,9 @@
     .services-cards{position:relative;width:100%;height:70vh;min-height:520px;padding:0 24px}
     .service-card{position:absolute;width:calc(25% - 18px);height:100%;overflow:hidden;cursor:pointer;transition:width .5s cubic-bezier(.25,.46,.45,.94),opacity .4s ease}
     .service-card:nth-child(1){left:24px}
-    .service-card:nth-child(2){left:calc(25% + 6px)}
-    .service-card:nth-child(3){left:calc(50% + 6px)}
-    .service-card:nth-child(4){left:calc(75% + 6px)}
+    .service-card:nth-child(2){left:calc(25% + 14px)}
+    .service-card:nth-child(3){left:calc(50% + 4px)}
+    .service-card:nth-child(4){left:calc(75% - 6px)}
     .service-card:hover{z-index:10;width:calc(45% - 12px)}
     .service-card:nth-child(3):hover{left:auto;right:calc(25% + 6px)}
     .service-card:nth-child(4):hover{left:auto;right:24px}
@@ -334,21 +334,21 @@
       <picture class="hero-slide-bg">
         <source media="(max-width:768px)" srcset="/images/2026/05/sammamish-ikea-kitchen-mobile-hero.webp" type="image/webp">
         <source media="(max-width:1400px)" srcset="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash-1600.webp" type="image/webp">
-        <img src="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp" alt="Normandy Park kitchen remodel with walnut cabinets and farmhouse sink" width="2500" height="1875" fetchpriority="high" decoding="async">
+        <img src="/images/2026/04/normandy-park-walnut-cabinets-farmhouse-sink-tile-backsplash.webp" alt="Normandy Park kitchen remodel with walnut cabinets, farmhouse sink, and a dedicated wet bar" width="2500" height="1875" fetchpriority="high" decoding="async">
       </picture>
     </div>
     <div class="hero-slide">
       <picture class="hero-slide-bg">
         <source media="(max-width:768px)" srcset="/images/2026/05/gig-harbor-master-bath-mobile-hero.webp" type="image/webp">
         <source media="(max-width:1400px)" srcset="/images/2026/05/maple-leaf-master-bathroom-remodel-1-1600.webp" type="image/webp">
-        <img src="/images/2026/05/maple-leaf-master-bathroom-remodel-1.webp" alt="Maple Leaf master bathroom remodel with marble tile and brass fixtures" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
+        <img src="/images/2026/05/maple-leaf-master-bathroom-remodel-1.webp" alt="Maple Leaf master bathroom remodel with marble tile, heated floors, and brass fixtures" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="hero-slide">
       <picture class="hero-slide-bg">
         <source media="(max-width:768px)" srcset="/images/2026/05/chan-kitchen-mobile-hero.webp" type="image/webp">
         <source media="(max-width:1400px)" srcset="/images/2026/05/bainbridge-island-kitchen-remodel-1-1600.webp" type="image/webp">
-        <img src="/images/2026/05/bainbridge-island-kitchen-remodel-1.webp" alt="Bainbridge Island modern kitchen renovation" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
+        <img src="/images/2026/05/bainbridge-island-kitchen-remodel-1.webp" alt="IKEA kitchen cabinets with custom doors and drawer fronts in a Bainbridge Island kitchen remodel" width="2500" height="1875" fetchpriority="low" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="hero-overlay"></div>
@@ -393,7 +393,7 @@
           <picture class="service-card-bg">
             <source media="(max-width:768px)" srcset="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle-800.webp" type="image/webp">
             <source media="(max-width:1400px)" srcset="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle-1600.webp" type="image/webp">
-            <img src="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle.webp" alt="Bright modern Scandinavian-style kitchen remodel in Seattle" loading="lazy" decoding="async">
+            <img src="/images/2026/03/bright-modern-scandinavian-style-kitchen-remodel-seattle.webp" alt="Bright Scandinavian-style kitchen remodel in Seattle" loading="lazy" decoding="async">
           </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">Kitchen Remodeling</div>
@@ -404,7 +404,7 @@
           <picture class="service-card-bg">
             <source media="(max-width:768px)" srcset="/images/2026/03/teal-green-tile-mosaic-spa-like-shower-800.webp" type="image/webp">
             <source media="(max-width:1400px)" srcset="/images/2026/03/teal-green-tile-mosaic-spa-like-shower-1600.webp" type="image/webp">
-            <img src="/images/2026/03/teal-green-tile-mosaic-spa-like-shower.webp" alt="Teal green tile mosaic spa-like shower" loading="lazy" decoding="async">
+            <img src="/images/2026/03/teal-green-tile-mosaic-spa-like-shower.webp" alt="Seattle bathroom remodel with a teal mosaic tile walk-in shower" loading="lazy" decoding="async">
           </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">Bathroom Remodeling</div>
@@ -415,7 +415,7 @@
           <picture class="service-card-bg">
             <source media="(max-width:768px)" srcset="/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home-800.webp" type="image/webp">
             <source media="(max-width:1400px)" srcset="/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home-1600.webp" type="image/webp">
-            <img src="/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home.webp" alt="IKEA kitchen installation in a Seattle old-home remodel" loading="lazy" decoding="async">
+            <img src="/images/2026/03/ikea-kitchen-seattle-installation-kitchen-remodel-old-home.webp" alt="IKEA kitchen installation in an older Seattle home" loading="lazy" decoding="async">
           </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">IKEA Installation</div>
@@ -426,7 +426,7 @@
           <picture class="service-card-bg">
             <source media="(max-width:768px)" srcset="/images/2026/03/laundry-room-remodel-seattle-800.webp" type="image/webp">
             <source media="(max-width:1400px)" srcset="/images/2026/03/laundry-room-remodel-seattle-1600.webp" type="image/webp">
-            <img src="/images/2026/03/laundry-room-remodel-seattle.webp" alt="Seattle laundry room remodel" loading="lazy" decoding="async">
+            <img src="/images/2026/03/laundry-room-remodel-seattle.webp" alt="Custom laundry room remodel in Seattle" loading="lazy" decoding="async">
           </picture>
           <div class="service-card-overlay"><span>Explore <span class="cta-arrow">&rarr;</span></span></div>
           <div class="service-card-title">Beyond Kitchen &amp; Bath</div>
@@ -513,7 +513,7 @@
         <picture class="project-tile-bg">
           <source media="(max-width:768px)" srcset="/images/2026/03/engineered-quartz-countertop-installation-seattle-500.webp" type="image/webp">
           <source media="(max-width:1400px)" srcset="/images/2026/03/engineered-quartz-countertop-installation-seattle-800.webp" type="image/webp">
-          <img src="/images/2026/03/engineered-quartz-countertop-installation-seattle.webp" alt="Ravenna kitchen with engineered quartz countertops" loading="lazy" decoding="async">
+          <img src="/images/2026/03/engineered-quartz-countertop-installation-seattle.webp" alt="Ravenna IKEA kitchen remodel with custom cabinet doors and engineered quartz countertops" loading="lazy" decoding="async">
         </picture>
         <div class="project-tile-caption"><div class="title">Ravenna Kitchen</div><div class="place">Seattle, WA</div></div>
       </a>
@@ -521,7 +521,7 @@
         <picture class="project-tile-bg">
           <source media="(max-width:768px)" srcset="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1-500.webp" type="image/webp">
           <source media="(max-width:1400px)" srcset="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1-800.webp" type="image/webp">
-          <img src="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1.webp" alt="Sammamish IKEA kitchen installation with custom teak doors" loading="lazy" decoding="async">
+          <img src="/images/2026/03/sammamish-ikea-kitchen-installation-custom-teak-doors-side-by-side-integrated-fridge-freezer-1.webp" alt="Sammamish kitchen remodel featuring a large kitchen island with bar seating" loading="lazy" decoding="async">
         </picture>
         <div class="project-tile-caption"><div class="title">Sammamish Kitchen</div><div class="place">Sammamish, WA</div></div>
       </a>
@@ -529,7 +529,7 @@
         <picture class="project-tile-bg">
           <source media="(max-width:768px)" srcset="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1-500.webp" type="image/webp">
           <source media="(max-width:1400px)" srcset="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1-800.webp" type="image/webp">
-          <img src="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp" alt="Gig Harbor luxury marble master bath" loading="lazy" decoding="async">
+          <img src="/images/2026/03/luxury-marble-master-bathroom-remodel-seattle-bathtub-shower-design-ideas-2500-1.webp" alt="Gig Harbor luxury master bathroom remodel with a marble shower and soaking tub" loading="lazy" decoding="async">
         </picture>
         <div class="project-tile-caption"><div class="title">Gig Harbor Master Bath</div><div class="place">Gig Harbor, WA</div></div>
       </a>
@@ -537,7 +537,7 @@
         <picture class="project-tile-bg">
           <source media="(max-width:768px)" srcset="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall-500.webp" type="image/webp">
           <source media="(max-width:1400px)" srcset="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall-800.webp" type="image/webp">
-          <img src="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp" alt="Queen Anne fireplace feature wall and media surround" loading="lazy" decoding="async">
+          <img src="/images/2026/03/Seattle-feature-wall-tile-fireplace-surround-media-wall.webp" alt="Queen Anne tile fireplace surround built into a media wall entertainment center" loading="lazy" decoding="async">
         </picture>
         <div class="project-tile-caption"><div class="title">Queen Anne Fireplace</div><div class="place">Seattle, WA</div></div>
       </a>
@@ -545,7 +545,7 @@
         <picture class="project-tile-bg">
           <source media="(max-width:768px)" srcset="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500-500.webp" type="image/webp">
           <source media="(max-width:1400px)" srcset="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500-800.webp" type="image/webp">
-          <img src="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp" alt="Vashon modern farmhouse kitchen with white cabinets and wood island" loading="lazy" decoding="async">
+          <img src="/images/2026/03/seattle-modern-farmhouse-kitchen-remodel-with-white-cabinets-and-wood-island-2500.webp" alt="Vashon modern farmhouse kitchen remodel with white shaker cabinets and a wood-clad kitchen island" loading="lazy" decoding="async">
         </picture>
         <div class="project-tile-caption"><div class="title">Vashon Kitchen</div><div class="place">Vashon, WA</div></div>
       </a>
@@ -553,7 +553,7 @@
         <picture class="project-tile-bg">
           <source media="(max-width:768px)" srcset="/images/2026/03/kids-bath-remodel-view-ridge-seattle-500.webp" type="image/webp">
           <source media="(max-width:1400px)" srcset="/images/2026/03/kids-bath-remodel-view-ridge-seattle-800.webp" type="image/webp">
-          <img src="/images/2026/03/kids-bath-remodel-view-ridge-seattle.webp" alt="View Ridge kid's bathroom remodel" loading="lazy" decoding="async">
+          <img src="/images/2026/03/kids-bath-remodel-view-ridge-seattle.webp" alt="View Ridge kids' bathroom remodel with a double sink vanity" loading="lazy" decoding="async">
         </picture>
         <div class="project-tile-caption"><div class="title">View Ridge Kid's Bath</div><div class="place">Seattle, WA</div></div>
       </a>
