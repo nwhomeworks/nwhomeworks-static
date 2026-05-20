@@ -4,10 +4,12 @@ This repo is the **NW Homeworks marketing website** — a static site deployed v
 
 ## `nwh-tool/` directory — leave alone
 
-The two pages under `nwh-tool/` are **not** part of the marketing site. They exist solely to satisfy Intuit's QuickBooks app review process for a separate project (a private internal job-costing tool that lives at `C:\Users\tim\Financial\nwh-tool\`).
+The pages under `nwh-tool/` are **not** part of the marketing site. They exist solely to satisfy Intuit's QuickBooks app review process for a separate project (a private internal job-costing tool that lives at `C:\Users\tim\Financial\nwh-tool\`).
 
-- `nwh-tool/privacy/` — Privacy Policy for the NWH Tool app, linked from the Intuit Developer Portal
-- `nwh-tool/eula/` — End-User License Agreement, same purpose
+- `nwh-tool/` — landing page describing the app (host domain + Launch URL + Connect/Reconnect URL on the Intuit form all point here)
+- `nwh-tool/privacy/` — Privacy Policy
+- `nwh-tool/eula/` — End-User License Agreement
+- `nwh-tool/disconnected/` — confirmation page shown when a user disconnects the app from QuickBooks (Disconnect URL on the Intuit form)
 
 ### Rules
 
