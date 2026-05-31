@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "name": "NW Homeworks",
+    "aliases": ["nwhomeworks", "nwhomeworks.com", "NW Home Works"],
+    "location": "Seattle"
+  },
+  "prompts": [
+    "Who are the best kitchen remodelers in Seattle?",
+    "Can you recommend a contractor for a kitchen remodel in Bellevue?",
+    "Best kitchen remodeler in West Seattle",
+    "Who does kitchen remodeling in Normandy Park?",
+    "Can you recommend a good bathroom remodeler in Seattle?",
+    "Who are the top bathroom remodeling contractors in Bellevue?",
+    "Best bathroom remodel company in West Seattle",
+    "Who can remodel a bathroom in Normandy Park?",
+    "Who installs IKEA kitchens in Seattle?",
+    "Best IKEA kitchen installer in Bellevue",
+    "Who installs IKEA kitchens in West Seattle?",
+    "Can you recommend an IKEA kitchen installer near Normandy Park?",
+    "Who are the best remodeling contractors in Seattle?",
+    "Can you recommend a general contractor for a home remodel in Bellevue?",
+    "How do I find a trustworthy remodeling contractor in West Seattle?",
+    "Who are the best home remodeling companies in Normandy Park?"
+  ],
+  "providers": {
+    "openai": {
+      "model": "gpt-4o",
+      "enabled": true
+    },
+    "anthropic": {
+      "model": "claude-haiku-4-20250414",
+      "enabled": false
+    },
+    "google": {
+      "model": "gemini-2.5-flash",
+      "enabled": true
+    },
+    "perplexity": {
+      "model": "sonar",
+      "enabled": true
+    },
+    "grok": {
+      "model": "grok-4",
+      "enabled": true
+    }
+  },
+  "samplesPerPrompt": 3,
+  "outputDir": "./results"
+}
