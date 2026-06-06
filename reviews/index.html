@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
+  <title>Reviews | NW Homeworks &mdash; Seattle Kitchen &amp; Bath Remodeling</title>
+  <meta name="description" content="Read what homeowners across Seattle, the Eastside, Tacoma, and the Puget Sound say about working with NW Homeworks on their kitchen, bathroom, and IKEA cabinet remodels.">
+  <link rel="canonical" href="https://www.nwhomeworks.com/reviews/">
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Reviews | NW Homeworks">
+  <meta property="og:description" content="What homeowners across Seattle and the Puget Sound say about remodeling with NW Homeworks.">
+  <meta property="og:url" content="https://www.nwhomeworks.com/reviews/">
+  <meta property="og:site_name" content="NW Homeworks">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/css/site.css?v=0dd3cf9d">
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{font-family:'Figtree',sans-serif;-webkit-font-smoothing:antialiased;background:#fff;color:#1a1a1a;overflow-x:hidden}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* Hero */
+    .reviews-hero{padding:160px 40px 56px;background:#f5f3f0;text-align:center}
+    .reviews-hero .eyebrow{font-family:'Syne',sans-serif;font-weight:600;font-size:12px;color:#8eba3f;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+    .reviews-hero h1{font-family:'Outfit',sans-serif;font-weight:300;font-size:clamp(30px,4vw,46px);line-height:1.15;color:#1a1a1a;margin-bottom:22px}
+    .reviews-hero h1 strong{font-weight:600}
+    .reviews-hero p{font-family:'Figtree',sans-serif;font-size:17px;line-height:1.7;color:#454545;max-width:720px;margin:0 auto}
+
+    /* Platform link-out bar */
+    .platform-bar{background:#fff;padding:36px 40px;border-bottom:1px solid #ececec}
+    .platform-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:center;align-items:stretch;gap:18px;flex-wrap:wrap}
+    .platform-link{flex:1 1 240px;max-width:300px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:22px 24px;border:1px solid #e8e4dc;border-radius:6px;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease}
+    .platform-link:hover{border-color:#8eba3f;transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+    .platform-link .pname{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:#1a1a1a;letter-spacing:.3px}
+    .platform-link .pcount{font-family:'Figtree',sans-serif;font-size:13px;color:#767672}
+    .platform-link .pcta{font-family:'Syne',sans-serif;font-weight:600;font-size:13px;color:#8eba3f;letter-spacing:.4px;margin-top:4px}
+    .platform-link:hover .pcta{color:#1a1a1a}
+
+    /* Reviews grid (masonry via columns) */
+    .reviews-section{padding:64px 40px 24px;background:#fff}
+    .reviews-grid{max-width:1200px;margin:0 auto;columns:3;column-gap:24px}
+    .review-card{break-inside:avoid;margin-bottom:24px;background:#fff;border:1px solid #e8e4dc;border-radius:6px;overflow:hidden;display:inline-block;width:100%}
+    .review-card-photo{width:100%;display:block}
+    .review-card-photo img{width:100%;height:auto;display:block}
+    .review-card-body{padding:30px 28px}
+    .review-stars{color:#f5c518;font-size:14px;letter-spacing:2px;margin-bottom:16px}
+    .review-quote{font-family:'Figtree',sans-serif;font-size:15px;line-height:1.7;color:#3a3a3a;margin-bottom:22px}
+    .review-attr{font-family:'Syne',sans-serif;font-weight:600;font-size:13px;color:#1a1a1a;letter-spacing:.4px;padding-top:16px;border-top:1px solid #e8e4dc}
+    .review-attr .meta{display:block;margin-top:5px;font-family:'Figtree',sans-serif;font-weight:500;font-size:12px;color:#767672}
+    .review-attr .meta .plat{color:#8eba3f;font-weight:600}
+
+    /* CTA strip */
+    .cta-strip{background:#1a1a1a;padding:40px}
+    .cta-strip-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap}
+    .cta-strip-heading{font-family:'Outfit',sans-serif;font-weight:400;font-size:24px;color:#fff}
+    .cta-strip-heading strong{font-weight:600;color:#aedb42}
+    .btn-primary{display:inline-block;background:#8eba3f;color:#1a1a1a;font-family:'Syne',sans-serif;font-weight:600;font-size:15px;padding:16px 32px;border-radius:4px;letter-spacing:.4px;transition:background .3s ease,transform .3s ease}
+    .btn-primary:hover{background:#aedb42;transform:translateY(-2px)}
+    .cta-arrow{display:inline-block;transition:transform .3s ease;margin-left:2px}
+    a:hover .cta-arrow{transform:translateX(5px)}
+    .cta-strip-or{font-family:'Figtree',sans-serif;font-size:14px;color:#767672}
+    .cta-strip-phone{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;color:#fff;letter-spacing:.5px;transition:color .3s ease}
+    .cta-strip-phone:hover{color:#aedb42}
+    .cta-or-call{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+
+    @media (max-width:900px){
+      .header-nav-left,.header-nav-right{display:none}
+      .reviews-hero{padding:120px 24px 44px}
+      .reviews-section{padding:44px 20px 8px}
+      .reviews-grid{columns:1}
+      .platform-bar{padding:28px 20px}
+      .cta-strip{padding:28px 24px}
+      .cta-strip-heading{font-size:20px;text-align:center}
+    }
+    @media (min-width:901px) and (max-width:1200px){
+      .reviews-grid{columns:2}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header"><div class="header-inner"><nav class="header-nav header-nav-left"><a href="/">Home</a><div class="nav-item-dropdown">
+        <a href="/services/">Services<span class="nav-chevron" aria-hidden="true">&#9662;</span></a>
+        <ul class="nav-submenu">
+          <li><a href="/services/kitchens/">Kitchens</a></li>
+          <li><a href="/services/bathrooms/">Bathrooms</a></li>
+          <li><a href="/services/ikea/">IKEA</a></li>
+          <li><a href="/services/beyond/">Beyond Kitchen &amp; Bath</a></li>
+          <li><a href="/services/our-process/">Our Process</a></li>
+        </ul>
+      </div><a href="/portfolio/">Works</a></nav><a href="/" class="header-logo"><img src="/images/2026/03/Main-Logo-Alt.svg" alt="NW Homeworks" width="639" height="308"></a><nav class="header-nav header-nav-right">
+        <a href="/tools/kitchen-remodel-cost-estimator/">Tools</a><a href="/contact/">Contact</a><a href="/blog/">Blog</a><a href="tel:2534489462" class="header-phone" aria-label="Call us"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"/></svg></a></nav><button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+  <nav class="mobile-nav"><a href="/">Home</a><div class="nav-item-dropdown">
+        <a href="/services/">Services<span class="nav-chevron" aria-hidden="true">&#9662;</span></a>
+        <ul class="nav-submenu">
+          <li><a href="/services/kitchens/">Kitchens</a></li>
+          <li><a href="/services/bathrooms/">Bathrooms</a></li>
+          <li><a href="/services/ikea/">IKEA</a></li>
+          <li><a href="/services/beyond/">Beyond Kitchen &amp; Bath</a></li>
+          <li><a href="/services/our-process/">Our Process</a></li>
+        </ul>
+      </div><a href="/portfolio/">Works</a>
+    <a href="/tools/kitchen-remodel-cost-estimator/">Tools</a><a href="/contact/">Contact</a><a href="/blog/">Blog</a><a href="tel:2534489462">Call (253) 448-9462</a></nav>
+
+  <!-- ══════════════════════════════════════════════ HERO ══════════════════════════════════════════════ -->
+  <section class="reviews-hero">
+    <div class="eyebrow">What Clients Say</div>
+    <h1>Trusted by homeowners <strong>across the Puget Sound.</strong></h1>
+    <p>For more than 15 years, homeowners across Seattle, the Eastside, and Tacoma have trusted NW Homeworks with their kitchens, bathrooms, and IKEA cabinet installations. Here's what a few of them had to say &mdash; and you can read every review, unfiltered, on Houzz, Google, and Yelp.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ PLATFORM LINK-OUT ══════════════════════════════════════════════ -->
+  <section class="platform-bar">
+    <div class="platform-inner">
+      <a class="platform-link" href="https://www.houzz.com/pro/nwhomeworks/nw-homeworks" target="_blank" rel="noopener">
+        <span class="pname">Houzz</span>
+        <span class="pcount">10 reviews</span>
+        <span class="pcta">Read on Houzz <span class="cta-arrow">&rarr;</span></span>
+      </a>
+      <a class="platform-link" href="https://share.google/w1ZzPscFP0tEEFeRw" target="_blank" rel="noopener">
+        <span class="pname">Google</span>
+        <span class="pcount">8 reviews</span>
+        <span class="pcta">Read on Google <span class="cta-arrow">&rarr;</span></span>
+      </a>
+      <a class="platform-link" href="https://www.yelp.com/biz/nw-homeworks-renton" target="_blank" rel="noopener">
+        <span class="pname">Yelp</span>
+        <span class="pcount">29 reviews</span>
+        <span class="pcta">Read on Yelp <span class="cta-arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ REVIEWS ══════════════════════════════════════════════ -->
+  <section class="reviews-section">
+    <div class="reviews-grid">
+
+      <!-- Kyle H. — Google (matched to West Seattle gray-green IKEA kitchen) -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/05/west-seattle-ikea-kitchen-green-axstad-cabinets-1024.webp" type="image/webp">
+          <img src="/images/2026/05/west-seattle-ikea-kitchen-green-axstad-cabinets.webp" alt="West Seattle IKEA kitchen remodel with green AXSTAD cabinets, herringbone backsplash, and brass hardware" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;Tim is the kind of contractor you want on a renovation: skilled across a wide range of work, genuinely helpful, and easy to work with &mdash; from complex cabinet installation and finish carpentry to stair installation and range hood fitting. The quality was consistently high across all of it. He actively helped me think through decisions and caught things I would have missed. Great value, high recommendation.&rdquo;</p>
+          <div class="review-attr">Kyle H.<span class="meta">West Seattle, WA &middot; <span class="plat">via Google</span></span></div>
+        </div>
+      </div>
+
+      <!-- Emily M. — Yelp -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/seattle-studs-out-kitchen-remodel-wall-removal-window-addition-1024.webp" type="image/webp">
+          <img src="/images/2026/06/seattle-studs-out-kitchen-remodel-wall-removal-window-addition.webp" alt="Seattle studs-out kitchen remodel by NW Homeworks with wall removal and new window addition" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;Our project was more than a cosmetic job &mdash; it was studs-out. We took out two walls, added a large window, and did HVAC work, close to two tons of material removed from the house. There were unexpected surprises along the way (it happens with old houses!), but Tim handled everything with honesty and reassurance. We found the prices very fair and landed within 10% of the original estimate &mdash; completed precisely on schedule.&rdquo;</p>
+          <div class="review-attr">Emily M.<span class="meta">Seattle, WA &middot; <span class="plat">via Yelp</span></span></div>
+        </div>
+      </div>
+
+      <!-- Shelley M. — Houzz -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/tacoma-kitchen-laundry-pantry-remodel-rift-teak-ikea-cabinets-1024.webp" type="image/webp">
+          <img src="/images/2026/06/tacoma-kitchen-laundry-pantry-remodel-rift-teak-ikea-cabinets.webp" alt="Tacoma kitchen, laundry, and pantry remodel with custom rift teak doors on IKEA cabinets" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;NW Homeworks just completed a major remodel of our kitchen, laundry room, powder room, and pantry. From a thorough and detailed bid from Tim to the craftsmanship and attention to detail, everything makes us want to call them first for any future work. We went with custom doors in a rift teak &mdash; they look beautiful! It was a low-stress experience, especially compared to previous remodeling projects.&rdquo;</p>
+          <div class="review-attr">Shelley M.<span class="meta">Tacoma, WA &middot; <span class="plat">via Houzz</span></span></div>
+        </div>
+      </div>
+
+      <!-- Akshat S. — Google -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/seattle-windows-skylights-basement-kitchen-remodel-nw-homeworks-1024.webp" type="image/webp">
+          <img src="/images/2026/06/seattle-windows-skylights-basement-kitchen-remodel-nw-homeworks.webp" alt="Seattle home with new windows, skylights, and a remodeled basement kitchen by NW Homeworks" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;We've used NW Homeworks for multiple projects &mdash; new windows, skylights, and a basement leak that required a full kitchen teardown and wall rebuild. Every single time: on time, on budget, and clean. No mystery debris left behind, no &lsquo;we'll be back next week&rsquo; energy. Highly recommend for anyone who wants the work done right without the usual contractor drama.&rdquo;</p>
+          <div class="review-attr">Akshat S.<span class="meta">Seattle, WA &middot; <span class="plat">via Google</span></span></div>
+        </div>
+      </div>
+
+      <!-- kristine J. — Yelp (commercial) -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/seattle-commercial-office-ikea-kitchen-installation-custom-countertop-1024.webp" type="image/webp">
+          <img src="/images/2026/06/seattle-commercial-office-ikea-kitchen-installation-custom-countertop.webp" alt="Seattle commercial office IKEA kitchen installation with custom countertop and RO water filtration by NW Homeworks" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;We hired NW Homeworks to install our commercial office kitchen &mdash; IKEA cabinets, all appliances, a custom countertop and sink, and a complicated RO water filtration setup. Tim and his crew were fantastic: they fit into our tight deadline, were on-time and on-budget, and beyond exceptional in service. We absolutely recommend them, both commercial and residential.&rdquo;</p>
+          <div class="review-attr">Kristine J.<span class="meta">Seattle, WA &middot; <span class="plat">via Yelp</span></span></div>
+        </div>
+      </div>
+
+      <!-- Kate — Houzz -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/seattle-ikea-kitchen-installation-custom-design-1024.webp" type="image/webp">
+          <img src="/images/2026/06/seattle-ikea-kitchen-installation-custom-design.webp" alt="Seattle IKEA kitchen installation with custom design refinements from NW Homeworks" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;From the beginning, Tim was a great communicator &mdash; he came to our house to provide a quote quickly, gave us great feedback on our IKEA kitchen design, and provided a very competitive bid. We've worked with contractors before and have never found the combination of attention to schedule and budget, communication, and quality that we got with NW Homeworks. I would work with Tim again in a second.&rdquo;</p>
+          <div class="review-attr">Kate W.<span class="meta">Seattle, WA &middot; <span class="plat">via Houzz</span></span></div>
+        </div>
+      </div>
+
+      <!-- Gina G. — Yelp -->
+      <div class="review-card">
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;Alex, Ivan, and Ivan's dad installed my cabinets and cupboards in less than two days, in a 1922 craftsman home with lath and plaster walls, and they did a fabulous job. Very professional, clean, respectful, and hard working. Everything is solid and straight &mdash; when the countertop guy came to template, he commented that whoever installed my cabinets did a fabulous job. I love the end result.&rdquo;</p>
+          <div class="review-attr">Gina G.<span class="meta">Tacoma, WA &middot; <span class="plat">via Yelp</span></span></div>
+        </div>
+      </div>
+
+      <!-- Jane H. — Google (closet) -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/medina-ikea-pax-walk-in-closet-built-in-master-bedroom-1024.webp" type="image/webp">
+          <img src="/images/2026/06/medina-ikea-pax-walk-in-closet-built-in-master-bedroom.webp" alt="Master bedroom walk-in closet built from the IKEA PAX system in Medina, WA" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;It was wonderful to work with Tim. We had our master-bedroom walk-in closet remodeled &mdash; he really knew how to work with the IKEA furniture system and made it look like a premium built-in closet. I'm very happy with the final result! Would love to work with him and his team again.&rdquo;</p>
+          <div class="review-attr">Jane H.<span class="meta">Medina, WA &middot; <span class="plat">via Google</span></span></div>
+        </div>
+      </div>
+
+      <!-- Eric F. — Yelp -->
+      <div class="review-card">
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;NW Homeworks did a FANTASTIC job on my kitchen. The key to a really good IKEA kitchen is design, customization, and attention to detail. Tim gave a solid quote and quickly pointed out parts needed to improve my design. The result is a custom kitchen that looks fantastic, and every cabinet and drawer is completely square and flush.&rdquo;</p>
+          <div class="review-attr">Eric F.<span class="meta">Seattle, WA &middot; <span class="plat">via Yelp</span></span></div>
+        </div>
+      </div>
+
+      <!-- Kris V. — Yelp -->
+      <div class="review-card">
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;Tim and his crew just finished our home remodel, which included a kitchen remodel plus wiring and plumbing upgrades throughout the whole house. They're basically a &lsquo;get the job done&rsquo; type of crew, and I loved it. Tim was regularly on site and always available by text. He owned any issues that came up and made adjustments without any hassle. We are very happy with our new house.&rdquo;</p>
+          <div class="review-attr">Kris V.<span class="meta">Seattle, WA &middot; <span class="plat">via Yelp</span></span></div>
+        </div>
+      </div>
+
+      <!-- Eatai — Houzz -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/seattle-midcentury-condo-kitchen-remodel-custom-tile-1024.webp" type="image/webp">
+          <img src="/images/2026/06/seattle-midcentury-condo-kitchen-remodel-custom-tile.webp" alt="Midcentury Seattle condo kitchen remodel with custom tile work by NW Homeworks" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;From the initial consultation, Tim just had a good vibe &mdash; he came organized, took measurements, and had a quote in my inbox by that evening. The NW Homeworks guys are timely and tidy, and they do really good work (their tile work stands out as especially good). Progress reports came almost daily, so I never felt out of the loop. The end result speaks for itself &mdash; my kitchen is beautiful.&rdquo;</p>
+          <div class="review-attr">Eatai R.<span class="meta">Seattle, WA &middot; <span class="plat">via Houzz</span></span></div>
+        </div>
+      </div>
+
+      <!-- Tom S. — Yelp -->
+      <div class="review-card">
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;Tim and the rest of the crew just finished up a great job on my kitchen remodel! From start to finish, they communicated well and listened to all my questions. The last 10% of effort is where things started coming together &mdash; they were very responsive and nailed all the details. My friends doing remodeling projects are all jealous of the great experience I've had.&rdquo;</p>
+          <div class="review-attr">Tom S.<span class="meta">via Yelp</span></div>
+        </div>
+      </div>
+
+      <!-- Leslie C. — Houzz -->
+      <div class="review-card">
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;We had this crew install our new IKEA kitchen and they did a fabulous job. They fit us in their schedule quickly and the work is phenomenal &mdash; our cabinets look high end. They protected our newly installed hardwood floors, were clean, professional, and very efficient. I highly recommend Tim and his crew and would use them again in a heartbeat!&rdquo;</p>
+          <div class="review-attr">Leslie C.<span class="meta">via Houzz</span></div>
+        </div>
+      </div>
+
+      <!-- Shree — Houzz -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/seattle-kitchen-remodel-by-nw-homeworks-1024.webp" type="image/webp">
+          <img src="/images/2026/06/seattle-kitchen-remodel-by-nw-homeworks.webp" alt="Seattle kitchen remodel by NW Homeworks" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;Tim and his crew were fantastic to work with. Very professional, reasonably priced, and most of all honest. From the first time we met him to show the project area, to coming up with a plan, to completion with the finishing touches &mdash; he saw it through. He'll get a call from me for my next project for sure.&rdquo;</p>
+          <div class="review-attr">Shree<span class="meta">via Houzz</span></div>
+        </div>
+      </div>
+
+      <!-- David B. — Houzz -->
+      <div class="review-card">
+        <picture class="review-card-photo">
+          <source media="(max-width:768px)" srcset="/images/2026/06/seattle-ikea-kitchen-full-gut-remodel-custom-layout-1024.webp" type="image/webp">
+          <img src="/images/2026/06/seattle-ikea-kitchen-full-gut-remodel-custom-layout.webp" alt="Custom IKEA kitchen layout in a Seattle full gut remodel" loading="lazy" decoding="async">
+        </picture>
+        <div class="review-card-body">
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">&ldquo;NW Homeworks continuously impresses me with their professionalism, competence, and craftsmanship. I chose IKEA for the kitchen cabinetry in my full gut remodel. The layout I designed was complicated and required modification of several IKEA pieces to work in the space &mdash; the crew handled it beautifully.&rdquo;</p>
+          <div class="review-attr">David B.<span class="meta">via Houzz</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ CTA STRIP ══════════════════════════════════════════════ -->
+  <section class="cta-strip">
+    <div class="cta-strip-inner">
+      <div class="cta-strip-heading">Ready to <strong>start your project?</strong></div>
+      <a href="/contact/" class="btn-primary">Get a Free Quote <span class="cta-arrow">&rarr;</span></a>
+      <div class="cta-or-call">
+        <span class="cta-strip-or">or call</span>
+        <a href="tel:2534489462" class="cta-strip-phone">(253) 448-9462</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy;2026 NW Homeworks &mdash; Serving Seattle, <a href="/areas/bellevue/">Bellevue</a>, Tacoma &amp; the Greater Puget Sound Area</span>
+      <div class="footer-contact">
+        <a href="mailto:query@nwhomeworks.com">query@nwhomeworks.com</a>
+        <a href="tel:2534489462">(253) 448-9462</a>
+      </div>
+      <div class="footer-contact">
+        <a href="/reviews/">Reviews</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="/js/main.js?v=6dd5cc0b"></script>
+</body>
+</html>
