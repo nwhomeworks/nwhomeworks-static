@@ -114,6 +114,16 @@
     .trust-item{display:flex;align-items:center;gap:8px}
     .trust-item strong{color:#1a1a1a;font-weight:600}
     .trust-dot{color:#8eba3f;font-size:18px;line-height:1}
+    .trust-item a{color:inherit;text-decoration:none;transition:color .2s ease}
+    .trust-item a:hover strong{color:#8eba3f}
+    .hero-award-badge{position:absolute;top:clamp(92px,11vh,120px);right:clamp(16px,3.5vw,48px);z-index:5;text-decoration:none;transition:transform .3s ease}
+    .hero-award-badge:hover{transform:scale(1.05)}
+    .hab-inner{display:flex;flex-direction:column;align-items:center;gap:6px;animation:habFloat 4.5s ease-in-out infinite}
+    .hab-icon{width:clamp(72px,7.5vw,104px);height:auto;display:block;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
+    .hab-text{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(10px,1vw,12px);letter-spacing:2px;color:#fff;text-align:center;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+    @keyframes habFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @media (prefers-reduced-motion:reduce){.hab-inner{animation:none}}
+    @media (max-width:768px){.hero-award-badge{right:12px}.hab-icon{width:60px}.hab-text{font-size:10px;letter-spacing:1.5px}}
 
     /* Intro */
     .intro-section{padding:96px 40px 64px;background:#fff}
@@ -352,6 +362,12 @@
       </picture>
     </div>
     <div class="hero-overlay"></div>
+    <a class="hero-award-badge" href="/reviews/" aria-label="Winner of the 2026 Chrysalis Award. See our awards and reviews.">
+      <span class="hab-inner">
+        <img class="hab-icon" src="/images/blog/2026-chrysalis-award-logo.svg" alt="2026 Chrysalis Award" width="104" height="107" decoding="async">
+        <span class="hab-text">2026<br>WINNER</span>
+      </span>
+    </a>
     <div class="hero-content">
       <h1>Seattle <strong>Kitchen &amp; Bath</strong> Remodeling</h1>
       <div class="hero-tagline">Designed Around Your Life</div>
@@ -370,6 +386,8 @@
       <div class="trust-item"><strong>15+</strong>&nbsp;Years in Business</div>
       <span class="trust-dot">&bull;</span>
       <div class="trust-item"><strong>Licensed &amp; Bonded</strong></div>
+      <span class="trust-dot">&bull;</span>
+      <div class="trust-item"><a href="/reviews/"><strong>2026 Chrysalis Award Winner</strong></a></div>
       <span class="trust-dot">&bull;</span>
       <div class="trust-item">Serving Seattle &amp; the Eastside</div>
     </div>
