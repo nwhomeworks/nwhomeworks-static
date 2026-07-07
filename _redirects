@@ -1,3 +1,7 @@
+# Retired Google Ads kitchen landing pages → kitchen service page
+/services/kitchens/free-consultation/ /services/kitchens/ 301
+/services/kitchens/bellevue/ /services/kitchens/ 301
+
 # Old portfolio URLs → current portfolio pages
 /portfolio/custom-ikea-kitchen-sammamish/ /portfolio/sammamish-kitchen/ 301
 /portfolio/vaulted-ceiling-kitchen/ /portfolio/vashon-kitchen/ 301
