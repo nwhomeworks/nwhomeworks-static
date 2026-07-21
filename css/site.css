@@ -26,3 +26,6 @@
 .pin-save-btn:hover{background:#ad081b}
 .pin-save-btn svg{width:15px;height:15px;fill:currentColor}
 @media (hover:none){.pin-save-btn{opacity:1;transform:none}}
+
+.site-header:not(.scrolled).nav-left-dark .header-nav-left a{color:#1a1a1a}.site-header:not(.scrolled).nav-left-dark .header-nav-left a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-dark .header-nav-right a{color:#1a1a1a}.site-header:not(.scrolled).nav-right-dark .header-nav-right a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-dark .header-phone svg{fill:#1a1a1a}.site-header:not(.scrolled).toggle-dark .menu-toggle span{background:#1a1a1a}
+.site-header:not(.scrolled).nav-left-light .header-nav-left a{color:#fff}.site-header:not(.scrolled).nav-left-light .header-nav-left a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-light .header-nav-right a{color:#fff}.site-header:not(.scrolled).nav-right-light .header-nav-right a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-light .header-phone svg{fill:#fff}.site-header:not(.scrolled).toggle-light .menu-toggle span{background:#fff}
