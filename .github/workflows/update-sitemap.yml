@@ -34,6 +34,11 @@ jobs:
             | sort \
             | while read -r file; do
 
+            # Skip noindexed pages (nwh-tool, thank-you, etc.) — they must stay out of the sitemap
+            if grep -qi '<meta name="robots" content="noindex' "$file"; then
+              continue
+            fi
+
             # Convert file path to URL path
             url_path=$(echo "$file" | sed 's|^\./||' | sed 's|index\.html$||')
 
@@ -63,6 +68,10 @@ jobs:
                 changefreq="monthly"
                 ;;
               areas/*/)
+                priority="0.8"
+                changefreq="monthly"
+                ;;
+              about/)
                 priority="0.8"
                 changefreq="monthly"
                 ;;
