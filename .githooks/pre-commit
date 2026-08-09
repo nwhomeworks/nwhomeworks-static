@@ -1,16 +1,21 @@
 #!/bin/sh
-# Auto cache-bust: before each commit, rewrite CSS/JS references in HTML
-# with a content-hash query string so edits invalidate CDN + browser cache.
+# Pre-commit codegen, in order:
+#   1. areas    — rebuild every areas-served band from data/areas.json
+#   2. cachebust — stamp CSS/JS refs with a content hash so edits bust caches
 #
-# Re-stages any HTML files the cachebust script modifies so they're included
-# in the commit the user is making.
+# Re-stages any HTML files these scripts modify so they're included in the
+# commit the user is making.
 
 set -e
+
+# Rebuild the areas-served bands. Runs first so any HTML it rewrites still
+# gets cache-busted below.
+node scripts/areas.mjs
 
 # Run the cachebust script. Fails the commit if the script errors.
 node scripts/cachebust.mjs
 
-# Re-stage any HTML files that the script modified in the working tree.
+# Re-stage any HTML files that the scripts modified in the working tree.
 # `git diff --name-only` lists unstaged changes; we add back only *.html.
 changed_html=$(git diff --name-only -- '*.html' || true)
 if [ -n "$changed_html" ]; then

@@ -29,3 +29,14 @@
 
 .site-header:not(.scrolled).nav-left-dark .header-nav-left a{color:#1a1a1a}.site-header:not(.scrolled).nav-left-dark .header-nav-left a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-dark .header-nav-right a{color:#1a1a1a}.site-header:not(.scrolled).nav-right-dark .header-nav-right a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-dark .header-phone svg{fill:#1a1a1a}.site-header:not(.scrolled).toggle-dark .menu-toggle span{background:#1a1a1a}
 .site-header:not(.scrolled).nav-left-light .header-nav-left a{color:#fff}.site-header:not(.scrolled).nav-left-light .header-nav-left a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-light .header-nav-right a{color:#fff}.site-header:not(.scrolled).nav-right-light .header-nav-right a:hover{color:#8eba3f}.site-header:not(.scrolled).nav-right-light .header-phone svg{fill:#fff}.site-header:not(.scrolled).toggle-light .menu-toggle span{background:#fff}
+/* ─── Areas-served band (Sound Blue) ─── shared by service pages; content is
+   generated from data/areas.json by scripts/areas.mjs, styling lives here so
+   one edit restyles every band. */
+.areas-served{background:#5e9ab2;padding:56px 40px;text-align:center}
+.areas-served h2{font-family:"Outfit",sans-serif;font-weight:300;font-size:28px;color:#fff;margin:0 0 16px}
+.areas-served p{font-family:"Figtree",sans-serif;font-size:15px;line-height:1.8;color:rgba(255,255,255,.9);max-width:800px;margin:0 auto}
+.areas-served p a{color:#1a1a1a;font-weight:500;transition:color .3s ease}
+.areas-served p a:hover{color:#fff}
+.areas-served p.areas-served-note{font-family:"Figtree",sans-serif;font-size:13px;color:rgba(255,255,255,.7);margin:12px 0 0}
+@media (max-width:1024px){.areas-served{padding:48px 24px}}
+@media (max-width:768px){.areas-served h2{font-size:24px}}

@@ -1,0 +1,25 @@
+{
+  "_comment": "Single source of truth for the areas-served bands. Edit this file, commit, and scripts/areas.mjs rewrites every band on the site. `slug` means the city has a page at /areas/<slug>/ and gets linked; omit it for cities we serve but have no page for yet (they render as plain text, and become links automatically once the page exists). `featured` picks the shorter homepage list. Order here is the order they render, roughly Eastside -> north -> Seattle -> south -> peninsula.",
+  "tail": "and the greater Puget Sound",
+  "areas": [
+    { "name": "Bellevue", "slug": "bellevue", "featured": true },
+    { "name": "Kirkland", "slug": "kirkland", "featured": true },
+    { "name": "Redmond", "slug": "redmond", "featured": true },
+    { "name": "Mercer Island", "featured": true },
+    { "name": "Sammamish", "featured": true },
+    { "name": "Issaquah", "slug": "issaquah", "featured": true },
+    { "name": "Bothell" },
+    { "name": "Woodinville" },
+    { "name": "Kenmore" },
+    { "name": "Shoreline" },
+    { "name": "Lake Forest Park" },
+    { "name": "Seattle", "featured": true },
+    { "name": "West Seattle", "slug": "west-seattle", "featured": true },
+    { "name": "Renton", "featured": true },
+    { "name": "Normandy Park", "slug": "normandy-park", "featured": true },
+    { "name": "Kent", "slug": "kent", "featured": true },
+    { "name": "Tacoma", "slug": "tacoma", "featured": true },
+    { "name": "Gig Harbor" },
+    { "name": "Bainbridge Island" }
+  ]
+}
