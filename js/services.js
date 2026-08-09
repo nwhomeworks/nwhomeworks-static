@@ -1,1 +1,25 @@
-document.addEventListener("DOMContentLoaded",function(){gsap.registerPlugin(ScrollTrigger);var e=document.querySelector(".services-hero-heading h1");e&&ScrollTrigger.create({trigger:e,start:"top 85%",once:!0,onEnter:function(){gsap.to(e,{clipPath:"inset(0 0 0% 0)",duration:.8,ease:"power2.inOut"})}});var r=document.querySelector(".services-hero-heading p");r&&ScrollTrigger.create({trigger:r,start:"top 85%",once:!0,onEnter:function(){gsap.to(r,{opacity:1,duration:.6,delay:.3,ease:"power2.out"})}});var t=document.querySelector(".services-intro");t&&ScrollTrigger.create({trigger:t,start:"top 85%",once:!0,onEnter:function(){gsap.to(t,{opacity:1,duration:.6,ease:"power2.out"})}});});
+// Services hub reveal animations.
+//
+// The hero heading and its subtitle animate via CSS keyframes in services.css,
+// not from here — they sit above the fold, and when their reveal depended on a
+// ScrollTrigger that never entered, an invisible <h1> shipped on /services/.
+// Only the intro paragraph, which is genuinely below the fold, is scroll-driven,
+// and its hidden state is set here so it stays readable if GSAP fails to load.
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var intro = document.querySelector(".services-intro");
+  if (!intro) return;
+
+  gsap.set(intro, { opacity: 0 });
+  ScrollTrigger.create({
+    trigger: intro,
+    start: "top 90%",
+    once: true,
+    onEnter: function () { gsap.to(intro, { opacity: 1, duration: .6, ease: "power2.out" }); }
+  });
+
+  // Trigger positions are computed before the hero image finishes loading.
+  window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+});
