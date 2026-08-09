@@ -64,7 +64,10 @@
   <url><loc>https://www.nwhomeworks.com/reviews/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.nwhomeworks.com/services/bathrooms/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.nwhomeworks.com/services/beyond/basements/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/beyond/built-ins/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/beyond/closets/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.nwhomeworks.com/services/beyond/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nwhomeworks.com/services/beyond/laundry-mudrooms/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.nwhomeworks.com/services/ikea/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.nwhomeworks.com/services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.nwhomeworks.com/services/kitchens/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
