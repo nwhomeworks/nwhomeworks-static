@@ -9,8 +9,18 @@
 # Old WordPress page slugs that never got redirects
 /home / 301
 /services/design/ /services/ 301
+/services/design /services/ 301
+/services/ikea-installers/ /services/ikea/ 301
+/services/ikea-installers /services/ikea/ 301
+/services/remodeling/ /services/ 301
+/services/remodeling /services/ 301
+/services/bellevue/ /areas/bellevue/ 301
+/services/kitchens/free-consultations /services/kitchens/ 301
+/services/beyond/basement /services/beyond/basements/ 301
 /embed/ / 301
 /ikea-kitchens/* /services/ikea/ 301
+/~nwhome6/* / 301
+/sareas / 301
 
 # Misspelled/variant old WordPress blog URL
 /2015/01/17/ikea-cabinets-custom-made-doors-awesome-kitche-n/ /blog/custom-doors-ikea-cabinets/ 301
@@ -44,6 +54,33 @@
 /2015/03/19/master-bath-remodel-give-me-space/feed/ /blog/master-bath-remodel-give-me-space/ 301
 /2013/12/01/ikea-hacks-and-other-fun-stuff/pop-up-electrical-outlet-2/ /blog/ikea-hacks-and-other-fun-stuff/ 301
 
+# Retired WordPress posts with no static equivalent → closest topical page
+/2015/01/17/ikea-cabinets-custom-made-doors-awesome-kitchen/ /blog/custom-doors-ikea-cabinets/ 301
+/2012/03/04/are-ikea-cabinets-good-enough-for-your-kitchen/ /services/ikea/ 301
+/2013/01/25/how-to-remodel-without-the-stress/ /services/our-process/ 301
+/2012/12/16/how-to-find-the-right-contractor-for-your-remodeling-project/ /services/our-process/ 301
+/2012/11/25/new-bathrooms-in-a-log-cabin/ /services/bathrooms/ 301
+/2013/07/05/how-to-choose-under-cabinet-lighting/ /services/kitchens/ 301
+
+# Same old post URLs without the trailing slash (the slashed rules above don't match these)
+/2013/09/08/an-ikea-kitchen-that-pops /blog/an-ikea-kitchen-that-pops/ 301
+/2013/12/01/ikea-hacks-and-other-fun-stuff /blog/ikea-hacks-and-other-fun-stuff/ 301
+/2014/07/05/working-with-ikeas-pax-wardrobe-units /blog/working-with-ikeas-pax-wardrobe-units/ 301
+/2014/07/19/mid-century-modern-ikea-kitchen /blog/mid-century-modern-ikea-kitchen/ 301
+/2015/01/02/ikea-hacks /blog/ikea-hacks/ 301
+/2015/02/22/custom-built-ins-media-center-using-ikea-cabinets /blog/custom-built-ins-media-center-using-ikea-cabinets/ 301
+/2015/06/02/an-ikea-kitchen-that-doesnt-look-like-ikea /blog/an-ikea-kitchen-that-doesnt-look-like-ikea/ 301
+/2015/11/16/more-ikea-built-ins-and-a-tile-fireplace-surround /blog/more-ikea-built-ins-and-a-tile-fireplace-surround/ 301
+
+# Retired portfolio URLs with no current equivalent
+/portfolio/transitional-kitchen-redmond/ /portfolio/redmond-kitchen/ 301
+/portfolio/custom-ikea-kitchen-sammamish /portfolio/sammamish-kitchen/ 301
+/portfolio/bathrooms/ /services/bathrooms/ 301
+/portfolio/custom-wardrobes/ /services/beyond/closets/ 301
+/portfolio/kirkland-kitchen-laundry/ /portfolio/ 301
+/portfolio/kohler-signature-store/ /portfolio/ 301
+/portfolio/seattle-kitchen-renovation/ /portfolio/ 301
+
 # Broken backlink fixes - old WordPress content with external links pointing to them
 /2012/10/01/contemporary-ikea-kitchen/ /blog/ 301
 /wp-content/uploads/2015/01/Toekick.Drawer.IKEA_.Hack_.jpg /blog/ikea-hacks/ 301
@@ -64,6 +101,7 @@
 
 # WordPress category/tag pages → blog (root-level and /blog/ prefixed)
 /category/* /blog/ 301
+/tag/* /blog/ 301
 /blog/category/* /blog/ 301
 /blog/tag/* /blog/ 301
 
@@ -82,3 +120,11 @@
 /wp-content/plugins/* / 301
 /feed/ / 301
 /comments/feed/ / 301
+
+# Catch-all for the long tail of old date-based WordPress URLs.
+# Must stay LAST — the specific post rules above win because first match wins.
+/2012/* /blog/ 301
+/2013/* /blog/ 301
+/2014/* /blog/ 301
+/2015/* /blog/ 301
+/2016/* /blog/ 301
