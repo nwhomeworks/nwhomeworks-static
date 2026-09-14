@@ -124,6 +124,9 @@
 
         <p class="form-note">Have IKEA designs, photos, or inspiration images? Email them to <a href="mailto:query@nwhomeworks.com">query@nwhomeworks.com</a> &mdash; anything that helps us understand your vision.</p>
 
+        <!-- Cloudflare Turnstile: Formspree verifies the cf-turnstile-response token server-side -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAE0ElkhW8EZ4FNXQ" data-theme="light" style="margin-bottom:1rem"></div>
+
         <button type="submit" class="form-submit-btn">Send Message &rarr;</button>
 
       </form>
@@ -132,6 +135,7 @@
   </div>
 
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script defer src="/js/main.js?v=d537a42d"></script>
   <script>
   document.querySelector('.contact-form').addEventListener('submit', function(e) {
