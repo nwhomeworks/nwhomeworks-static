@@ -146,7 +146,6 @@ Create `/blog/{slug}/index.html` using the template structure below. Reference a
   </script>
   <!-- Do NOT add FAQPage schema: Google deprecated FAQ rich results (May 2026) and NW Homeworks was never eligible. Visible FAQ content sections are still fine; just skip the JSON-LD. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
